@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Lab Activity</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>C Programming Lab Activity</h1>
+</header>
+
+<div class="container">
+	<!-- Program 1.a -->
+<h2>1.a. WAP to find sum of two numbers using function</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+// ---- Function Declaration ----
+void findSum(int a, int b);
+
+int main() {
+    int x, y;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+
+    // Calling the void function
+    findSum(x, y);
+
+    return 0;
+}
+
+// ---- Function Definition ----
+void findSum(int a, int b) {
+    int sum = a + b;
+    printf("Sum of %d and %d = %d\n", a, b, sum);
+}
+</pre>
+
+
+    <!-- Program 1.b -->
+    <h2>1.b. WAP to find sum of two numbers using return type function</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+int sum(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int x, y;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+
+    printf("Sum = %d", sum(x, y));
+    return 0;
+}
+    </pre>
+
+    <!-- Program 2 -->
+    <h2>2. WAP to find factorial of a number using recursion</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+int factorial(int n) {
+    if(n == 0) 
+        return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    printf("Factorial = %d", factorial(num));
+    return 0;
+}
+    </pre>
+
+    <!-- Program 3 -->
+    <h2>3. WAP illustrating Call by Value and Call by Reference</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+void callByValue(int a) {
+    a = a + 10;
+    printf("Inside callByValue: %d\n", a);
+}
+
+void callByReference(int *b) {
+    *b = *b + 10;
+    printf("Inside callByReference: %d\n", *b);
+}
+
+int main() {
+    int x = 5, y = 5;
+
+    printf("Before callByValue: %d\n", x);
+    callByValue(x);
+    printf("After callByValue: %d\n\n", x);
+
+    printf("Before callByReference: %d\n", y);
+    callByReference(&y);
+    printf("After callByReference: %d\n", y);
+
+    return 0;
+}
+    </pre>
+    <!-- Program 4 -->
+    <h2>4. WAP to input roll, name and marks of student and display them.</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+struct Student {
+    int roll;
+    char name[20];
+    float marks;
+};
+
+int main() {
+    struct Student s;
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll);
+
+    printf("Enter name: ");
+    scanf("%s", s.name);
+
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    printf("\n--- Student Details ---\n");
+    printf("Roll No: %d\n", s.roll);
+    printf("Name: %s\n", s.name);
+    printf("Marks: %.2f\n", s.marks);
+
+    return 0;
+}
+    </pre>
+<!-- Program 5 -->
+<h2>5. WAP in C to input roll, name and marks of n students and display them</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+struct Student {
+    int roll;
+    char name[30];
+    float marks;
+};
+
+int main() {
+    int n;
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    struct Student s[n];
+
+    // Input details
+    for(int i = 0; i &lt; n; i++) {
+        printf("\nEnter details of student %d\n", i + 1);
+
+        printf("Enter Roll Number: ");
+        scanf("%d", &s[i].roll);
+
+        printf("Enter Name: ");
+        scanf("%s", s[i].name);
+
+        printf("Enter Marks: ");
+        scanf("%f", &s[i].marks);
+    }
+
+    // Display details
+    printf("\n------ Student Details ------\n");
+    for(int i = 0; i &lt; n; i++) {
+        printf("\nStudent %d:\n", i + 1);
+        printf("Roll  : %d\n", s[i].roll);
+        printf("Name  : %s\n", s[i].name);
+        printf("Marks : %.2f\n", s[i].marks);
+    }
+
+    return 0;
+}
+</pre>
+
+    <!-- Program 6 -->
+    <h2>6. WAP showing illustration og Nested Structure</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+struct Address {
+    char city[20];
+    int pincode;
+};
+
+struct Student {
+    int roll;
+    char name[20];
+    struct Address addr;   // Nested structure
+};
+
+int main() {
+    struct Student s;
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll);
+
+    printf("Enter name: ");
+    scanf("%s", s.name);
+
+    printf("Enter city: ");
+    scanf("%s", s.addr.city);
+
+    printf("Enter pincode: ");
+    scanf("%d", &s.addr.pincode);
+
+    printf("\n--- Student Details ---\n");
+    printf("Roll No: %d\n", s.roll);
+    printf("Name: %s\n", s.name);
+    printf("City: %s\n", s.addr.city);
+    printf("Pincode: %d\n", s.addr.pincode);
+
+    return 0;
+}
+    </pre>
+    <!-- Program 6 -->
+    <h2>6. WAP in C to input roll, name and marks of student using Union</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+union Student {
+    int roll;
+    char name[30];
+    float marks;
+};
+
+int main() {
+    union Student s;
+
+    printf("Enter Roll Number: ");
+    scanf("%d", &s.roll);
+    printf("Roll = %d\n\n", s.roll);
+
+    printf("Enter Name: ");
+    scanf("%s", s.name);
+    printf("Name = %s\n\n", s.name);
+
+    printf("Enter Marks: ");
+    scanf("%f", &s.marks);
+    printf("Marks = %.2f\n\n", s.marks);
+
+    printf("NOTE:\n");
+    printf("Name = %s\n\n", s.name);
+    printf("Union stores only one value at a time.\n");
+    printf("So only the LAST entered value is actually stored.\n");
+
+    return 0;
+}
+    </pre>
+    <!-- Program 7 -->
+    <h2>7. WAP in C using sizeof() to illustrate size difference between Structure and Union</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+
+struct S {
+    int roll;      // 4 bytes
+    float marks;   // 4 bytes
+    char grade;    // 1 byte 
+};
+
+union U {
+    int roll;      // 4 bytes
+    float marks;   // 4 bytes
+    char grade;    // 1 byte
+};
+
+int main() {
+    struct S student1;
+    union U student2;
+
+    printf("Size of Structure = %lu bytes\n", sizeof(student1)); //%lu format specifier is used to print unsigned long integers
+    printf("Size of Union     = %lu bytes\n", sizeof(student2));
+
+    printf("\nNOTE:\n");
+    printf("Structure size = sum of all members (plus padding).\n");
+    printf("Union size = size of the largest member.\n");
+
+    return 0;
+}
+    </pre>
+
+
+</div>
+
+<footer>
+    © 
+</footer>
+
+</body>
+</html>
