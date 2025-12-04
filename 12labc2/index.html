@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Lab Activity</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+
+            /* MAKE CODE NOT COPYABLE */
+            user-select: none;
+        }
+        pre::selection {
+            background: none;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>C Programming Lab Activity - File Handling</h1>
+</header>
+
+<div class="container">
+
+<h1>Write Mode</h1>
+
+<h2>1. Create a datafile “patient.dat” and store patient data.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main()
+{
+    char n[10], d[10];
+    int a, b;
+    FILE *fptr;
+
+    fptr = fopen("C:\Users\Desktop\patient.dat", "wb");
+
+    printf("Enter name, disease, age and bed number: ");
+    scanf("%s %s %d %d", n, d, &a, &b);
+
+    fprintf(fptr, "%s %s %d %d\n", n, d, a, b);
+
+    fclose(fptr);
+    return 0;
+}
+</pre>
+
+<h2>2. Create “student.txt” and store name, class & 3 marks for n students.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main()
+{
+    char n[10];
+    int c, e, ne, m, i, num;
+    FILE *fptr;
+
+    fptr = fopen("C:\Users\Desktop\student.txt", "w");
+
+    printf("How many records? ");
+    scanf("%d", &num);
+
+    for(i = 1; i <= num; i++)
+    {
+        printf("Enter name, class and 3 marks: ");
+        scanf("%s %d %d %d %d", n, &c, &e, &ne, &m);
+        fprintf(fptr, "%s %d %d %d %d\n", n, c, e, ne, m);
+    }
+
+    fclose(fptr);
+    return 0;
+}
+</pre>
+
+<h2>3. Create “student.txt” and store records until user presses Y.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+#include &lt;string.h&gt 
+
+int main()
+{
+    char n[10], ch[3];
+    int c, e, ne, m;
+    FILE *fptr;
+
+    fptr = fopen("C:\Users\Desktop\student.txt", "w");
+
+    do {
+        printf("Enter name, class and 3 marks: ");
+        scanf("%s %d %d %d %d", n, &c, &e, &ne, &m);
+
+        fprintf(fptr, "%s %d %d %d %d\n", n, c, e, ne, m);
+
+        printf("Press Y to continue: ");
+        scanf("%s", ch);
+
+    } while (strcmp(ch, "Y") == 0 || strcmp(ch, "y") == 0);
+
+    fclose(fptr);
+    return 0;
+}
+</pre>
+
+<h1>Append Mode</h1>
+
+<h2>4. Add 10 more records to “student.txt”.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main()
+{
+    char n[10];
+    int c, e, ne, m, i;
+    FILE *fptr;
+
+    fptr = fopen("C:\Users\Desktop\student.txt", "a");
+
+    for(i = 1; i <= 10; i++)
+    {
+        printf("Enter name, class and 3 marks: ");
+        scanf("%s %d %d %d %d", n, &c, &e, &ne, &m);
+
+        fprintf(fptr, "%s %d %d %d %d\n", n, c, e, ne, m);
+    }
+
+    fclose(fptr);
+    return 0;
+}
+</pre>
+
+<h1>Read Mode</h1>
+
+<h2>5. Read and display all records from “student.txt”.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main()
+{
+    char n[10];
+    int c, e, ne, m;
+    FILE *fptr;
+
+    fptr = fopen("C:\Users\Desktop\student.txt", "r");
+
+    while (fscanf(fptr, "%s %d %d %d %d", n, &c, &e, &ne, &m) != EOF)
+    {
+        printf("%s %d %d %d %d\n", n, c, e, ne, m);
+    }
+
+    fclose(fptr);
+    return 0;
+}
+</pre>
+
+<h2>6. A datafile “student.txt” contain name, class and marks obtained in 3 different subject of few students. Write a C program to read and display all records whose name is "Ram".</h2>
+<pre>
+#include &lt;stdio.h&gt 
+#include &lt;string.h&gt 
+<!-- #include <ctype.h> -->
+
+int main()
+{
+    char n[10];
+    int c, e, ne, m;
+    FILE *fptr;
+
+    fptr = fopen("C:\Users\Desktop\student.txt", "r");
+
+    while (fscanf(fptr, "%s %d %d %d %d", n, &c, &e, &ne, &m) != EOF)
+    {
+        char temp[10];
+        strcpy(temp, n);
+
+        for(int i=0; temp[i]; i++)
+            temp[i] = tolower(temp[i]);
+
+        if (strcmp(temp, "ram") == 0)
+        {
+            printf("%s %d %d %d %d\n", n, c, e, ne, m);
+        }
+    }
+
+    fclose(fptr);
+    return 0;
+}
+</pre>
+<h2>7. Display only those records of pass students.</h2>
+<pre>DO IT YOURSELF!!!</pre>
+</div>
+
+<footer>©</footer>
+
+</body>
+</html>
