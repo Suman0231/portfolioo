@@ -1,0 +1,259 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Learn HTML – Beginner Tutorial</title>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f2f2f2;
+        margin:0;
+        padding:0;
+        line-height:1.6;
+    }
+    header{
+        background:#003366;
+        color:white;
+        padding:20px;
+        text-align:center;
+        font-size:28px;
+    }
+    .container{
+        width:90%;
+        margin:20px auto;
+        background:white;
+        padding:20px;
+        border-radius:8px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+    h2{
+        color:#003366;
+        border-left:4px solid #003366;
+        padding-left:10px;
+        margin-top:40px;
+    }
+    pre{
+        background:#272822;
+        color:#f8f8f2;
+        padding:15px;
+        border-radius:5px;
+        overflow-x:auto;
+user-select: none;
+    }
+    .output-box{
+        background:#e8f0fe;
+        border-left:5px solid #003366;
+        padding:15px;
+        margin-top:10px;
+        border-radius:5px;
+    }
+
+    footer{
+        background:#003366;
+        color:white;
+        text-align:center;
+        padding:10px;
+        margin-top:30px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>HTML Beginners Tutorial</header>
+
+<div class="container">
+
+<!-- 1. Structure -->
+<h2>1. Structure of an HTML Page</h2>
+
+<p>This is the basic skeleton of any HTML webpage:</p>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;title&gt;YOUR NAME HERE&lt;/title&gt;
+&lt;header&gt;My First Webpage&lt;/header&gt;
+
+&lt;body&gt;
+WE ARE LEARNING HTML
+&lt;/body&gt;
+
+&lt;footer&gt;copyright @ YOURNAME&lt;/footer&gt;
+&lt;/html&gt;
+</pre>
+
+
+<!-- 2. Paragraphs & Headings -->
+<h2>2. Paragraph & Heading Tags</h2>
+
+<p>Paragraphs:</p>
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+&lt;p&gt;My second paragraph.&lt;/p&gt;
+</pre>
+
+
+<p>Headings:</p>
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;h1&gt;My First Heading&lt;/h1&gt;
+&lt;h2&gt;My Second Heading&lt;/h2&gt;
+&lt;h3&gt;My Third Heading&lt;/h3&gt;
+&lt;h4&gt;My Fourth Heading&lt;/h4&gt;
+&lt;h5&gt;My Fifth Heading&lt;/h5&gt;
+&lt;h6&gt;My Sixth Heading&lt;/h6&gt;
+</pre>
+
+
+<!-- 3 -->
+<h2>3. Line Break & Horizontal Line</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;p&gt;My third&lt;br&gt;paragraph.&lt;/p&gt;
+&lt;hr&gt;
+</pre>
+
+
+
+<!-- 4 -->
+<h2>4. Add Background Color</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;body style="background-color:blue;"&gt;
+</pre>
+
+
+
+<!-- 5 -->
+<h2>5. Add Background Image</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+body {
+  background-image: url('img_girl.jpg');
+}
+</pre>
+
+
+
+<!-- 6 -->
+<h2>6. Add an Image</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;img src="imagename.jpg" 
+     alt="HTML Image description" 
+     width="128" 
+     height="128"&gt;
+</pre>
+
+
+
+<!-- 7 -->
+<h2>7. Comments in HTML</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;!-- Write your comments here --&gt;
+</pre>
+
+
+
+<!-- 8 -->
+<h2>8. Formatting Text</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;p&gt;&lt;b&gt;This text is bold&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;This text is italic&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;This is&lt;sub&gt; subscript&lt;/sub&gt; 
+and &lt;sup&gt;superscript&lt;/sup&gt;&lt;/p&gt;
+
+&lt;strong&gt;Important text&lt;/strong&gt;
+&lt;em&gt;Emphasized text&lt;/em&gt;
+&lt;mark&gt;Marked text&lt;/mark&gt;
+&lt;small&gt;Smaller text&lt;/small&gt;
+&lt;del&gt;Deleted text&lt;/del&gt;
+&lt;ins&gt;Inserted text&lt;/ins&gt;
+
+&lt;blockquote&gt;This is a blockquote example.&lt;/blockquote&gt;
+
+&lt;pre&gt;
+This is preformatted text.
+Spaces and line breaks are kept exactly.
+&lt;/pre&gt;
+</pre>
+
+
+
+<!-- 9 -->
+<h2>9. Ordered & Unordered Lists</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;ul&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+
+<!-- 10 -->
+<h2>10. List Style Types</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;ul style="list-style-type:circle;"&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol type="a"&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+<p>Also try other different types of ordered and unordered lists.<p>
+<ul>
+<li>Unordered List Types:</li>
+<ul>
+<li>Disc</li><li>Circle</li><li>Square</li><li>None</li>
+</ul>
+<li>Ordered List Types:</li>
+<ul>
+<li>type="1"</li><li>type="A"</li><li>type="I"</li><li>type="i"</li>
+
+</ul>
+</ul>
+
+<!-- 11 -->
+<h2>11. Links in HTML</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;a href="https://www.youtube.com/" target="_blank"&gt;Visit Youtube!&lt;/a&gt;
+</pre>
+<p>Also try self, parent targets.<p>
+
+<!-- 12 -->
+<h2>12. Sending Mail/ Calling in HTML</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;a href="mailto:yourmailId"&gt;Click to send mail.&lt;/a&gt;
+&lt;a href="telto:yourPhoneNumber"&gt;Click to Call.&lt;/a&gt;
+</pre>
+
+<!-- 12 -->
+<h2>12. iframes in HTML</h2>
+
+<pre> <strong><b><u>CODE:</b></u></strong>
+&lt;iframe src="file.html" height="200" width="300" title="Iframe Example"&gt;&lt;/iframe&gt;
+</pre>
+</div>
+
+<footer>© 2025 Learn HTML </footer>
+
+</body>
+</html>
