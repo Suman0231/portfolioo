@@ -212,8 +212,7 @@ int main()
         char temp[10];
         strcpy(temp, n);
 
-        for(int i=0; temp[i]; i++)
-            temp[i] = tolower(temp[i]);
+        strlwr(temp);   // convert to lowercase
 
         if (strcmp(temp, "ram") == 0)
         {
