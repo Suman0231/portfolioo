@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Lab Activity</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+
+            /* MAKE CODE NOT COPYABLE */
+            user-select: none;
+        }
+        pre::selection {
+            background: none;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JavaScript Lab Activity </h1>
+</header>
+
+<div class="container">
+
+
+
+<h2>1. JavaScript Variables Example</h2>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    
+
+    &lt;title&gt;JavaScript Variables Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Check the output below:&lt;/h1&gt;
+
+    &lt;script&gt;
+        // Initializing an integer variable using 'var'
+        var myInt = 42;
+
+        // Initializing a string variable using 'var'
+        var myString = "Hello, world!";
+
+        // Using document.write to display the values directly on the webpage
+        document.write("Integer Value: " + myInt + "&lt;br&gt;");
+        document.write("String Value: " + myString);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+
+<h2>2. JavaScript Arithmetic Operations Example</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    
+
+    &lt;title&gt;Arithmetic Operators Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Arithmetic Operators in JavaScript&lt;/h2&gt;
+
+    &lt;script&gt;
+        var a = 10;
+        var b = 3;
+
+        document.write("a = " + a + "&lt;br&gt;");
+        document.write("b = " + b + "&lt;br&gt;&lt;br&gt;");
+
+        // Addition
+        document.write("Addition (a + b) = " + (a + b) + "&lt;br&gt;");
+
+        // Subtraction
+        document.write("Subtraction (a - b) = " + (a - b) + "&lt;br&gt;");
+
+        // Multiplication
+        document.write("Multiplication (a * b) = " + (a * b) + "&lt;br&gt;");
+
+        // Division
+        document.write("Division (a / b) = " + (a / b) + "&lt;br&gt;");
+
+        // Modulus (a % b)
+        document.write("Modulus (a % b) = " + (a % b) + "&lt;br&gt;");
+
+        
+        // Increment
+        var x = a;
+        x++;
+        document.write("Increment (a++) = " + x + "&lt;br&gt;");
+
+        // Decrement
+        var y = b;
+        y--;
+        document.write("Decrement (b--) = " + y + "&lt;br&gt;");
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+
+
+<h2><b>YOUR TASK:</b>Perform different types of logical operations.</h2><hr>
+
+
+
+<h2>3. User Inputs in JavaScript. </h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    
+
+    &lt;title&gt;User Input and Output Examples&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Input and Output using prompt()&lt;/h2&gt;
+
+    &lt;script&gt;
+        var name = prompt("Enter your name:");
+        document.write("Hello, " + name + "&lt;br&gt;");
+        var age = prompt("Enter your age:");
+        alert("You are " + age + " years old!");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+
+
+<h2>4. Find the greater Number among the two.</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    
+
+    &lt;title&gt;Greatest of Two Numbers&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Find the Greatest of Two Numbers&lt;/h2&gt;
+
+    &lt;script&gt;
+        // Taking input using prompt (inputs are strings)
+        var num1 = prompt("Enter the first number:");
+        var num2 = prompt("Enter the second number:");
+
+        // Convert to numbers
+        num1 = Number(num1);
+        num2 = Number(num2);
+
+        // Check which is greater
+        if (num1 &gt; num2) {
+            document.write("The greatest number is: " + num1);
+        } 
+        else if (num2 &gt; num1) {
+            document.write("The greatest number is: " + num2);
+        } 
+        else {
+            document.write("Both numbers are equal.");
+        }
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h2><b>YOUR TASK:</b> Input name and Percentage of user. Display pass or fail.</h2><hr>
+
+<h2>5. Difference between post and pre increments. </h2>
+
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    
+
+    &lt;title&gt;Pre &amp; Post Increment/Decrement&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Pre and Post Increment/Decrement Example&lt;/h2&gt;
+
+    &lt;script&gt;
+        var a = 5;
+        var b = 5;
+
+        document.write("&lt;b&gt;Initial Values:&lt;/b&gt;&lt;br&gt;");
+        document.write("a = " + a + "&lt;br&gt;");
+        document.write("b = " + b + "&lt;br&gt;&lt;br&gt;");
+
+        // POST-INCREMENT (a++)
+        var postInc = a++;
+        document.write("&lt;b&gt;Post-Increment (a++)&lt;/b&gt;&lt;br&gt;");
+        document.write("Returned value = " + postInc + "&lt;br&gt;");
+        document.write("New value of a = " + a + "&lt;br&gt;&lt;br&gt;");
+
+        // PRE-INCREMENT (++b)
+        var preInc = ++b;
+        document.write("&lt;b&gt;Pre-Increment (++b)&lt;/b&gt;&lt;br&gt;");
+        document.write("Returned value = " + preInc + "&lt;br&gt;");
+        document.write("New value of b = " + b + "&lt;br&gt;&lt;br&gt;");
+
+        var c = 5;
+        var d = 5;
+
+        document.write("&lt;b&gt;Initial Values:&lt;/b&gt;&lt;br&gt;");
+        document.write("c = " + c + "&lt;br&gt;");
+        document.write("d = " + d + "&lt;br&gt;&lt;br&gt;");
+
+        // POST-DECREMENT (c--)
+        var postDec = c--;
+        document.write("&lt;b&gt;Post-Decrement (c--)&lt;/b&gt;&lt;br&gt;");
+        document.write("Returned value = " + postDec + "&lt;br&gt;");
+        document.write("New value of c = " + c + "&lt;br&gt;&lt;br&gt;");
+
+        // PRE-DECREMENT (--d)
+        var preDec = --d;
+        document.write("&lt;b&gt;Pre-Decrement (--d)&lt;/b&gt;&lt;br&gt;");
+        document.write("Returned value = " + preDec + "&lt;br&gt;");
+        document.write("New value of d = " + d + "&lt;br&gt;");
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+
