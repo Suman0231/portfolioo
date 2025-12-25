@@ -91,8 +91,48 @@ int main()
     return 0;
 }
 </pre>
-<h2> <b>YOUR TASK:</b>2. WAP to find sum of digits of a given number.</h2><hr>
-<h2> <b>YOUR TASK:</b>3. WAP to find product of digits of a given number.</h2><hr>
+<h2> <b>YOUR TASK:</b>2. WAP to find sum of digits of a given number.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main()
+{
+    int num,sum=0,rem;
+    printf("Enter any number\t");
+    scanf("%d",&num);
+    
+    while (num!=0)
+    {
+        rem = num%10;
+        sum= sum+rem;
+        num = num/10;     
+    }
+    
+    printf(“Sum=%d \n”,sum);
+       return 0;
+}
+</pre>
+<h2> <b>YOUR TASK:</b>3. WAP to find product of digits of a given number.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main()
+{
+    int num,product=1,rem;
+    printf("Enter any number\t");
+    scanf("%d",&num);
+    num1=num;
+    while (num!=0)
+    {
+        rem = num%10;
+        product= product*rem;
+        num = num/10;     
+    }
+    
+    printf(“Product=%d \n”,product);
+       return 0;
+}
+</pre>
 <h2>4. WAP to check whether given number is armstrong or not. [153 is Armstrong]</h2>
 <h3>1<sup>3</sup> + 5<sup>3</sup> +3<sup>3</sup> = 153
   <pre>
@@ -107,7 +147,7 @@ int main()
     while (num!=0)
     {
         rem = num%10;
-        sum = sum+pow(r,3);
+        sum = sum+pow(rem,3);
         num = num/10;
     }
     if (num1==sum)
@@ -127,8 +167,6 @@ int main()
 #include &lt;stdio.h&gt 
 
 
-#include <stdio.h>
-
 int main() {
     float m1, m2, m3, m4, m5, total, percentage;
 
@@ -144,7 +182,33 @@ int main() {
     return 0;
 }
 </pre>
-<hr><h2> <b>YOUR TASK:</b>6. Use if else conditions in Q NO. 5 to display whether pass or fail.</h2><hr>
+<hr><h2> <b>YOUR TASK:</b>6. Use if else conditions in Q NO. 5 to display whether pass or fail.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+
+int main() {
+    float m1, m2, m3, m4, m5, total, percentage;
+
+    printf("Enter marks of 5 subjects:\n");
+    scanf("%f %f %f %f %f", &m1, &m2, &m3, &m4, &m5);
+
+    total = m1 + m2 + m3 + m4 + m5;
+    percentage = (total / 500) * 100;
+
+    printf("Total Marks = %.2f\n", total);
+    printf("Percentage = %.2f%%\n", percentage);
+    if(percentage>=40)
+    {
+     printf("you passed.\n");
+    }
+    else
+    {
+    printf("you failed.\n");
+    }
+    return 0;
+}
+</pre>
 
 <h2>7. Find cube root of a number without using math-library functions.</h2>
 <pre>
