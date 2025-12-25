@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Lab Activity</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+
+            /* MAKE CODE NOT COPYABLE */
+            user-select: none;
+        }
+        pre::selection {
+            background: none;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>C Programming Lab Activity - Day 3</h1>
+</header>
+
+<div class="container">
+
+<h1>Write Mode</h1>
+
+<h2>1. WAP to check if given number is palindrome.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main()
+{
+    int num,num1,reverse=0,rem;
+    printf("Enter any number\t");
+    scanf("%d",&num);
+    num1=num;
+    while (num!=0)
+    {
+        rem = num%10;
+        reverse = reverse*10+rem;
+        num = num/10;     
+    }
+    if (num1==reverse)
+    {
+    printf(“%d is palindrome \n”,num1);
+    }
+   else
+   {
+    printf(“%d is not palindrome \n”,num1);
+   }
+    return 0;
+}
+</pre>
+<h2> <b>YOUR TASK:</b>2. WAP to find sum of digits of a given number.</h2><hr>
+<h2> <b>YOUR TASK:</b>3. WAP to find product of digits of a given number.</h2><hr>
+<h2>4. WAP to check whether given number is armstrong or not. [153 is Armstrong]</h2>
+<h3>1<sup>3</sup> + 5<sup>3</sup> +3<sup>3</sup> = 153
+  <pre>
+#include &lt;stdio.h&gt 
+#include &lt;math.h&gt 
+int main()
+{
+    int num,num1,sum=0,rem;
+    printf("Enter any number\t");
+    scanf("%d",&num);
+    num1=num;
+    while (num!=0)
+    {
+        rem = num%10;
+        sum = sum+pow(r,3);
+        num = num/10;
+    }
+    if (num1==sum)
+    {
+    printf(“%d is armstrong \n”,num1);
+    }
+   else
+   {
+    printf(“%d is not armstrong \n”,num1);
+   }
+    return 0;
+}
+</pre>
+
+<h2>5. WAP to input marks in 5 subject and calculate percentage.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+
+#include <stdio.h>
+
+int main() {
+    float m1, m2, m3, m4, m5, total, percentage;
+
+    printf("Enter marks of 5 subjects:\n");
+    scanf("%f %f %f %f %f", &m1, &m2, &m3, &m4, &m5);
+
+    total = m1 + m2 + m3 + m4 + m5;
+    percentage = (total / 500) * 100;
+
+    printf("Total Marks = %.2f\n", total);
+    printf("Percentage = %.2f%%\n", percentage);
+
+    return 0;
+}
+</pre>
+<hr><h2> <b>YOUR TASK:</b>6. Use if else conditions in Q NO. 5 to display whether pass or fail.</h2><hr>
+
+<h2>7. Find cube root of a number without using math-library functions.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main() {
+    int num, i;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    for(i = 1; i * i * i <= num; i++) {
+        if(i * i * i == num) {
+            printf("Cube root of %d is %d\n", num, i);
+            return 0;
+        }
+    }
+
+    printf("Cube root is not an integer\n");
+    return 0;
+}
+</pre>
+
+
+
+<h2>8. Check if given number is a perfect square.</h2>
+<pre>
+#include &lt;stdio.h&gt 
+
+int main() {
+    int num, i;
+    int check = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    for(i = 1; i * i <= num; i++) {
+        if(i * i == num) {
+            check = 1;
+            break;
+        }
+    }
+
+    if(check==1)
+        printf("%d is a Perfect Square\n", num);
+    else
+        printf("%d is NOT a Perfect Square\n", num);
+
+    return 0;
+}</pre>
+
+</div>
+
+<footer>©</footer>
+
+</body>
+</html>
