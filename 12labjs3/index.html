@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Lab 3</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+
+            /* MAKE CODE NOT COPYABLE */
+            user-select: none;
+        }
+        pre::selection {
+            background: none;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JavaScript Lab 3 - Functions </h1>
+</header>
+
+<div class="container">
+
+
+
+<h2>1. Function Example</h2>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    
+
+    &lt;title&gt;JavaScript Function Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Check the output below:&lt;/h1&gt;
+
+    &lt;script&gt;
+        function display() //function definition
+	{
+	document.writeLine("hello World from inside the function");
+	}
+	document.writeLine("hello World from outside the function");
+	display();  //calling the function
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+
+<h2>2. JavaScript Arithmetic Operations Examples using function</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    
+
+    &lt;title&gt;Arithmetic Operators Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Arithmetic Operators in JavaScript&lt;/h2&gt;
+
+    &lt;script&gt;
+     
+	document.write("addition = " + sum(10,57) + "&lt;br&gt;&lt;br&gt;");
+
+       	function sum(a,b){
+	return a+b;
+`	} 
+    &lt;/script&gt;
+\*it is not good practise to define function after calling it.
+  YOUR TASK: 1st define the function and then call it.
+	     2nd add other functions to perform subtraction, multiplication
+	      and others arithmetic operations. 
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h2><b>YOUR TASK:</b> Find the area of circle using function.</h2><hr>
+
+<h2><b>YOUR TASK:</b> Find the greater Number among the two using function.</h2><hr>
+<h2><b>YOUR TASK:</b> Find the reverse of a number using function.</h2><hr>
+
+
+
+
+<hr>
+
+
+
+<h2>Methods of adding JS code to HTML</h2>
+
+<p>1. Embedding Code</p><p>2. External Code</p><p>3. Inline Code</p>
+
+
+<h2>3. Methods of Adding JavaScript Code to HTML</h2>
+
+<h3>1. Embedding JavaScript (Internal JS)</h3>
+<p>
+JavaScript code is written inside the <b>&lt;script&gt;</b> tag within the same HTML file.
+</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Embedded JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Embedded JavaScript Example&lt;/h2&gt;
+
+&lt;script&gt;
+    function showMessage() {
+        document.write("Hello from Embedded JavaScript");
+    }
+    showMessage();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h3>2. External JavaScript</h3>
+<p>
+JavaScript code is written in a separate <b>.js</b> file and linked to the HTML file.
+This is the <b>best practice</b>.
+</p>
+
+<pre>
+&lt;!-- HTML File --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;External JavaScript&lt;/title&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;External JavaScript Example&lt;/h2&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<pre>
+/* script.js */
+function displayMessage() {
+    document.write("Hello from External JavaScript");
+}
+displayMessage();
+</pre>
+
+<hr>
+
+<h3>3. Inline JavaScript</h3>
+<p>
+JavaScript code is written directly inside an HTML element using events like
+<b>onclick</b>.
+</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Inline JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Inline JavaScript Example&lt;/h2&gt;
+
+&lt;button onclick="alert('Hello from Inline JavaScript')"&gt;
+    Click Me
+&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body></html>
+
+
+
+
