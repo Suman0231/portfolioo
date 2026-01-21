@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Lab Activity</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            
+        }
+        
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>C Programming Lab Activity - Day 5</h1>
+</header>
+
+<div class="container">
+
+<h1>String Handling Functions in C</h1>
+
+<h2>1. strlen()</h2>
+<p><b>Function:</b> Returns total number of characters in a given string.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[50];
+    int l;
+
+    printf("Enter any string: ");
+    scanf("%s", a);
+
+    l = strlen(a);
+    printf("The length is %d\n", l);
+
+    return 0;
+}
+</pre>
+
+<h2>2. strrev()</h2>
+<p><b>Function:</b> Returns reverse of given string.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[50];
+
+    printf("Enter any string: ");
+    scanf("%s", a);
+
+    strrev(a);
+    printf("The reverse is %s\n", a);
+
+    return 0;
+}
+</pre>
+
+<h2>3. strlwr()</h2>
+<p><b>Function:</b> Converts given string into lowercase.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[50];
+
+    printf("Enter any string: ");
+    scanf("%s", a);
+
+    strlwr(a);
+    printf("The lower case is %s\n", a);
+
+    return 0;
+}
+</pre>
+
+<h2>4. strupr()</h2>
+<p><b>Function:</b> Converts given string into uppercase.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[50];
+
+    printf("Enter any string: ");
+    scanf("%s", a);
+
+    strupr(a);
+    printf("The upper case is %s\n", a);
+
+    return 0;
+}
+</pre>
+
+<h2>5. strcpy()</h2>
+<p><b>Function:</b> Copies one string to another.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[50], b[50];
+
+    printf("Enter any string: ");
+    scanf("%s", a);
+
+    strcpy(b, a);
+    printf("The copied string is %s\n", b);
+
+    return 0;
+}
+</pre>
+
+<h2>6. strcat()</h2>
+<p><b>Function:</b> Concatenates two strings.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[50], b[50];
+
+    printf("Enter first string: ");
+    scanf("%s", a);
+
+    printf("Enter second string: ");
+    scanf("%s", b);
+
+    strcat(a, b);
+    printf("The added string is %s\n", a);
+
+    return 0;
+}
+</pre>
+
+<h2>7. strcmp()</h2>
+<p><b>Function:</b> Compares two strings.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[10]="ram", b[10]="amrit",c[10]="sahil",d[10]="ram";
+    int x;
+
+    x = strcmp(a, b);
+    printf("The compared value is %d\n", x);
+    x = strcmp(a, c);
+    printf("The compared value is %d\n", x);
+    x = strcmp(a, d);
+    printf("The compared value is %d\n", x);
+
+    return 0;
+}
+</pre>
+
+<h2>8. Palindrome Check</h2>
+<p><b>Function:</b> Checks whether a given string is a palindrome.</p>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[50], b[50];
+
+    printf("Enter any string: ");
+    scanf("%s", a);
+
+    strcpy(b, a);
+    strrev(b);
+
+    if(strcmp(a, b) == 0)
+        printf("The string is a palindrome\n");
+    else
+        printf("The string is not a palindrome\n");
+
+    return 0;
+}
+</pre>
+
+</div>
+
+<footer>©</footer>
+
+</body>
+</html>
