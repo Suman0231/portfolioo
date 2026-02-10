@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Form Validation & jQuery</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>JavaScript Form Validation & jQuery</h1>
+</header>
+
+<div class="container">
+
+<h2>1. Form Validation</h2>
+<p>
+Form validation is important to ensure that the data submitted by the user
+is correct and appropriate. JavaScript provides client-side validation,
+which is faster than server-side validation and improves user experience.
+</p>
+
+<p>
+Using JavaScript, we can validate fields such as name, password, email,
+mobile number, date, etc.
+</p>
+
+<p>
+In the following example, the <b>name</b> field must not be empty and the
+<b>password</b> must contain at least 6 characters.
+</p>
+
+<hr>
+
+<pre>
+&lt;script&gt;
+function validateform()
+{
+    var name = document.myform.name.value;
+    var password = document.myform.password.value;
+
+    if (name == null || name == "")
+    {
+        alert("Name can't be blank");
+        return false;
+    }
+    else if (password.length &lt; 6)
+    {
+        alert("Password must be at least 6 characters long.");
+        return false;
+    }
+}
+&lt;/script&gt;
+
+&lt;form name="myform" onsubmit="return validateform()"&gt;
+Name:
+&lt;input type="text" name="name"&gt;&lt;br/&gt;
+Password:
+&lt;input type="password" name="password"&gt;&lt;br/&gt;
+&lt;input type="submit" value="Register"&gt;
+&lt;/form&gt;
+</pre>
+
+<hr>
+
+<h2>2. JavaScript Retype Password Validation</h2>
+<p>
+This example ensures that the password and re-entered password fields
+contain the same value before form submission.
+</p>
+
+<hr>
+
+<pre>
+&lt;script&gt;
+function matchpass()
+{
+    var firstpassword = document.f1.password.value;
+    var secondpassword = document.f1.password2.value;
+
+    if (firstpassword == secondpassword)
+    {
+        return true;
+    }
+    else
+    {
+        alert("Password must be same!");
+        return false;
+    }
+}
+&lt;/script&gt;
+
+&lt;form name="f1" onsubmit="return matchpass()"&gt;
+Password:
+&lt;input type="password" name="password"&gt;&lt;br/&gt;
+Re-enter Password:
+&lt;input type="password" name="password2"&gt;&lt;br/&gt;
+&lt;input type="submit"&gt;
+&lt;/form&gt;
+</pre>
+
+<hr>
+
+<h2>3. JavaScript Email Validation</h2>
+<p>
+Email validation ensures that the entered email address follows
+basic email rules:
+</p>
+
+<ul>
+    <li>Email must contain <b>@</b> and <b>.</b></li>
+    <li>At least one character before and after <b>@</b></li>
+    <li>At least two characters after <b>.</b></li>
+</ul>
+
+<hr>
+
+<pre>
+&lt;script&gt;
+function validateemail()
+{
+    var x = document.myform.email.value;
+    var atposition = x.indexOf("@");
+    var dotposition = x.lastIndexOf(".");
+
+    if (atposition &lt; 1 || dotposition &lt; atposition + 2 || dotposition + 2 &gt;= x.length)
+    {
+        alert("Please enter a valid email address");
+        return false;
+    }
+}
+&lt;/script&gt;
+
+&lt;form name="myform" onsubmit="return validateemail()"&gt;
+Email:
+&lt;input type="text" name="email"&gt;&lt;br/&gt;
+&lt;input type="submit" value="Register"&gt;
+&lt;/form&gt;
+</pre>
+
+<hr>
+
+<h2>4. Introduction to jQuery</h2>
+<p>
+<b>jQuery</b> is a fast, small, and lightweight JavaScript library that follows
+the principle of <b>"write less, do more"</b>.
+</p>
+
+<p>
+It simplifies complex JavaScript tasks such as:
+</p>
+
+<ul>
+    <li>DOM manipulation</li>
+    <li>Event handling</li>
+    <li>Animations</li>
+    <li>AJAX calls</li>
+</ul>
+
+<p>
+Many large companies use jQuery, including Google, Microsoft, and IBM.
+</p>
+
+<hr>
+
+<h2>5. jQuery hide() and show()</h2>
+<p>
+The <b>hide()</b> and <b>show()</b> methods are used to hide or display HTML elements
+easily using jQuery.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p").hide();
+    });
+    $("#show").click(function(){
+        $("p").show();
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;p&gt;If you click on the "Hide" button, I will disappear.&lt;/p&gt;
+
+&lt;button id="hide"&gt;Hide&lt;/button&gt;
+&lt;button id="show"&gt;Show&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h2>6. jQuery animate()</h2>
+<p>
+The <b>animate()</b> method is used to create custom animations by changing
+CSS properties gradually.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function(){
+    $("button").click(function(){
+        $("div").animate({
+            left: '250px',
+            opacity: '0.5',
+            height: '150px',
+            width: '150px'
+        });
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;button&gt;Start Animation&lt;/button&gt;
+
+&lt;div style="background:#98bf21;height:100px;width:100px;position:absolute;"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</div>
+
+<footer>
+    JavaScript Form Validation & jQuery Lab Activity
+</footer>
+
+</body>
+</html>
