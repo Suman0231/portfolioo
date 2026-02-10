@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Lab Activity</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>PHP Lab Activity</h1>
+</header>
+
+<div class="container">
+
+
+
+<h2>1. Basic PHP Syntax</h2>
+<p>
+PHP scripts are executed on the server. A PHP script starts with
+<code>&lt;?php</code> and ends with <code>?&gt;</code>.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My first PHP page&lt;/h1&gt;
+
+&lt;?php
+echo "Hello Class 12";
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h2>2. PHP Case Sensitivity</h2>
+<p>
+In PHP, keywords (such as <b>if</b>, <b>else</b>, <b>while</b>, <b>echo</b>),
+classes, and functions are <b>not case-sensitive</b>.
+</p>
+
+<p>
+The following example shows that all echo statements work the same way:
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;?php
+ECHO "Hello Class 12&lt;br&gt;";
+echo "Hello Class 12&lt;br&gt;";
+EcHo "Hello Class 12&lt;br&gt;";
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h2>3. Comments in PHP</h2>
+<p>
+Comments are used to explain the code and make it more readable.
+PHP supports single-line and multi-line comments.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;?php
+// This is a single-line comment
+# This is also a single-line comment
+
+/*
+This is a multiple-lines comment block
+that spans over multiple
+lines
+*/
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h2>4. Rules for PHP Variables</h2>
+<p>
+PHP variables are used to store data. The rules for declaring variables are:
+</p>
+
+<ul>
+    <li>A variable starts with the <b>$</b> sign</li>
+    <li>Variable name must start with a letter or underscore</li>
+    <li>Variable name cannot start with a number</li>
+    <li>Only alpha-numeric characters and underscores are allowed</li>
+    <li>Variable names are case-sensitive</li>
+</ul>
+
+<hr>
+
+<h2>5. PHP Variables: String, Integer, and Float</h2>
+<p>
+PHP supports different data types such as string, integer, and float.
+</p>
+
+<hr>
+
+<pre>
+&lt;?php
+$str = "hello string";
+$x = 200;
+$y = 44.6;
+
+echo "string is: $str &lt;br/&gt;";
+echo "integer is: $x &lt;br/&gt;";
+echo "float is: $y &lt;br/&gt;";
+?&gt;
+</pre>
+
+<hr>
+
+<h2>6. PHP echo and print Statements</h2>
+<p>
+<b>echo</b> and <b>print</b> are used to output data to the screen.
+</p>
+
+<ul>
+    <li><b>echo</b> can take multiple parameters</li>
+    <li><b>print</b> can take only one argument</li>
+</ul>
+
+<hr>
+
+<pre>
+&lt;?php
+echo "&lt;h2&gt;PHP is Fun!&lt;/h2&gt;";
+echo "Hello world!&lt;br&gt;";
+echo "I'm about to learn PHP!&lt;br&gt;";
+echo "This ", "string ", "was ", "made ", "with multiple parameters.";
+echo "&lt;br&gt;&lt;hr&gt;";
+
+print "&lt;h2&gt;PHP is Case Sensitive!&lt;/h2&gt;";
+print "Hello Class 12!&lt;br&gt;";
+print "I'm about to learn PHP!";
+?&gt;
+</pre>
+<hr>
+
+<h2>7. PHP Program to Find Factorial of a Number</h2>
+<p>
+This program accepts a number from the user and calculates its factorial
+using a <b>for loop</b>.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Factorial Program&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;b&gt;Factorial Calculation&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+
+&lt;form method="POST"&gt;
+Input a Number:
+&lt;input type="number" name="number"&gt;&lt;br/&gt;
+&lt;input type="submit" value="Calculate"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    $n = $_POST['number'];
+    $fact = 1;
+
+    for($i=1; $i&lt;=$n; $i++)
+    {
+        $fact = $fact * $i;
+    }
+    echo "The factorial of $n = $fact";
+}
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h2>8. PHP Program to Display Even Numbers up to 50</h2>
+<p>
+This program displays all even numbers from 1 to 50 using a loop.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Even Numbers&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;b&gt;Display Even Numbers up to 50&lt;/b&gt;
+&lt;hr&gt;
+
+&lt;?php
+for($i=2; $i&lt;=50; $i+=2)
+{
+    echo $i . " ";
+}
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h2>9. PHP Program to Enter Your Name and Display It</h2>
+<p>
+This program accepts the user's name through a form and displays it
+after submission.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Display Name&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;b&gt;Enter Your Name&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+
+&lt;form method="POST"&gt;
+&lt;input type="text" name="name"&gt;&lt;br/&gt;
+&lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    $name = $_POST['name'];
+    echo "Your Name = $name";
+}
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h2>10. PHP Program to Calculate Simple Interest</h2>
+<p>
+This program calculates the simple interest based on
+principal, time, and rate entered by the user.
+</p>
+
+<hr>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Calculate Simple Interest&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;b&gt;Calculate Simple Interest&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+
+&lt;form method="POST"&gt;
+Enter Principal:
+&lt;input type="number" name="p"&gt;&lt;br/&gt;
+
+Enter Time:
+&lt;input type="number" name="t"&gt;&lt;br/&gt;
+
+Enter Rate:
+&lt;input type="number" name="r"&gt;&lt;br/&gt;
+
+&lt;input type="submit" value="Calculate SI"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    $p = $_POST['p'];
+    $t = $_POST['t'];
+    $r = $_POST['r'];
+
+    $si = ($p * $t * $r) / 100;
+    echo "Simple Interest = $si";
+}
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+</div>
+
+<footer>
+    PHP Lab Activity
+</footer>
+
+</body>
+</html>
