@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Form & Database Lab</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            user-select: none;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+	pre::selection {
+            background: none;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+        table, th, td{
+            border:1px solid black;
+            border-collapse: collapse;
+            padding:8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>PHP Form Handling & Database Lab</h1>
+</header>
+
+<div class="container">
+
+<h2>1. PHP Form Handling</h2>
+<p>
+We can create and use forms in PHP. To get form data, we use PHP super global variables 
+<b>$_GET</b> and <b>$_POST</b>.  
+The form request may be GET or POST.
+</p>
+
+<hr>
+
+<h3>a. PHP GET Form</h3>
+<p>
+GET request is the default form request. Data passed through GET is visible in the URL,
+so it is not secure. Only limited data can be sent.
+</p>
+
+<pre>
+File: form1.html
+
+&lt;form action="welcome.php" method="get"&gt;
+Name: &lt;input type="text" name="name"/&gt;
+&lt;input type="submit" value="visit"/&gt;
+&lt;/form&gt;
+</pre>
+
+<pre>
+File: welcome.php
+
+&lt;?php
+$name=$_GET["name"];
+echo "Welcome, $name";
+?&gt;
+</pre>
+
+<hr>
+
+<h3>b. PHP POST Form</h3>
+<p>
+POST request is widely used to submit large data like file upload, login form,
+registration form etc. Data is not visible in the URL, so it is more secure.
+</p>
+
+<pre>
+File: form1.html
+
+&lt;html&gt;
+&lt;head&gt; &lt;title&gt; Post Method &lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form action="login.php" method="post"&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Name:&lt;/td&gt;&lt;td&gt;&lt;input type="text" name="name"/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Password:&lt;/td&gt;&lt;td&gt;&lt;input type="password" name="password"/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="2"&gt;&lt;input type="submit" value="login"/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<pre>
+File: login.php
+
+&lt;?php
+$name=$_POST["name"];
+$password=$_POST["password"];
+echo "Welcome: $name, your password is: $password";
+?&gt;
+</pre>
+
+<hr>
+
+<h3>Difference Between GET and POST Method</h3>
+
+<table>
+<tr>
+<th>S.N.</th>
+<th>GET Method</th>
+<th>S.N.</th>
+<th>POST Method</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Limited data (sent in header)</td>
+<td>1</td>
+<td>Large data (sent in body)</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Not secure (data visible in URL)</td>
+<td>2</td>
+<td>Secure (data not visible in URL)</td>
+</tr>
+
+
+
+<tr>
+<td>3</td>
+<td>Used for fetching information</td>
+<td>3</td>
+<td>Used for updating data</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Can be cached</td>
+<td>4</td>
+<td>Cannot be cached</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Default method</td>
+<td>5</td>
+<td>Must be specified</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>2. Perform Following Questions</h2>
+
+<h3>a. PHP Program to Check Palindrome</h3>
+
+<pre>
+&lt;?php
+\\YOUR TASK: INPUT STRING USING FORM TO $str variable
+$rev = strrev($str);
+
+if($str == $rev)
+    echo "String is Palindrome";
+else
+    echo "String is Not Palindrome";
+?&gt;
+</pre>
+
+<h3>b. PHP Program to Find Middle of Three Numbers</h3>
+
+<pre>
+&lt;?php
+$a = 10;
+$b = 20;
+$c = 15;
+
+if(($a>$b && $a<$c) || ($a<$b && $a>$c))
+    echo "Middle number is $a";
+elseif(($b>$a && $b<$c) || ($b<$a && $b>$c))
+    echo "Middle number is $b";
+else
+    echo "Middle number is $c";
+?&gt;
+</pre>
+
+<h3>c. PHP Program to Display Even Numbers up to 50</h3>
+
+<pre>
+&lt;?php
+for($i=2; $i&lt;=50; $i+=2)
+{
+    echo $i . " ";
+}
+?&gt;
+</pre>
+
+<hr>
+
+<h2>3. PHP Connection to Database</h2>
+
+<p><b>Step 1:</b> Start XAMPP → Start Apache and MySQL</p>
+<p><b>Step 2:</b> Go to http://localhost/phpmyadmin and create database (example: test_db)</p>
+<p><b>Step 3:</b> Create connect.php inside htdocs\YourFolder</p>
+
+<pre>
+connect.php
+
+&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "test_db";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+echo "Connected successfully!";
+?&gt;
+</pre>
+
+</div>
+
+<footer>
+    PHP Form Handling & Database Lab
+</footer>
+
+</body>
+</html>
