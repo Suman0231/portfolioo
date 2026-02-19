@@ -81,16 +81,12 @@ so it is not secure. Only limited data can be sent.
 </p>
 
 <pre>
-File: form1.html
+
 
 &lt;form action="welcome.php" method="get"&gt;
 Name: &lt;input type="text" name="name"/&gt;
 &lt;input type="submit" value="visit"/&gt;
 &lt;/form&gt;
-</pre>
-
-<pre>
-File: welcome.php
 
 &lt;?php
 $name=$_GET["name"];
@@ -121,19 +117,20 @@ File: form1.html
 &lt;/table&gt;
 
 &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-
-<pre>
-File: login.php
-
 &lt;?php
 $name=$_POST["name"];
 $password=$_POST["password"];
 echo "Welcome: $name, your password is: $password";
 ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </pre>
+
+
+File: login.php
+
+
+
 
 <hr>
 
@@ -207,9 +204,7 @@ else
 
 <pre>
 &lt;?php
-$a = 10;
-$b = 20;
-$c = 15;
+\\YOUR TASK: INPUT THREE NUMBERS 
 
 if(($a>$b && $a<$c) || ($a<$b && $a>$c))
     echo "Middle number is $a";
