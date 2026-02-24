@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP Database CRUD Lab Program</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container{
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            color: #003366;
+            border-left: 5px solid #003366;
+            padding-left: 10px;
+        }
+        pre{
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            user-select: none;
+        }
+        pre::selection{
+            background: none;
+        }
+        footer{
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>PHP Database CRUD Lab Program</h1>
+</header>
+
+<div class="container">
+
+<h2>Step 1: Create Database (if not exists)</h2>
+<p><b>File:</b> create_db.php</p>
+
+<pre>
+&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+$conn = mysqli_connect($servername, $username, $password);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "CREATE DATABASE IF NOT EXISTS college_db";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Database created successfully or already exists!";
+} else {
+    echo "Error creating database: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?&gt;
+</pre>
+
+<hr>
+
+<h2>Step 2: Create Table</h2>
+<p><b>File:</b> create_table.php</p>
+
+<pre>
+&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "college_db";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "CREATE TABLE IF NOT EXISTS students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    age INT NOT NULL
+)";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Table created successfully or already exists!";
+} else {
+    echo "Error creating table: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?&gt;
+</pre>
+
+<hr>
+
+<h2>Step 3: Insert Data</h2>
+<p><b>File:</b> insert.php</p>
+
+<pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "college_db");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "INSERT INTO students (name, email, age)
+        VALUES ('Rahul', 'rahul@gmail.com', 20)";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Record inserted successfully!";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?&gt;
+</pre>
+
+<hr>
+
+<h2>Step 4: Select / Display Data</h2>
+<p><b>File:</b> select.php</p>
+
+<pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "college_db");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM students";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    echo "&lt;table border='1'&gt;
+            &lt;tr&gt;
+                &lt;th&gt;ID&lt;/th&gt;
+                &lt;th&gt;Name&lt;/th&gt;
+                &lt;th&gt;Email&lt;/th&gt;
+                &lt;th&gt;Age&lt;/th&gt;
+            &lt;/tr&gt;";
+
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "&lt;tr&gt;
+                &lt;td&gt;".$row["id"]."&lt;/td&gt;
+                &lt;td&gt;".$row["name"]."&lt;/td&gt;
+                &lt;td&gt;".$row["email"]."&lt;/td&gt;
+                &lt;td&gt;".$row["age"]."&lt;/td&gt;
+              &lt;/tr&gt;";
+    }
+    echo "&lt;/table&gt;";
+} else {
+    echo "No records found!";
+}
+
+mysqli_close($conn);
+?&gt;
+</pre>
+
+<hr>
+
+<h2>Step 5: Update Record</h2>
+<p><b>File:</b> update.php</p>
+
+<pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "college_db");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "UPDATE students 
+        SET age = 22 
+        WHERE id = 1";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully!";
+} else {
+    echo "Error updating record: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?&gt;
+</pre>
+
+<hr>
+
+<h2>Step 6: Delete Record</h2>
+<p><b>File:</b> delete.php</p>
+
+<pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "college_db");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "DELETE FROM students WHERE id = 1";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Record deleted successfully!";
+} else {
+    echo "Error deleting record: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?&gt;
+</pre>
+
+</div>
+
+<footer>
+    PHP Database CRUD Lab Program
+</footer>
+
+</body>
+</html>
