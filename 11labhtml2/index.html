@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Learn HTML – Tables & Forms</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f2f2f2;
+        margin:0;
+        padding:0;
+        line-height:1.6;
+    }
+    header{
+        background:#003366;
+        color:white;
+        padding:20px;
+        text-align:center;
+        font-size:28px;
+    }
+    .container{
+        width:90%;
+        margin:20px auto;
+        background:white;
+        padding:20px;
+        border-radius:8px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+    h2{
+        color:#003366;
+        border-left:4px solid #003366;
+        padding-left:10px;
+        margin-top:40px;
+    }
+    pre{
+        background:#272822;
+        color:#f8f8f2;
+        padding:15px;
+        border-radius:5px;
+        overflow-x:auto;
+        user-select:none;
+    }
+    .output-box{
+        background:#e8f0fe;
+        border-left:5px solid #003366;
+        padding:15px;
+        margin-top:10px;
+        border-radius:5px;
+    }
+    footer{
+        background:#003366;
+        color:white;
+        text-align:center;
+        padding:10px;
+        margin-top:30px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>HTML Tables & Forms Tutorial</header>
+
+<div class="container">
+
+<!-- 1 TABLES -->
+<h2>1. Basic HTML Table</h2>
+
+<p>This is the basic structure of an HTML table:</p>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;20&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Age</th>
+</tr>
+<tr>
+<td>John</td>
+<td>20</td>
+</tr>
+</table>
+</div>
+
+
+<!-- 2 TABLE ELEMENTS -->
+<h2>2. Table Tags Explained</h2>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;table&gt;  → Creates a table
+&lt;tr&gt;     → Table row
+&lt;th&gt;     → Table header cell
+&lt;td&gt;     → Table data cell
+</pre>
+
+
+<!-- 3 TABLE STYLING -->
+<h2>3. Table with Style</h2>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;table style="width:100%; border-collapse:collapse;" border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Product&lt;/th&gt;
+    &lt;th&gt;Price&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Book&lt;/td&gt;
+    &lt;td&gt;$10&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<table style="width:100%; border-collapse:collapse;" border="1">
+<tr>
+<th>Product</th>
+<th>Price</th>
+</tr>
+<tr>
+<td>Book</td>
+<td>$10</td>
+</tr>
+</table>
+</div>
+
+
+<!-- 4 ROWSPAN COLSPAN -->
+<h2>4. Colspan & Rowspan</h2>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th colspan="2"&gt;Student Info&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Name&lt;/td&gt;
+    &lt;td&gt;Age&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+<div class="output-box">
+<b>Output:</b>
+<table border="1">
+  <tr>
+    <th colspan="2">Student Info</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>Age</td>
+  </tr>
+</table>
+
+</div>
+<!-- TABLE TASK SECTION -->
+<h2>4contd. TABLE TASK (Advanced Table Practice)</h2>
+
+<p>Create the following table using:</p>
+<ul>
+<li>Horizontal Headings (Top)</li>
+<li>Vertical Headings (Side)</li>
+<li>Colspan</li>
+<li>Rowspan</li>
+</ul>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;table border="1" style="width:100%; border-collapse:collapse; text-align:center;"&gt;
+
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;Class&lt;/th&gt;
+    &lt;th colspan="3"&gt;Subjects&lt;/th&gt;
+  &lt;/tr&gt;
+
+  &lt;tr&gt;
+    &lt;th&gt;Math&lt;/th&gt;
+    &lt;th&gt;Science&lt;/th&gt;
+    &lt;th&gt;English&lt;/th&gt;
+  &lt;/tr&gt;
+
+  &lt;tr&gt;
+    &lt;th&gt;Grade 8&lt;/th&gt;
+    &lt;td&gt;85&lt;/td&gt;
+    &lt;td&gt;88&lt;/td&gt;
+    &lt;td&gt;90&lt;/td&gt;
+  &lt;/tr&gt;
+
+  &lt;tr&gt;
+    &lt;th&gt;Grade 9&lt;/th&gt;
+    &lt;td&gt;78&lt;/td&gt;
+    &lt;td&gt;82&lt;/td&gt;
+    &lt;td&gt;86&lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/table&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table border="1" style="width:100%; border-collapse:collapse; text-align:center;">
+<tr>
+<th rowspan="2">Class</th>
+<th colspan="3">Subjects</th>
+</tr>
+
+<tr>
+<th>Math</th>
+<th>Science</th>
+<th>English</th>
+</tr>
+
+<tr>
+<th>Grade 8</th>
+<td>85</td>
+<td>88</td>
+<td>90</td>
+</tr>
+
+<tr>
+<th>Grade 9</th>
+<td>78</td>
+<td>82</td>
+<td>86</td>
+</tr>
+
+</table>
+
+</div>
+
+<h2>YOUR TASK:</h2>
+<h3>Timetable Practice Task</h3>
+
+<table border="1" style="width:100%; border-collapse:collapse; text-align:center;">
+
+  <!-- First Row: Assembly with Rowspan -->
+  <tr>
+    <th rowspan="2">Day</th>
+    <th colspan="4">Morning Periods</th>
+    <th rowspan="2">Lunch Break</th>
+  </tr>
+
+  <tr>
+    <th>Period 1</th>
+    <th>Period 2</th>
+    <th>Period 3</th>
+    <th>Period 4</th>
+  </tr>
+
+  <!-- Monday -->
+  <tr>
+    <th>Monday</th>
+    <td>Math</td>
+    <td>English</td>
+    <td>Science</td>
+    <td>Social</td>
+    <td rowspan="5"><b>Lunch</b></td>
+  </tr>
+
+  <!-- Tuesday -->
+  <tr>
+    <th>Tuesday</th>
+    <td>Science</td>
+    <td>Math</td>
+    <td>English</td>
+    <td>Computer</td>
+  </tr>
+
+  <!-- Wednesday -->
+  <tr>
+    <th>Wednesday</th>
+    <td>English</td>
+    <td>Social</td>
+    <td>Math</td>
+    <td>Science</td>
+  </tr>
+
+  <!-- Thursday -->
+  <tr>
+    <th>Thursday</th>
+    <td>Computer</td>
+    <td>Math</td>
+    <td>Science</td>
+    <td>English</td>
+  </tr>
+
+  <!-- Friday -->
+  <tr>
+    <th>Friday</th>
+    <td>Social</td>
+    <td>English</td>
+    <td>Computer</td>
+    <td>Math</td>
+  </tr>
+
+</table>
+
+<!-- FORMS SECTION -->
+<h2>5. Basic HTML Form</h2>
+
+<p>Forms are used to collect user input.</p>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;form&gt;
+  Name: &lt;input type="text"&gt;&lt;br&gt;&lt;br&gt;
+  Email: &lt;input type="email"&gt;&lt;br&gt;&lt;br&gt;
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<form>
+Name: <input type="text"><br><br>
+Email: <input type="email"><br><br>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+
+<!-- INPUT TYPES -->
+<h2>6. Different Input Types (write inside &lt;form&gt;...&lt;/form&gt;  tag)</h2>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;input type="text"&gt;
+&lt;input type="password"&gt;
+&lt;input type="radio"&gt;
+&lt;input type="checkbox"&gt;
+&lt;input type="date"&gt;
+&lt;input type="file"&gt;
+&lt;input type="color"&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<form>
+<input type="text"><br>
+<input type="password"><br>
+<input type="radio"><br>
+<input type="checkbox"><br>
+<input type="date"><br>
+<input type="file"><br>
+<input type="color"><br>
+</form>
+</div>
+<!-- RADIO & CHECKBOX -->
+<h2>7. Radio Buttons & Checkboxes (write inside &lt;form&gt;...&lt;/form&gt;  tag)</h2>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+Gender:
+&lt;input type="radio" name="gender" value="Female"&gt; Male
+&lt;input type="radio" name="gender" value="Female"&gt; Female
+
+&lt;br&gt;&lt;br&gt;
+
+Hobbies:
+&lt;input type="checkbox" name="hobbies" value="reading"&gt; Reading
+&lt;input type="checkbox" name="hobbies" value="sports"&gt; Sports
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<form>
+Gender:
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+
+<br><br>
+
+Hobbies:
+<input type="checkbox"> Reading
+<input type="checkbox"> Sports
+
+</form>
+</div>
+<!-- TEXTAREA -->
+<h2>8. Textarea & Dropdown (write inside &lt;form&gt;...&lt;/form&gt;  tag)</h2>
+
+<pre><strong><b><u>CODE:</u></b></strong>
+&lt;textarea rows="4" cols="30"&gt;&lt;/textarea&gt;
+
+&lt;select&gt;
+  &lt;option&gt;Class 11&lt;/option&gt;
+  &lt;option&gt;Class 12&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+<div class="output-box">
+<b>Output:</b>
+<form>
+<textarea rows="4" cols="30"></textarea>
+<br><br>
+<select>
+    <option>Class 11</option>
+    <option>Class 12</option>
+</select>
+</form>
+</div>
+
+<!-- TASK -->
+<h2>YOUR TASK:</h2>
+<p>Create a student registration form that includes:</p>
+<ul>
+<li>Name</li>
+<li>Email</li>
+<li>Password</li>
+<li>Date of Birth</li>
+<li>Gender (Radio buttons)</li>
+<li>Hobbies (Checkbox)</li>
+<li>Submit button</li>
+</ul>
+<form>
+
+        <!-- Name -->
+        <label>Full Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <!-- Email -->
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <!-- Password -->
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+	<label>Date of Birth:</label><br>
+        <input type="date" name="dob" required><br><br>
+        <!-- Gender -->
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="male" required> Male
+        <input type="radio" name="gender" value="female"> Female
+        <br><br>
+
+        <!-- Hobbies -->
+        <label>Hobbies:</label><br>
+        <input type="checkbox" name="hobbies" value="reading"> Reading
+        <input type="checkbox" name="hobbies" value="sports"> Sports
+        <input type="checkbox" name="hobbies" value="music"> Music
+        <br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Register">
+
+    </form>
+</div>
+
+<footer>© 2025 Learn HTML – Tables & Forms</footer>
+
+</body>
+</html>
