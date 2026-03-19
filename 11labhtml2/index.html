@@ -310,26 +310,35 @@
 
 <!-- FORMS SECTION -->
 <h2>5. Basic HTML Form</h2>
-
 <p>Forms are used to collect user input.</p>
-
-<pre><strong><b><u>CODE:</u></b></strong>
+<pre>
 &lt;form&gt;
-  Name: &lt;input type="text"&gt;&lt;br&gt;&lt;br&gt;
-  Email: &lt;input type="email"&gt;&lt;br&gt;&lt;br&gt;
+
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" placeholder="Enter your name"&gt;
+
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" placeholder="Enter your email"&gt;
+
   &lt;input type="submit" value="Submit"&gt;
+
 &lt;/form&gt;
 </pre>
 
 <div class="output-box">
 <b>Output:</b>
 <form>
-Name: <input type="text"><br><br>
-Email: <input type="email"><br><br>
-<input type="submit" value="Submit">
+
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" placeholder="Enter your name"><br><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" placeholder="Enter your email"><br><br>
+
+  <input type="submit" value="Submit">
+
 </form>
 </div>
-
 
 <!-- INPUT TYPES -->
 <h2>6. Different Input Types (write inside &lt;form&gt;...&lt;/form&gt;  tag)</h2>
@@ -357,102 +366,124 @@ Email: <input type="email"><br><br>
 </form>
 </div>
 <!-- RADIO & CHECKBOX -->
-<h2>7. Radio Buttons & Checkboxes (write inside &lt;form&gt;...&lt;/form&gt;  tag)</h2>
+<h2>7. Radio Buttons & Checkboxes</h2>
 
-<pre><strong><b><u>CODE:</u></b></strong>
-Gender:
-&lt;input type="radio" name="gender" value="Female"&gt; Male
-&lt;input type="radio" name="gender" value="Female"&gt; Female
+<pre>
+&lt;form&gt;
 
-&lt;br&gt;&lt;br&gt;
+  Gender:
+  &lt;input type="radio" id="male" name="gender"&gt;
+  &lt;label for="male"&gt;Male&lt;/label&gt;
 
-Hobbies:
-&lt;input type="checkbox" name="hobbies" value="reading"&gt; Reading
-&lt;input type="checkbox" name="hobbies" value="sports"&gt; Sports
+  &lt;input type="radio" id="female" name="gender"&gt;
+  &lt;label for="female"&gt;Female&lt;/label&gt;
+
+  Hobbies:
+  &lt;input type="checkbox" id="reading"&gt;
+  &lt;label for="reading"&gt;Reading&lt;/label&gt;
+
+&lt;/form&gt;
 </pre>
 
 <div class="output-box">
 <b>Output:</b>
 <form>
-Gender:
-<input type="radio" name="gender"> Male
-<input type="radio" name="gender"> Female
 
-<br><br>
+  <label>Gender:</label><br>
+  <input type="radio" id="male" name="gender">
+  <label for="male">Male</label>
 
-Hobbies:
-<input type="checkbox"> Reading
-<input type="checkbox"> Sports
+  <input type="radio" id="female" name="gender">
+  <label for="female">Female</label>
+
+  <br><br>
+
+  <label>Hobbies:</label><br>
+  <input type="checkbox" id="reading">
+  <label for="reading">Reading</label>
 
 </form>
 </div>
-<!-- TEXTAREA -->
-<h2>8. Textarea & Dropdown (write inside &lt;form&gt;...&lt;/form&gt;  tag)</h2>
 
-<pre><strong><b><u>CODE:</u></b></strong>
-&lt;textarea rows="4" cols="30"&gt;&lt;/textarea&gt;
+
+<h2>8. Textarea & Dropdown</h2>
+
+<pre>
+&lt;textarea placeholder="Write something..."&gt;&lt;/textarea&gt;
 
 &lt;select&gt;
   &lt;option&gt;Class 11&lt;/option&gt;
   &lt;option&gt;Class 12&lt;/option&gt;
 &lt;/select&gt;
 </pre>
+
 <div class="output-box">
 <b>Output:</b>
 <form>
-<textarea rows="4" cols="30"></textarea>
-<br><br>
-<select>
+
+  <label for="msg">Message:</label><br>
+  <textarea id="msg" rows="4" cols="30" placeholder="Write something..."></textarea>
+
+  <br><br>
+
+  <label for="class">Class:</label><br>
+  <select id="class">
     <option>Class 11</option>
     <option>Class 12</option>
-</select>
+  </select>
+
 </form>
 </div>
 
-<!-- TASK -->
-<h2>YOUR TASK:</h2>
-<p>Create a student registration form that includes:</p>
-<ul>
-<li>Name</li>
-<li>Email</li>
-<li>Password</li>
-<li>Date of Birth</li>
-<li>Gender (Radio buttons)</li>
-<li>Hobbies (Checkbox)</li>
-<li>Submit button</li>
-</ul>
+
+<!-- FINAL TASK FORM -->
+<h2>Student Registration Form</h2>
+
+<div class="output-box">
+
 <form>
 
-        <!-- Name -->
-        <label>Full Name:</label><br>
-        <input type="text" name="name" required><br><br>
+  <label for="fullname">Full Name:</label><br>
+  <input type="text" id="fullname" placeholder="Enter your full name" required>
+  <br><br>
 
-        <!-- Email -->
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
+  <label for="email2">Email:</label><br>
+  <input type="email" id="email2" placeholder="Enter your email" required>
+  <br><br>
 
-        <!-- Password -->
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
-	<label>Date of Birth:</label><br>
-        <input type="date" name="dob" required><br><br>
-        <!-- Gender -->
-        <label>Gender:</label><br>
-        <input type="radio" name="gender" value="male" required> Male
-        <input type="radio" name="gender" value="female"> Female
-        <br><br>
+  <label for="pass">Password:</label><br>
+  <input type="password" id="pass" placeholder="Enter your password" required>
+  <br><br>
 
-        <!-- Hobbies -->
-        <label>Hobbies:</label><br>
-        <input type="checkbox" name="hobbies" value="reading"> Reading
-        <input type="checkbox" name="hobbies" value="sports"> Sports
-        <input type="checkbox" name="hobbies" value="music"> Music
-        <br><br>
+  <label for="dob">Date of Birth:</label><br>
+  <input type="date" id="dob" required>
+  <br><br>
 
-        <!-- Submit Button -->
-        <input type="submit" value="Register">
+  <label>Gender:</label><br>
+  <input type="radio" id="male2" name="gender">
+  <label for="male2">Male</label>
 
-    </form>
+  <input type="radio" id="female2" name="gender">
+  <label for="female2">Female</label>
+  <br><br>
+
+  <label>Hobbies:</label><br>
+  <input type="checkbox" id="reading2">
+  <label for="reading2">Reading</label>
+
+  <input type="checkbox" id="sports2">
+  <label for="sports2">Sports</label>
+
+  <input type="checkbox" id="music2">
+  <label for="music2">Music</label>
+  <br><br>
+
+  <input type="submit" value="Register">
+
+</form>
+
+</div>
+
 </div>
 
 <footer>© 2025 Learn HTML – Tables & Forms</footer>
