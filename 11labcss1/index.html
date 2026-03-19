@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Learn CSS – Basics & Selectors</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    margin:0;
+    padding:0;
+    line-height:1.6;
+}
+header{
+    background:#003366;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+}
+.container{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+h2{
+    color:#003366;
+    border-left:4px solid #003366;
+    padding-left:10px;
+    margin-top:40px;
+}
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:5px;
+    overflow-x:auto;
+}
+.output-box{
+    background:#e8f0fe;
+    border-left:5px solid #003366;
+    padding:15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>CSS Tutorial – Basics & Selectors</header>
+
+<div class="container">
+
+<!-- INTRO -->
+<h2>1. What is CSS?</h2>
+
+<ul>
+<li>CSS stands for <b>Cascading Style Sheets</b></li>
+<li>CSS is used to style HTML elements</li>
+<li>It controls colors, layout, fonts</li>
+<li>External styles are saved in .css files</li>
+</ul>
+
+<hr>
+
+<!-- SYNTAX -->
+<h2>2. CSS Syntax</h2>
+A CSS rule consists of a selector and a declaration 
+<pre>
+selector {
+  property: value;
+}
+</pre><br>
+<img src="https://www.w3schools.com/css/img_selector.gif" alt="CSS Selector Image">
+<hr>
+
+<!-- FULL EXAMPLE -->
+<h2>3. Full CSS Example</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;My First CSS Example&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<div style="background:lightblue; padding:10px;">
+<h1 style="color:white; text-align:center;">My First CSS Example</h1>
+<p style="font-family:verdana; font-size:20px;">
+This is a paragraph.
+</p>
+</div>
+</div>
+
+<hr>
+
+<!-- ELEMENT SELECTOR -->
+<h2>4. Element Selector</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+p {
+  text-align: center;
+  color: red;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p&gt;Every paragraph will be affected&lt;/p&gt;
+&lt;p&gt;Me too!&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<p style="text-align:center; color:red;">Every paragraph will be affected</p>
+<p style="text-align:center; color:red;">Me too!</p>
+</div>
+
+<hr>
+
+<!-- ID SELECTOR -->
+<h2>5. ID Selector</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+#para1 {
+  text-align: center;
+  color: red;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p id="para1"&gt;Hello World!&lt;/p&gt;
+&lt;p&gt;This paragraph is not affected&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<p style="text-align:center; color:red;">Hello World!</p>
+<p>This paragraph is not affected</p>
+</div>
+
+<hr>
+
+<!-- CLASS SELECTOR -->
+<h2>6. Class Selector</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+.center {
+  text-align: center;
+  color: red;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1 class="center"&gt;Heading&lt;/h1&gt;
+&lt;p class="center"&gt;Paragraph&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<h3 style="text-align:center; color:red;">Heading</h3>
+<p style="text-align:center; color:red;">Paragraph</p>
+</div>
+
+<p><b>Try this:</b> Replace <code>.center</code> with <code>p.center</code>  
+👉 Only paragraphs will change, not the heading.</p>
+
+<hr>
+
+<!-- UNIVERSAL -->
+<h2>7. Universal Selector</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+* {
+  text-align: center;
+  color: blue;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<div style="text-align:center; color:blue;">
+<h3>Hello World</h3>
+<p>This is a paragraph</p>
+</div>
+</div>
+
+<hr>
+
+<!-- TASK -->
+<h2>YOUR TASK</h2>
+
+<p>Create a webpage using full HTML structure that includes:</p>
+
+<ul>
+<li>Background color</li>
+<li>Styled heading</li>
+<li>Styled paragraph</li>
+<li>One id selector</li>
+<li>One class selector</li>
+</ul>
+
+</div>
+
+<footer>© 2025 Learn CSS – Basics & Selectors</footer>
+
+</body>
+</html>
