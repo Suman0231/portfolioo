@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Tutorial – Adding CSS Methods</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    margin:0;
+    padding:0;
+    line-height:1.6;
+}
+header{
+    background:#2c3e50;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+}
+.container{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+h2{
+    color:#2c3e50;
+    border-left:4px solid #2c3e50;
+    padding-left:10px;
+    margin-top:40px;
+}
+pre{
+    background:#1e1e1e;
+    color:#dcdcdc;
+    padding:15px;
+    border-radius:5px;
+    overflow-x:auto;
+}
+.output-box{
+    background:#eef6ff;
+    border-left:5px solid #2c3e50;
+    padding:15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+footer{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>CSS Tutorial – Ways to Add CSS</header>
+
+<div class="container">
+
+<!-- INTRO -->
+<h2>1. Types of CSS Adding Methods</h2>
+
+<p>There are three ways of inserting a style sheet:</p>
+
+<ul>
+<li><b>Inline CSS</b> – use the style attribute inside HTML elements</li>
+<li><b>Internal CSS</b> – use the &lt;style&gt; element inside the head section</li>
+<li><b>External CSS</b> – link an external .css file</li>
+</ul>
+
+<hr>
+
+<!-- INLINE -->
+<h2>2. Inline CSS</h2>
+
+<p>An inline style is used to apply a unique style to a single element.</p>
+
+<pre>
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1 style="color:blue;text-align:center;"&gt;This is a heading&lt;/h1&gt;
+&lt;p style="color:red;"&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<h3 style="color:blue;text-align:center;">This is a heading</h3>
+<p style="color:red;">This is a paragraph.</p>
+</div>
+
+<hr>
+
+<!-- INTERNAL -->
+<h2>3. Internal CSS</h2>
+
+<p>An internal style sheet is used when a single HTML page has a unique style.</p>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+body {
+  background-color: linen;
+}
+
+h1 {
+  color: maroon;
+  margin-left: 40px;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;This is a heading&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<div style="background:linen; padding:10px;">
+<h3 style="color:maroon; margin-left:40px;">This is a heading</h3>
+<p>This is a paragraph.</p>
+</div>
+</div>
+
+<hr>
+
+<!-- EXTERNAL -->
+<h2>4. External CSS</h2>
+
+<p>An external style sheet allows you to change the entire website by editing one file.</p>
+
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+&lt;link rel="stylesheet" href="mystyle.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;This is a heading&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p><b>External CSS file (mystyle.css):</b></p>
+
+<pre>
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<div style="background:lightblue; padding:10px;">
+<h3 style="color:navy; margin-left:20px;">This is a heading</h3>
+<p>This is a paragraph.</p>
+</div>
+</div>
+
+<hr>
+
+<!-- SUMMARY -->
+<h2>5. Summary</h2>
+
+<ul>
+<li>Inline CSS → best for small changes</li>
+<li>Internal CSS → for single page styling</li>
+<li>External CSS → best for large websites</li>
+</ul>
+
+
+<hr>
+
+<!-- TASK -->
+<h2>6. YOUR TASK</h2>
+
+<h3>🧩 Part 1: Starter HTML</h3>
+
+<p>Use the following base code and write your CSS inside the &lt;style&gt; section:</p>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My First CSS Page&lt;/title&gt;
+
+    &lt;style&gt;
+        /* Write your CSS here */
+    &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1 id="main-title"&gt;Welcome to My Page&lt;/h1&gt;
+
+    &lt;p class="intro"&gt;This is my first paragraph.&lt;/p&gt;
+    &lt;p&gt;This is another paragraph.&lt;/p&gt;
+
+    &lt;h2 class="section"&gt;About Me&lt;/h2&gt;
+    &lt;p class="intro"&gt;I am learning CSS!&lt;/p&gt;
+
+    &lt;button id="btn"&gt;Click Me&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<hr>
+
+<h3>🎯 Part 2: Tasks</h3>
+
+<div class="output-box">
+<ol>
+
+<li><b>Style using tag name</b><br>
+Change all &lt;p&gt; text color to blue<br>
+Set font size to 18px
+</li>
+
+<br>
+
+<li><b>Style using ID:  #main-title</b><br>
+Change the title color<br>
+Center align it
+</li>
+
+<br>
+
+<li><b>Style using class</b><br>
+Make <code>.intro</code> text italic<br>
+Change its color
+</li>
+
+<br>
+
+<li><b>Add alignment</b><br>
+Center align all headings (h1, h2)
+</li>
+
+<br>
+
+<li><b>Style the button</b><br>
+Change background color<br>
+Change text color<br>
+Add padding
+</li>
+
+<br>
+
+<li><b>Border Challenge ⭐</b><br>
+Add a border to the “About Me” heading<br>
+Change page background color
+</li>
+<!--
+body {
+    background-color: lightgray;
+}
+
+p {
+    color: blue;
+    font-size: 18px;
+}
+
+#main-title {
+    color: darkgreen;
+    text-align: center;
+}
+
+.intro {
+    color: purple;
+    font-style: italic;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#btn {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.section {
+    border: 2px solid black;
+}
+ -->
+</ol>
+</div>
+<footer>© 2026 Learn CSS – Adding Methods</footer>
+
+</body>
+</html>
