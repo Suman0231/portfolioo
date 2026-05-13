@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .quiz-container{
+      width:100%;
+      max-width:700px;
+      background:white;
+      border-radius:12px;
+      padding:25px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h1{
+      text-align:center;
+      margin-bottom:20px;
+      color:#333;
+    }
+
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    select{
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      font-size:16px;
+    }
+
+    .question-count{
+      font-weight:bold;
+      color:#555;
+    }
+
+    .question{
+      font-size:22px;
+      margin-bottom:20px;
+      color:#222;
+      line-height:1.4;
+    }
+
+    .options{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .option-btn{
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      background:#0f4ce6;
+      cursor:pointer;
+      font-size:16px;
+      transition:0.3s;
+      text-align:left;
+    }
+
+    .option-btn:hover{
+      background:#36373a;
+    }
+
+    .correct{
+      background:#28c76f !important;
+      color:white;
+    }
+
+    .wrong{
+      background:#ea5455 !important;
+      color:white;
+    }
+
+    .controls{
+      margin-top:25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      padding:12px 20px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      background:#1804f0;
+      color:white;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:#0b0268;
+    }
+
+    .hint{
+      margin-top:15px;
+      padding:12px;
+      background:#fff4d6;
+      border-left:4px solid #ffb300;
+      border-radius:6px;
+      color:#444;
+      display:none;
+    }
+
+    .score-box{
+      text-align:center;
+    }
+
+    .score-box h2{
+      margin-bottom:15px;
+    }
+
+    .hidden{
+      display:none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+
+    <h1>Quiz Application</h1>
+
+    <div class="top-bar">
+      <select id="chapterSelect"></select>
+      <div class="question-count" id="questionCount"></div>
+    </div>
+
+    <div id="quizBox">
+      <div class="question" id="question"></div>
+
+      <div class="options" id="options"></div>
+
+      <div class="hint" id="hint"></div>
+
+      <div class="controls">
+        <button id="hintBtn">Show Hint</button>
+        <button id="nextBtn">Next Question</button>
+      </div>
+    </div>
+
+    <div class="score-box hidden" id="scoreBox">
+      <h2>Quiz Completed 🎉</h2>
+      <p id="finalScore"></p>
+      <button onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+
+  </div>
+
+  <script>
+
+    // =========================
+    // QUIZ DATA
+    // =========================
+
+    const quizData = [
+  {
+    "Chapter": "Computer System",
+    "SN": 1,
+    "Question": "Which of the following language does the computer understand?",
+    "Option1": "Computer understands only C Language",
+    "Option2": "Computer understands only Assembly Language",
+    "Option3": "Computer understands only Binary Language",
+    "Option4": "Computer understands only BASIC",
+    "Hint": "Computers directly understand binary language."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 2,
+    "Question": "Which of the following is the brain of the computer?",
+    "Option1": "Central Processing Unit",
+    "Option2": "Memory",
+    "Option3": "Arithmetic and Logic Unit",
+    "Option4": "Control Unit",
+    "Hint": "CPU is known as the brain of the computer."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 3,
+    "Question": "Which of the following monitor looks like a television and are normally used with non-portable computer systems?",
+    "Option1": "LED",
+    "Option2": "LCD",
+    "Option3": "CRT",
+    "Option4": "Flat Panel Monitors",
+    "Hint": "CRT monitors resemble traditional televisions."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 4,
+    "Question": "These devices provide a means of communication between a computer and outer world.",
+    "Option1": "I/O",
+    "Option2": "Storage",
+    "Option3": "Compact",
+    "Option4": "Drivers",
+    "Hint": "Input and Output devices communicate with the outside world."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 5,
+    "Question": "Which of the following is not a point-and-draw device?",
+    "Option1": "Keypad",
+    "Option2": "Trackball",
+    "Option3": "Touch screen",
+    "Option4": "Mouse",
+    "Hint": "A keypad is mainly used for typing input."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 6,
+    "Question": "A device used for video games, flight simulators, training simulators and for controlling industrial robots.",
+    "Option1": "Mouse",
+    "Option2": "Light pen",
+    "Option3": "Joystick",
+    "Option4": "Keyboard",
+    "Hint": "Joystick is commonly used for gaming and simulations."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 7,
+    "Question": "Which are the input devices that enable direct data entry into a computer system from source documents?",
+    "Option1": "Data Scanning devices",
+    "Option2": "Data retrieving devices",
+    "Option3": "Data acquiring devices",
+    "Option4": "System Access devices",
+    "Hint": "Scanning devices read data directly from documents."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 8,
+    "Question": "Which of the following is a type of image scanner?",
+    "Option1": "Flat-held",
+    "Option2": "Hand-led",
+    "Option3": "Flat-bed",
+    "Option4": "Compact",
+    "Hint": "Flat-bed scanners are commonly used image scanners."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 9,
+    "Question": "Which of the following is capable of recognizing a pre-specified type of mark by pencil or pen?",
+    "Option1": "OMR",
+    "Option2": "Winchester",
+    "Option3": "Bar code reader",
+    "Option4": "Image Scanner",
+    "Hint": "OMR detects marked responses on forms."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 10,
+    "Question": "Winchester disks are a type of ____",
+    "Option1": "Optical disks",
+    "Option2": "Magnetic disks",
+    "Option3": "Compact disks",
+    "Option4": "Magnetic drives",
+    "Hint": "Winchester disks are magnetic storage devices."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 11,
+    "Question": "What is the high speed memory between the main memory and the CPU called?",
+    "Option1": "Register Memory",
+    "Option2": "Cache Memory",
+    "Option3": "Storage Memory",
+    "Option4": "Virtual Memory",
+    "Hint": "Cache memory speeds up CPU operations."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 12,
+    "Question": "Whenever the data is found in the cache memory it is called as ____",
+    "Option1": "HIT",
+    "Option2": "MISS",
+    "Option3": "FOUND",
+    "Option4": "ERROR",
+    "Hint": "Finding required data in cache is called a cache hit."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 13,
+    "Question": "Components that provide internal storage to the CPU are ____",
+    "Option1": "Registers",
+    "Option2": "Program Counters",
+    "Option3": "Controllers",
+    "Option4": "Internal chips",
+    "Hint": "Registers temporarily store data inside CPU."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 14,
+    "Question": "Which of the following is used to hold running program instructions?",
+    "Option1": "Primary Storage",
+    "Option2": "Virtual Storage",
+    "Option3": "Internal Storage",
+    "Option4": "Minor Devices",
+    "Hint": "Primary storage holds currently running programs."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 15,
+    "Question": "Which of the following is volatile storage?",
+    "Option1": "Backup",
+    "Option2": "RAM",
+    "Option3": "ROM",
+    "Option4": "Tape",
+    "Hint": "RAM loses data when power is turned off."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 16,
+    "Question": "Which of the following is used in main memory?",
+    "Option1": "SRAM",
+    "Option2": "DRAM",
+    "Option3": "PRAM",
+    "Option4": "DDR",
+    "Hint": "DRAM is commonly used as main memory."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 17,
+    "Question": "Which of the following are types of ROMs?",
+    "Option1": "SROM and DROM",
+    "Option2": "PROM and EPROM",
+    "Option3": "Only one type there is no further classification",
+    "Option4": "PROM and EROM",
+    "Hint": "PROM and EPROM are ROM variants."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 18,
+    "Question": "What does \"CD\" in CD-ROM stand for?",
+    "Option1": "Compact Disk",
+    "Option2": "Computer Disk",
+    "Option3": "Circular Disk",
+    "Option4": "Central Disk",
+    "Hint": "CD stands for Compact Disk."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 19,
+    "Question": "What does SVGA stand for?",
+    "Option1": "Standard Visual Graphics Array",
+    "Option2": "Super Visual Graphics Array",
+    "Option3": "Standard Video Graphics Array",
+    "Option4": "Super Video Graphics Array",
+    "Hint": "SVGA expands to Super Video Graphics Array."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 20,
+    "Question": "The process of producing useful information for the user is called ____",
+    "Option1": "Controlling",
+    "Option2": "Outputting",
+    "Option3": "Inputting",
+    "Option4": "Processing",
+    "Hint": "Processing converts raw data into useful information."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 21,
+    "Question": "Which of the following is not a function of the Output Unit?",
+    "Option1": "It produces results that can be easily understood by the user",
+    "Option2": "It accepts the results produced by the computer",
+    "Option3": "It supplies the data and instructions to the outside world",
+    "Option4": "It supplies the data and instructions to the computer for further processing",
+    "Hint": "Supplying data to the computer is an input function."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 22,
+    "Question": "Size of the ____ memory mainly depends on the size of the address bus.",
+    "Option1": "Main",
+    "Option2": "Virtual",
+    "Option3": "Secondary",
+    "Option4": "Cache",
+    "Hint": "Address bus size determines main memory capacity."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 23,
+    "Question": "How does SRAM store data?",
+    "Option1": "Using capacitors",
+    "Option2": "Using magnetic tapes",
+    "Option3": "Using flip-flops",
+    "Option4": "Using registers",
+    "Hint": "SRAM stores data using flip-flops."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 24,
+    "Question": "Which port is used to connect to a network?",
+    "Option1": "HDMI",
+    "Option2": "VGA",
+    "Option3": "RJ-45",
+    "Option4": "PS/2",
+    "Hint": "RJ-45 is used for Ethernet network connections."
+  },
+  {
+    "Chapter": "Computer System",
+    "SN": 25,
+    "Question": "Which port transmits both video and audio signals?",
+    "Option1": "VGA",
+    "Option2": "USB",
+    "Option3": "HDMI",
+    "Option4": "PS/2",
+    "Hint": "HDMI carries both audio and video."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 1,
+    "Question": "In PowerPoint, the header and footer button can be found on the insert tab in what group?",
+    "Option1": "Tables group",
+    "Option2": "Text group",
+    "Option3": "Object group",
+    "Option4": "Illustrations group",
+    "Hint": "Header and Footer options are located in the Text group."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 2,
+    "Question": "Which of the following is the file extension of the PowerPoint application?",
+    "Option1": ".ppt",
+    "Option2": ".jpg",
+    "Option3": ".html",
+    "Option4": ".docs",
+    "Hint": "PowerPoint presentation files commonly use the .ppt extension."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 3,
+    "Question": "What is the default PowerPoint standard layout?",
+    "Option1": "Blank",
+    "Option2": "Title slide",
+    "Option3": "Title only",
+    "Option4": "Comparison",
+    "Hint": "PowerPoint starts with the Title Slide layout by default."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 1,
+    "Question": "Which of the following is not an operating system?",
+    "Option1": "Windows",
+    "Option2": "Linux",
+    "Option3": "Oracle",
+    "Option4": "DOS",
+    "Hint": "Oracle is mainly known as a database company/software."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 2,
+    "Question": "Which of the following is the extension of Notepad?",
+    "Option1": ".txt",
+    "Option2": ".xls",
+    "Option3": ".ppt",
+    "Option4": ".bmp",
+    "Hint": "Notepad saves plain text files with the .txt extension."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 3,
+    "Question": "What else is a command interpreter called?",
+    "Option1": "prompt",
+    "Option2": "kernel",
+    "Option3": "shell",
+    "Option4": "command",
+    "Hint": "A shell interprets user commands in an operating system."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 4,
+    "Question": "What is the full name of FAT?",
+    "Option1": "File attribute table",
+    "Option2": "File Allocation Table",
+    "Option3": "Font attribute table",
+    "Option4": "Format allocation table",
+    "Hint": "FAT stands for File Allocation Table."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 5,
+    "Question": "BIOS is used?",
+    "Option1": "By operating system",
+    "Option2": "By compiler",
+    "Option3": "By interpreter",
+    "Option4": "By application software",
+    "Hint": "BIOS helps the operating system start the computer."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 6,
+    "Question": "When does page fault occur?",
+    "Option1": "The page is present in memory.",
+    "Option2": "The deadlock occurs.",
+    "Option3": "The page is not present in memory.",
+    "Option4": "The buffering occurs.",
+    "Hint": "A page fault happens when required data is missing from memory."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 7,
+    "Question": "When you delete a file on your computer, where does it go?",
+    "Option1": "Recycle bin",
+    "Option2": "Hard disk",
+    "Option3": "Taskbar",
+    "Option4": "None of these",
+    "Hint": "Deleted files are usually moved to the Recycle Bin."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 8,
+    "Question": "Which is the Linux operating system?",
+    "Option1": "Private operating system",
+    "Option2": "Windows operating system",
+    "Option3": "Open-source operating system",
+    "Option4": "None of these",
+    "Hint": "Linux is an open-source operating system."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 9,
+    "Question": "What is bootstrapping called?",
+    "Option1": "Cold boot",
+    "Option2": "Cold hot boot",
+    "Option3": "Cold hot strap",
+    "Option4": "Hot boot",
+    "Hint": "Starting a computer from power off is called a cold boot."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 10,
+    "Question": "Which of the following is a single-user operating system?",
+    "Option1": "Windows",
+    "Option2": "MAC",
+    "Option3": "Ms-Dos",
+    "Option4": "None of these",
+    "Hint": "MS-DOS is a single-user operating system."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 11,
+    "Question": "The size of virtual memory is based on which of the following?",
+    "Option1": "CPU",
+    "Option2": "RAM",
+    "Option3": "Address bus",
+    "Option4": "Data bus",
+    "Hint": "Virtual memory size is related to available RAM and storage."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 12,
+    "Question": "Which of the following is not application software?",
+    "Option1": "Windows 7",
+    "Option2": "WordPad",
+    "Option3": "Photoshop",
+    "Option4": "MS-excel",
+    "Hint": "Windows 7 is an operating system, not application software."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 13,
+    "Question": "Which of the following operating systems does not support more than one program at a time?",
+    "Option1": "Linux",
+    "Option2": "Windows",
+    "Option3": "MAC",
+    "Option4": "DOS",
+    "Hint": "DOS does not support multitasking."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 14,
+    "Question": "What is Microsoft Windows?",
+    "Option1": "Operating system",
+    "Option2": "Graphics program",
+    "Option3": "Word Processing",
+    "Option4": "Database program",
+    "Hint": "Microsoft Windows is an operating system."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 15,
+    "Question": "Which of the following is a group of programs?",
+    "Option1": "Accessories",
+    "Option2": "Paint",
+    "Option3": "Word",
+    "Option4": "All of above",
+    "Hint": "Accessories contain a group of utility programs."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 16,
+    "Question": "Which of the following is system software?",
+    "Option1": "Operating system",
+    "Option2": "Compiler",
+    "Option3": "Utilities",
+    "Option4": "All of the above",
+    "Hint": "Operating systems, compilers, and utilities are system software."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 17,
+    "Question": "Which program runs first after booting the computer and loading the GUI?",
+    "Option1": "Desktop Manager",
+    "Option2": "File Manager",
+    "Option3": "Windows Explorer",
+    "Option4": "Authentication",
+    "Hint": "Windows Explorer loads the desktop environment."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 18,
+    "Question": "Which of the following file systems is supported by the Windows OS?",
+    "Option1": "NTFS",
+    "Option2": "FAT32",
+    "Option3": "exFAT",
+    "Option4": "All of these",
+    "Hint": "Windows supports NTFS, FAT32, and exFAT."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 19,
+    "Question": "Which of the following keys does the user use to switch between applications running simultaneously in the Windows operating system?",
+    "Option1": "FN + TAB",
+    "Option2": "ALT + TAB",
+    "Option3": "CTRL + TAB",
+    "Option4": "SHIFT + TAB",
+    "Hint": "ALT + TAB switches between open applications."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 20,
+    "Question": "What type of memory stores data in a swap file on a hard drive?",
+    "Option1": "Secondary memory",
+    "Option2": "Virtual memory",
+    "Option3": "Low memory",
+    "Option4": "RAM",
+    "Hint": "Virtual memory uses disk space as temporary memory."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 21,
+    "Question": "What is paging in the operating system?",
+    "Option1": "Memory management scheme",
+    "Option2": "Network management scheme",
+    "Option3": "Internet management scheme",
+    "Option4": "None of these",
+    "Hint": "Paging manages memory using fixed-size pages."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 22,
+    "Question": "Buffer is a __",
+    "Option1": "Permanent area",
+    "Option2": "Temporary area",
+    "Option3": "hard disk",
+    "Option4": "Magnetic tape",
+    "Hint": "A buffer temporarily stores data during processing."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 23,
+    "Question": "Which one of the following is not a real time operating system?",
+    "Option1": "RTLinux",
+    "Option2": "Palm OS",
+    "Option3": "QNX",
+    "Option4": "VxWorks",
+    "Hint": "Palm OS is not considered a real-time operating system."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 24,
+    "Question": "You can reset date and time with",
+    "Option1": "Write",
+    "Option2": "Calendar",
+    "Option3": "Write file",
+    "Option4": "Control panel",
+    "Hint": "Date and time settings are changed through the Control Panel."
+  },
+  {
+    "Chapter": "Operating System",
+    "SN": 25,
+    "Question": "What does GUI stand for?",
+    "Option1": "General User Interface",
+    "Option2": "Graphical Unified Interface",
+    "Option3": "Graphical User Interface",
+    "Option4": "Global User Interaction",
+    "Hint": "GUI stands for Graphical User Interface."
+  },
+  {
+    "Chapter": "Boolean Algebra / Logic Gates",
+    "SN": 1,
+    "Question": "For a Boolean expression xyz + xy + y, its output after simplification is",
+    "Option1": "x",
+    "Option2": "z",
+    "Option3": "y",
+    "Option4": "xy",
+    "Hint": "Using Boolean algebra rules, the expression simplifies to y."
+  },
+  {
+    "Chapter": "Boolean Algebra / Logic Gates",
+    "SN": 2,
+    "Question": "De-Morgan theorem cannot be applied to four variables.",
+    "Option1": "true",
+    "Option2": "false",
+    "Hint": "De-Morgan theorem can be applied to any number of variables."
+  },
+  {
+    "Chapter": "Boolean Algebra / Logic Gates",
+    "SN": 3,
+    "Question": "Which gate has only one input?",
+    "Option1": "AND",
+    "Option2": "OR",
+    "Option3": "X-OR",
+    "Option4": "NOT",
+    "Hint": "NOT gate operates on a single input."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 1,
+    "Question": "What is the shortcut key to make text bold in MS Word?",
+    "Option1": "Ctrl + U",
+    "Option2": "Ctrl + I",
+    "Option3": "Ctrl + B",
+    "Option4": "Ctrl + Y",
+    "Hint": "Ctrl + B is used to apply bold formatting."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 2,
+    "Question": "A spelling checker is also called",
+    "Option1": "Electronic encyclopedia",
+    "Option2": "Electronic thesaurus",
+    "Option3": "Electronic dictionary",
+    "Option4": "None of these",
+    "Hint": "Spelling checkers work like an electronic dictionary."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 3,
+    "Question": "Windows are especially helpful for",
+    "Option1": "Moving text between files",
+    "Option2": "Search-and-replace operations",
+    "Option3": "Cut-and-paste operations",
+    "Option4": "Both (b) and (c)",
+    "Hint": "Windows help with search-replace and cut-paste tasks."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 4,
+    "Question": "Which of the following is not an essential function of a word processing software package?",
+    "Option1": "Indexing",
+    "Option2": "Saving",
+    "Option3": "Editing",
+    "Option4": "Formatting",
+    "Hint": "Saving, editing, and formatting are essential features."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 5,
+    "Question": "In which view Headers and Footers are visible?",
+    "Option1": "Normal View",
+    "Option2": "Page Layout View",
+    "Option3": "Print Layout View",
+    "Option4": "Draft View",
+    "Hint": "Headers and footers are visible in Print Layout View."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 6,
+    "Question": "The process of removing unwanted part of an image is called",
+    "Option1": "Hiding",
+    "Option2": "Bordering",
+    "Option3": "Cropping",
+    "Option4": "Cutting",
+    "Hint": "Cropping removes unwanted image areas."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 7,
+    "Question": "The space left between the margin and the start of a paragraph is called",
+    "Option1": "Spacing",
+    "Option2": "Gutter",
+    "Option3": "Indentation",
+    "Option4": "Alignment",
+    "Hint": "Indentation controls paragraph distance from the margin."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 8,
+    "Question": "To change line height to 1.5 we use shortcut key:",
+    "Option1": "Ctrl + 1",
+    "Option2": "Ctrl + 2",
+    "Option3": "Ctrl + 3",
+    "Option4": "Ctrl + 5",
+    "Hint": "Ctrl + 5 applies 1.5 line spacing."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 9,
+    "Question": "Which feature starts a new line whenever a word or sentence reached a border?",
+    "Option1": "Text Line",
+    "Option2": "New Line",
+    "Option3": "Text Wrapping",
+    "Option4": "Text Align",
+    "Hint": "Text wrapping automatically moves text to the next line."
+  },
+  {
+    "Chapter": "MS Word MCQs",
+    "SN": 10,
+    "Question": "Text-styling feature of MS Word is",
+    "Option1": "WordColor",
+    "Option2": "WordFont",
+    "Option3": "WordArt",
+    "Option4": "WordFill",
+    "Hint": "WordArt is used for decorative text styling."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 4,
+    "Question": "Which type of view is not present in MS PowerPoint?",
+    "Option1": "Extreme animation",
+    "Option2": "Slide show",
+    "Option3": "Slide sorter",
+    "Option4": "Normal",
+    "Hint": "Extreme animation is not a PowerPoint view."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 5,
+    "Question": "Which feature is not in MS PowerPoint?",
+    "Option1": "Scan a virus",
+    "Option2": "Zoom",
+    "Option3": "Background color",
+    "Option4": "Slide show",
+    "Hint": "PowerPoint does not provide a virus scanning feature."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 6,
+    "Question": "Which key helps to move to the beginning of a line?",
+    "Option1": "Page Up",
+    "Option2": "Page Down",
+    "Option3": "Home",
+    "Option4": "Insert",
+    "Hint": "The Home key moves the cursor to the start of a line."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 7,
+    "Question": "Which PowerPoint view displays each slide of the presentation as a thumbnail and rearranging slides?",
+    "Option1": "Slide Master",
+    "Option2": "Slide Show",
+    "Option3": "Slide Sorter",
+    "Option4": "Notes Page",
+    "Hint": "Slide Sorter view shows slides as thumbnails."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 8,
+    "Question": "The minimum zoom size in MS PowerPoint is _",
+    "Option1": "0",
+    "Option2": "10",
+    "Option3": "30",
+    "Option4": "100",
+    "Hint": "The minimum zoom percentage is 10%."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 9,
+    "Question": "The maximum zoom size in MS PowerPoint is _",
+    "Option1": "200",
+    "Option2": "300",
+    "Option3": "400",
+    "Option4": "500",
+    "Hint": "The maximum zoom percentage in PowerPoint is 400%."
+  },
+  {
+    "Chapter": "MS POWERPOINT MCQs",
+    "SN": 10,
+    "Question": "In which bar we can see the current position of the slide?",
+    "Option1": "Ribbon",
+    "Option2": "Title bar",
+    "Option3": "Status bar",
+    "Option4": "View options",
+    "Hint": "The status bar displays slide position information."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 1,
+    "Question": "C was developed by",
+    "Option1": "Charles Babbage",
+    "Option2": "Dennis Ritchie",
+    "Option3": "Robert",
+    "Option4": "Linus Torvald",
+    "Hint": "Dennis Ritchie developed the C programming language."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 2,
+    "Question": "Unix was written in _ language.",
+    "Option1": "PASCAL",
+    "Option2": "FORTRAN",
+    "Option3": "C",
+    "Option4": "ALGOL",
+    "Hint": "Unix was primarily written in the C language."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 3,
+    "Question": "C program must contain at least _ function.",
+    "Option1": "1",
+    "Option2": "2",
+    "Option3": "3",
+    "Option4": "4",
+    "Hint": "Every C program must contain at least one function, usually main()."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 4,
+    "Question": "Which of the following best defines a programming language?",
+    "Option1": "A tool used for image editing",
+    "Option2": "A medium to communicate with users",
+    "Option3": "A set of instructions used to perform specific tasks",
+    "Option4": "An operating system feature",
+    "Hint": "Programming languages are used to write instructions for computers."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 5,
+    "Question": "Which one is not a type of programming language?",
+    "Option1": "Python",
+    "Option2": "Java",
+    "Option3": "Chrome",
+    "Option4": "C++",
+    "Hint": "Chrome is a web browser, not a programming language."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 6,
+    "Question": "Which of the following is a low-level programming language?",
+    "Option1": "Assembly",
+    "Option2": "Python",
+    "Option3": "Java",
+    "Option4": "SQL",
+    "Hint": "Assembly language is a low-level programming language."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 7,
+    "Question": "Which of the following is an example of a fourth-generation language (4GL)?",
+    "Option1": "C",
+    "Option2": "Assembly",
+    "Option3": "SQL",
+    "Option4": "Java",
+    "Hint": "SQL is commonly categorized as a fourth-generation language."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 8,
+    "Question": "Which translator converts the whole program into machine code at once?",
+    "Option1": "Interpreter",
+    "Option2": "Compiler",
+    "Option3": "Assembler",
+    "Option4": "Emulator",
+    "Hint": "A compiler translates the entire source code at once."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 9,
+    "Question": "An assembler is used to convert:",
+    "Option1": "High-level code to machine code",
+    "Option2": "Machine code to source code",
+    "Option3": "Assembly language to machine code",
+    "Option4": "Pseudocode to machine code",
+    "Hint": "Assemblers convert assembly language into machine code."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 10,
+    "Question": "Which error occurs due to violation of grammar rules of a programming language?",
+    "Option1": "Syntax error",
+    "Option2": "Semantic error",
+    "Option3": "Logical error",
+    "Option4": "Runtime error",
+    "Hint": "Syntax errors occur when grammar rules are violated."
+  },
+  {
+    "Chapter": "Programming Concepts and Logics",
+    "SN": 11,
+    "Question": "Which control structure is used for decision-making in a program?",
+    "Option1": "Sequence",
+    "Option2": "Selection",
+    "Option3": "Iteration",
+    "Option4": "Compilation",
+    "Hint": "Selection structures are used for making decisions."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 12,
+    "Question": "Let, we are given the following code. char naam[] = \"programming\"; printf(\"%c\", naam); It will return us output.",
+    "Option1": "1",
+    "Option2": "2",
+    "Option3": "3",
+    "Option4": "It will throw garbage value",
+    "Hint": "Using %c expects a single character, not an array."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 13,
+    "Question": "What would be the output? #include <stdio.h> #include <string.h> void main() { char string[] = {'c','o','m','p','u','t','e','r'}; printf(\"%s\", string); getch(); }",
+    "Option1": "computer",
+    "Option2": "there will be an error",
+    "Option3": "It will throw a garbage",
+    "Option4": "Computer",
+    "Hint": "The character array is missing a null terminator."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 1,
+    "Question": "Which of the following is not a type of MS Access database object?",
+    "Option1": "Table",
+    "Option2": "Form",
+    "Option3": "Worksheets",
+    "Option4": "Modules",
+    "Hint": "Worksheets are associated with spreadsheet software, not MS Access."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 2,
+    "Question": "Which is a database software?",
+    "Option1": "Oracle",
+    "Option2": "PowerPoint",
+    "Option3": "MS-Word",
+    "Option4": "Google Docs",
+    "Hint": "Oracle is a database management software."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 3,
+    "Question": "Which is a data type?",
+    "Option1": "Text",
+    "Option2": "Number",
+    "Option3": "yes/no",
+    "Option4": "All of these",
+    "Hint": "Text, Number, and Yes/No are all valid data types."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 4,
+    "Question": "Which can be a primary key in the following fields?",
+    "Option1": "Student_id",
+    "Option2": "Student_name",
+    "Option3": "student_Address",
+    "Option4": "student_score",
+    "Hint": "A primary key uniquely identifies each record."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 5,
+    "Question": "The logical data type in MS-Access is represented as?",
+    "Option1": "Auto number",
+    "Option2": "Currency",
+    "Option3": "YES/NO",
+    "Option4": "NUMBER",
+    "Hint": "YES/NO represents Boolean logical values."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 6,
+    "Question": "Query design window has two parts. The upper part has",
+    "Option1": "Table with fields and relationships",
+    "Option2": "Form with fields",
+    "Option3": "Drop down boxes",
+    "Option4": "Pop up menu",
+    "Hint": "The upper section displays tables, fields, and relationships."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 7,
+    "Question": "We can find records in...",
+    "Option1": "Row",
+    "Option2": "Column",
+    "Option3": "Row and columns",
+    "Option4": "Menu",
+    "Hint": "Database records are stored in rows."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 8,
+    "Question": "To generate and print records reports we use... object",
+    "Option1": "Form",
+    "Option2": "Table",
+    "Option3": "Report",
+    "Option4": "mode",
+    "Hint": "Reports are used to format and print database records."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 9,
+    "Question": "Which field type stores an image?",
+    "Option1": "Memo",
+    "Option2": "OLE",
+    "Option3": "Hyperlink",
+    "Option4": "currency",
+    "Hint": "OLE Object fields can store images and multimedia."
+  },
+  {
+    "Chapter": "Database / MS Access MCQs",
+    "SN": 10,
+    "Question": "DCL provides commands to perform...",
+    "Option1": "Insert records",
+    "Option2": "To change the structure of table",
+    "Option3": "Authorizing access and other control over database",
+    "Option4": "OODBMS",
+    "Hint": "DCL controls database permissions and access."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 11,
+    "Question": "If we use char name[20];, it is terminated by",
+    "Option1": "0",
+    "Option2": "\\0",
+    "Option3": "-1",
+    "Option4": "\\",
+    "Hint": "C strings end with the null character \\0."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 12,
+    "Question": "For a string char address[100];, the maximum characters it can store, is",
+    "Option1": "100",
+    "Option2": "10",
+    "Option3": "20",
+    "Option4": "40",
+    "Hint": "The array size determines maximum storage capacity."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 13,
+    "Question": "To copy one string to another, we use",
+    "Option1": "strlen()",
+    "Option2": "strrev()",
+    "Option3": "strcmp()",
+    "Option4": "strcpy()",
+    "Hint": "strcpy() copies one string into another."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 14,
+    "Question": "What will be the output of the following C code? #include <stdio.h> #include <string.h> void main() { char string1[30] = \"computer\"; char string2[30] = \"comp\"; printf(\"%d\", strcmp(string1, string2)); getch(); }",
+    "Option1": "0",
+    "Option2": "1",
+    "Option3": "01",
+    "Option4": "11",
+    "Hint": "strcmp() returns a non-zero value when strings differ."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 15,
+    "Question": "A string in C can be",
+    "Option1": "1-D array",
+    "Option2": "2-D array",
+    "Option3": "0-array",
+    "Option4": "a and b",
+    "Hint": "Strings can be stored in both 1-D and 2-D arrays."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 16,
+    "Question": "The format specifier used to input or output a string is",
+    "Option1": "%d",
+    "Option2": "%c",
+    "Option3": "%s",
+    "Option4": "%f",
+    "Hint": "%s is used for strings in C."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 17,
+    "Question": "To process string handling function, we use",
+    "Option1": "conio.h",
+    "Option2": "process.h",
+    "Option3": "math.h",
+    "Option4": "string.h",
+    "Hint": "string.h contains string handling functions."
+  },
+  {
+    "Chapter": "C String MCQs",
+    "SN": 18,
+    "Question": "What would be the output? #include <stdio.h> #include <string.h> void main() { char string[30] = \"Discovery channel\"; printf(\"%s\", string); getch(); }",
+    "Option1": "Discovery",
+    "Option2": "channel",
+    "Option3": "Discovery Channel",
+    "Option4": "Channel Discovery",
+    "Hint": "printf with %s prints the complete string."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 1,
+    "Question": "The header file stdio.h manages all input and output",
+    "Option1": "true",
+    "Option2": "false",
+    "Hint": "stdio.h contains standard input and output functions."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 2,
+    "Question": "To write a comment we use //.",
+    "Option1": "true",
+    "Option2": "false",
+    "Hint": "// is used for single-line comments in C."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 3,
+    "Question": "Which is a valid identifier?",
+    "Option1": "int 1d;",
+    "Option2": "int d1;",
+    "Option3": "int d_1;",
+    "Option4": "blurred in image",
+    "Hint": "Identifiers cannot begin with a number."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 4,
+    "Question": "To store float data, we use _ datatype.",
+    "Option1": "int",
+    "Option2": "float",
+    "Option3": "char",
+    "Option4": "blurred in image",
+    "Hint": "The float datatype stores decimal numbers."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 5,
+    "Question": "The format specifier for string is",
+    "Option1": "%d",
+    "Option2": "%f",
+    "Option3": "%c",
+    "Option4": "%s",
+    "Hint": "%s is used for string input and output."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 6,
+    "Question": "To use a hexadecimal constant it must be preceded by",
+    "Option1": "0",
+    "Option2": "0x",
+    "Option3": "x",
+    "Option4": "%",
+    "Hint": "Hexadecimal values in C start with 0x."
+  },
+  {
+    "Chapter": "C Language MCQs",
+    "SN": 7,
+    "Question": "If a = 1, b = 2, c = 3, then for a logical expression a-b&&&a>c, we will get",
+    "Option1": "0",
+    "Option2": "1",
+    "Option3": "-1",
+    "Option4": "11",
+    "Hint": "Logical operations return either true (1) or false (0)."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 8,
+    "Question": "HTML is case sensitive.",
+    "Option1": "true",
+    "Option2": "false",
+    "Option3": "3",
+    "Option4": "4",
+    "Hint": "HTML tags are generally not case sensitive."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 9,
+    "Question": "There are .... types of tags in HTML.",
+    "Option1": "1",
+    "Option2": "2",
+    "Option3": "Makes text brighter",
+    "Option4": "Makes the text smaller",
+    "Hint": "HTML tags are generally categorized into paired and unpaired tags."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 10,
+    "Question": "What does the <BR> tag do in HTML?",
+    "Option1": "Break the line",
+    "Option2": "<table>",
+    "Option3": "Change paragraph",
+    "Option4": "<tr>",
+    "Hint": "The <br> tag inserts a line break."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 11,
+    "Question": "The tag <table> on the Internet and are called Web pages?",
+    "Option1": "What are shams",
+    "Option2": "Cables",
+    "Option3": "Programs",
+    "Option4": "None",
+    "Hint": "This question appears incomplete or corrupted."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 12,
+    "Question": "Hypertext documents",
+    "Option1": "",
+    "Option2": "",
+    "Option3": "",
+    "Option4": "",
+    "Hint": "Question appears incomplete in the provided text."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 13,
+    "Question": "Which program is used by web clients to view the web pages?",
+    "Option1": "Web browser",
+    "Option2": "Protocol",
+    "Option3": "Web server",
+    "Option4": "Search Engine",
+    "Hint": "Web browsers display web pages to users."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 14,
+    "Question": "HTML was developed by ....",
+    "Option1": "Charles Babbage",
+    "Option2": "Lady Augusta Ada Lovelace",
+    "Option3": "Blaise Pascal",
+    "Option4": "Tim Berners Lee",
+    "Hint": "Tim Berners-Lee developed HTML."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 15,
+    "Question": "What is the extension of the HTML page?",
+    "Option1": ".docx",
+    "Option2": ".htm or .html",
+    "Option3": ".pptx",
+    "Option4": ".hmls",
+    "Hint": "HTML files use .htm or .html extensions."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 16,
+    "Question": "To insert CSS code, we use",
+    "Option1": "<style>",
+    "Option2": "<js>",
+    "Option3": "<html>",
+    "Option4": "a, b and c",
+    "Hint": "CSS is written inside the <style> tag."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 17,
+    "Question": "The <canvas> tag supports us to draw",
+    "Option1": "2D",
+    "Option2": "3D",
+    "Option3": "a and b",
+    "Option4": "ID",
+    "Hint": "Canvas is mainly used for 2D graphics."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 18,
+    "Question": "<SVG> tag stands for",
+    "Option1": "Sum Of Vector Graphics",
+    "Option2": "Simulated Vector Graphics",
+    "Option3": "Scalable Vector Graphics",
+    "Option4": "Short range Vector Graphics",
+    "Hint": "SVG stands for Scalable Vector Graphics."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 19,
+    "Question": "Altogether, how many types of headings are there in HTML?",
+    "Option1": "2",
+    "Option2": "3",
+    "Option3": "4",
+    "Option4": "6",
+    "Hint": "HTML provides heading tags from <h1> to <h6>."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 20,
+    "Question": "<br> is also called an empty tag.",
+    "Option1": "true",
+    "Option2": "false",
+    "Hint": "The <br> tag does not require a closing tag."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 21,
+    "Question": "To get the output on browser, we should write our text",
+    "Option1": "inside the head tag",
+    "Option2": "inside the body tag",
+    "Option3": "inside the title tag",
+    "Option4": "outside the body tag",
+    "Hint": "Visible webpage content is placed inside the body tag."
+  },
+  {
+    "Chapter": "HTML MCQs",
+    "SN": 22,
+    "Question": "Which is used to create an ordered list?",
+    "Option1": "<ol>",
+    "Option2": "<ul>",
+    "Option3": "<pl>",
+    "Option4": "<ordered list>",
+    "Hint": "The <ol> tag creates an ordered list."
+  }
+];
+
+
+    // =========================
+    // ELEMENTS
+    // =========================
+
+    const chapterSelect = document.getElementById("chapterSelect");
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const hintEl = document.getElementById("hint");
+    const nextBtn = document.getElementById("nextBtn");
+    const hintBtn = document.getElementById("hintBtn");
+    const questionCount = document.getElementById("questionCount");
+    const scoreBox = document.getElementById("scoreBox");
+    const quizBox = document.getElementById("quizBox");
+    const finalScore = document.getElementById("finalScore");
+
+    let filteredQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let selectedAnswer = false;
+
+    // =========================
+    // CREATE CHAPTER DROPDOWN
+    // =========================
+
+    const chapters = [...new Set(quizData.map(q => q.Chapter))];
+
+    chapters.forEach(chapter => {
+      const option = document.createElement("option");
+      option.value = chapter;
+      option.textContent = chapter;
+      chapterSelect.appendChild(option);
+    });
+
+    // =========================
+    // FILTER QUESTIONS
+    // =========================
+
+    function loadChapter(chapterName){
+      filteredQuestions = quizData.filter(
+        q => q.Chapter === chapterName
+      );
+
+      currentQuestionIndex = 0;
+      score = 0;
+
+      loadQuestion();
+    }
+
+    // =========================
+    // LOAD QUESTION
+    // =========================
+
+    function loadQuestion(){
+
+      hintEl.style.display = "none";
+      selectedAnswer = false;
+
+      const currentQuestion = filteredQuestions[currentQuestionIndex];
+
+      questionEl.textContent = currentQuestion.Question;
+
+      questionCount.textContent =
+        `Question ${currentQuestionIndex + 1} / ${filteredQuestions.length}`;
+
+      optionsEl.innerHTML = "";
+
+      for(let i = 1; i <= 4; i++){
+
+        const optionText = currentQuestion[`Option${i}`];
+
+        if(optionText && optionText.trim() !== ""){
+
+          const button = document.createElement("button");
+
+          button.classList.add("option-btn");
+
+          button.textContent = optionText;
+
+          button.onclick = () => selectAnswer(button, optionText);
+
+          optionsEl.appendChild(button);
+        }
+      }
+
+      hintEl.textContent = currentQuestion.Hint;
+    }
+
+    // =========================
+    // SELECT ANSWER
+    // =========================
+
+    function selectAnswer(button, answer){
+
+      if(selectedAnswer) return;
+
+      selectedAnswer = true;
+
+      // DEMO ANSWER LOGIC
+      // (First option considered correct)
+
+      const currentQuestion = filteredQuestions[currentQuestionIndex];
+
+      const correctAnswer = currentQuestion.Option1;
+
+      const buttons = document.querySelectorAll(".option-btn");
+
+      buttons.forEach(btn => {
+
+        if(btn.textContent === correctAnswer){
+          btn.classList.add("correct");
+        }
+
+        if(btn === button && answer !== correctAnswer){
+          btn.classList.add("wrong");
+        }
+
+      });
+
+      if(answer === correctAnswer){
+        score++;
+      }
+    }
+
+    // =========================
+    // NEXT QUESTION
+    // =========================
+
+    nextBtn.addEventListener("click", () => {
+
+      currentQuestionIndex++;
+
+      if(currentQuestionIndex < filteredQuestions.length){
+
+        loadQuestion();
+
+      }else{
+
+        showScore();
+      }
+
+    });
+
+    // =========================
+    // SHOW HINT
+    // =========================
+
+    hintBtn.addEventListener("click", () => {
+
+      hintEl.style.display = "block";
+
+    });
+
+    // =========================
+    // SHOW SCORE
+    // =========================
+
+    function showScore(){
+
+      quizBox.classList.add("hidden");
+      scoreBox.classList.remove("hidden");
+
+      finalScore.textContent =
+        `You scored ${score} out of ${filteredQuestions.length}`;
+    }
+
+    // =========================
+    // RESTART QUIZ
+    // =========================
+
+    function restartQuiz(){
+
+      scoreBox.classList.add("hidden");
+      quizBox.classList.remove("hidden");
+
+      loadChapter(chapterSelect.value);
+    }
+
+    // =========================
+    // CHAPTER CHANGE
+    // =========================
+
+    chapterSelect.addEventListener("change", () => {
+
+      loadChapter(chapterSelect.value);
+
+    });
+
+    // =========================
+    // INITIAL LOAD
+    // =========================
+
+    loadChapter(chapters[0]);
+
+  </script>
+
+</body>
+</html>
+
