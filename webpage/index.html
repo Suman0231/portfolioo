@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Learn Web App Design – Paradise Resort Tutorial</title>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f2f2f2;
+        margin:0;
+        padding:0;
+        line-height:1.6;
+    }
+    header{
+        background:#003366;
+        color:white;
+        padding:20px;
+        text-align:center;
+        font-size:28px;
+    }
+    .container{
+        width:90%;
+        margin:20px auto;
+        background:white;
+        padding:20px;
+        border-radius:8px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+    h2{
+        color:#003366;
+        border-left:4px solid #003366;
+        padding-left:10px;
+        margin-top:40px;
+    }
+    pre{
+        background:#272822;
+        color:#f8f8f2;
+        padding:15px;
+        border-radius:5px;
+        overflow-x:auto;
+
+    }
+    .output-box{
+        background:#e8f0fe;
+        border-left:5px solid #003366;
+        padding:15px;
+        margin-top:10px;
+        border-radius:5px;
+    }
+
+    footer{
+        background:#003366;
+        color:white;
+        text-align:center;
+        padding:10px;
+        margin-top:30px;
+    }</style>
+</head>
+
+<body>
+
+<header>Paradise Resort Website Tutorial</header>
+
+<div class="container">
+
+<!-- 1 -->
+<h2>1. Basic HTML Structure</h2>
+
+<p>This is the starting structure of the web app:</p>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Paradise Resort&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+
+<div class="output-box">
+This creates the main structure of the webpage.
+</div>
+
+<!-- 2 -->
+<h2>2. Add a Navigation Bar</h2>
+
+<p>Create a menu for navigating different sections.</p>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;nav&gt;
+  &lt;a href="#home"&gt;Home&lt;/a&gt;
+  &lt;a href="#rooms"&gt;Rooms&lt;/a&gt;
+  &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+  &lt;a href="#location"&gt;Location&lt;/a&gt;
+&lt;/nav&gt;
+</pre>
+
+<div class="output-box">
+The navbar helps users move between sections smoothly.
+</div>
+
+<!-- 3 -->
+<h2>3. Style the Navbar with CSS</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+nav {
+  background-color: darkgreen;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 15px;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: yellow;
+}
+</pre>
+
+<div class="output-box">
+The navbar becomes sticky and changes color when hovered.
+</div>
+
+<!-- 4 -->
+<h2>4. Create the Home Section</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;section id="home"&gt;
+
+&lt;h1&gt;Welcome to Paradise Resort&lt;/h1&gt;
+
+&lt;p&gt;
+Enjoy beautiful views, comfortable rooms,
+and relaxing vacations at our resort.
+&lt;/p&gt;
+
+&lt;/section&gt;
+</pre>
+
+<div class="output-box">
+This is the main introduction section of the website.
+</div>
+
+<!-- 5 -->
+<h2>5. Add an Image</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+     alt="Resort Image"&gt;
+</pre>
+
+
+
+<!-- 6 -->
+<h2>6. Style Sections</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+section {
+  background-color: white;
+  margin: 20px;
+  padding: 40px;
+  border-radius: 10px;
+}
+</pre>
+
+<div class="output-box">
+Each section now appears like a clean card layout.
+</div>
+
+<!-- 7 -->
+<h2>7. Create a Rooms Section</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;section id="rooms"&gt;
+
+&lt;h2&gt;Our Rooms&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Deluxe Room&lt;/li&gt;
+  &lt;li&gt;Family Suite&lt;/li&gt;
+  &lt;li&gt;Sea View Room&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/section&gt;
+</pre>
+
+<div class="output-box">
+Lists are useful for displaying room types or services.
+</div>
+
+<!-- 8 -->
+<h2>8. Add Contact Information</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;a href="mailto:paradiseresort@example.com"&gt;
+Send Email
+&lt;/a&gt;
+
+&lt;a href="tel:+9779800000000"&gt;
+Call Now
+&lt;/a&gt;
+</pre>
+
+<div class="output-box">
+Users can directly email or call from the webpage.
+</div>
+
+<!-- 9 -->
+<h2>9. Add External Website Link</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;a href="https://www.booking.com"
+   target="_blank"&gt;
+
+Book Now
+
+&lt;/a&gt;
+</pre>
+
+<div class="output-box">
+The link opens another website in a new tab.
+</div>
+
+<!-- 10 -->
+<h2>10. Add Google Map Using iframe</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;iframe
+src="https://maps.app.goo.gl/dAFdf6N6eP2jm6g26"&gt;
+&lt;/iframe&gt;
+</pre>
+
+<div class="output-box">
+iframe is used to embed maps, videos, or other webpages.
+</div>
+
+<!-- 11 -->
+<h2>11. Style Images and iframe</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+</pre>
+
+<div class="output-box">
+Images and maps become responsive and attractive.
+</div>
+
+<!-- 12 -->
+<h2>12. Add Footer</h2>
+
+<pre>
+<strong><u>CODE:</u></strong>
+
+&lt;footer&gt;
+&lt;p&gt;
+© 2026 Paradise Resort |
+Simple HTML & CSS Project
+&lt;/p&gt;
+&lt;/footer&gt;
+</pre>
+
+<div class="output-box">
+Footer usually contains copyright information.
+</div>
+
+<!-- 13 -->
+<h2>13. Final output</h2>
+<iframe src="index1.html" style="width:100%;height:1400px;" title="Description of content"></iframe>
+
+</div>
+
+<footer>
+© 2026 Learn Web Design | Paradise Resort Tutorial
+</footer>
+
+</body>
+</html>
