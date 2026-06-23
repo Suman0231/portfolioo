@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+
+  <link href="Bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="Bootstrap/MyStyle.css" rel="stylesheet" />
+  <title>cwithjen</title>
+
+
+
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">C</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="0_Syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="1_Overview.html">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="2_Problem.html">Problem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="3_Introduction.html">Introduction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="4_Fundamentals.html">Fundamentals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="5_InputOutput.html">Input/Output</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="6_Operators.html">Operators</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="7_ControlStatement.html">C_Statement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="8_Function.html">Function</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="9_Array.html">Array</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="10_Pointer.html">Pointer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="11_Structure.html">Structure</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="12_DataFiles.html">Files</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="14_FORTRAN.html">FORTRAN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="15_EXAM.html">Question</a>
+        </li>
+        <li class="nav-item active btn-outline-dark rounded font-weight-bold">
+          <a class="nav-link active text-white" href="16_Sample.html">Sample</a>
+        </li>
+
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+  <div class="p-3">
+
+
+    <div id="paper">
+      <div id="pattern">
+        <div id="content">
+
+          <u> <b> Question No: 7 (a) Ans:</b></u> <br />
+
+          <u> <b> Null Pointer </b> </u> <br />
+          A Null Pointer is a pointer that does not point to any memory location, instead pointer is initialized either
+          with NULL or 0 explicitly to indicate that this pointer variable is still unused.
+          And it is a standard practice to use a NULL constant rather than 0. <br /><br />
+
+          <u> <b> Example of Null Pointer </b> </u> <br />
+          #include < stdio . h> <br />
+            void main() <br />
+            { <br />
+            &nbsp int *p = NULL; //initialize the pointer as NULL <br />
+            &nbsp printf("The value of pointer is %u",p); <br />
+            } <br /><br />
+
+            <u> <b> Output: </b></u> <br />
+            The value of pointer is 0. <br /><br />
+
+
+            <u> <b> Next Question </b></u> <br />
+            #include < stdio.h> <br /><br />
+
+              int main() <br />
+              { <br />
+              &nbsp if(!NULL) <br />
+              &nbsp { <br />
+              &nbsp printf("C programming is easy"); <br />
+              &nbsp } <br />
+              &nbsp else <br />
+              &nbsp { <br />
+              &nbsp printf("C programming is not easy"); <br />
+              &nbsp } <br />
+              } <br /><br />
+
+              <u> <b> Output: </b> </u> <br />
+              C programming is easy <br /><br />
+
+              <u> <b> Discussion </b> </u> <br />
+              According to C Coding standards, <br /><br />
+
+              NULL is the pointer whose value is equivalent to 0 (Zero). <br />
+              And 0 (Zero) value is FALSE in C and other non-zero value is TRUE. <br /><br />
+
+              Hence if !(not operator) is applied to NULL (FALSE), it implies that !NULL is TRUE <br />
+              So, if block statement is executed and "C programming is easy" is printed.
+
+              <hr class="line" />
+              <hr class="line" />
+
+
+              <u> <b> Q.No.5 (a). Ans: </b></u> <br /><br />
+
+              <u> <b>//Program to find the largest word in a given sentence. </b></u> <br /><br />
+
+              #include< stdio.h> <br />
+                #include< stdlib.h><br /><br />
+
+                  void main()<br />
+                  {<br />
+                  &nbsp system("cls");<br />
+                  &nbsp char a[100];<br />
+                  &nbsp int i,lenght = 0,count = 0, max = 0,beg;<br /><br />
+
+                  &nbsp printf("Enter any string ");<br />
+                  &nbsp gets(a);<br /><br />
+
+                  &nbsp for(i=0;a[i]!='\0';i++)<br />
+                  &nbsp {<br />
+                  &nbsp &nbsp lenght++;<br />
+                  &nbsp }<br /><br />
+
+                  &nbsp for(i=0;i
+                  <=lenght;i++)<br />
+                  &nbsp {<br />
+                  &nbsp &nbsp if(a[i] == ' ' || a[i] == '\0')<br />
+                  &nbsp &nbsp {<br />
+                  &nbsp &nbsp &nbsp &nbsp if(count > max)<br />
+                  &nbsp &nbsp &nbsp &nbsp {<br />
+                  &nbsp &nbsp &nbsp &nbsp max = count; <br />
+                  &nbsp &nbsp &nbsp &nbsp beg = i - max; <br />
+                  &nbsp &nbsp &nbsp &nbsp }<br />
+                  &nbsp &nbsp &nbsp &nbsp count = 0;<br />
+                  &nbsp &nbsp }<br />
+                  &nbsp &nbsp else<br />
+                  &nbsp &nbsp {<br />
+                  &nbsp &nbsp count++;<br />
+                  &nbsp &nbsp }<br />
+                  &nbsp }<br /><br />
+
+                  &nbsp printf("\n");<br /><br />
+
+                  &nbsp for(i=1;i
+                  <=max;i++)<br />
+                  &nbsp {<br />
+                  &nbsp printf("%c",a[beg]);<br />
+                  &nbsp beg++;<br />
+                  &nbsp }<br />
+                  }<br /><br />
+
+                  <u> <b> Output: </b> </u> <br />
+                  Enter any string : Khwopa Engineering College <br /><br />
+
+                  Largest word = Engineering
+
+                  <hr class="line" />
+                  <hr class="line" />
+
+
+
+                  <u><b>Question No. 8. Ans: </b> </u> <br /><br />
+
+                  <u><b>//Displaying the detail of all employees in the order of their salary. </b></u> <br /><br />
+
+                  #include< stdio.h><br />
+                    #include< stdlib.h><br /><br />
+
+                      struct employee<br />
+                      {<br />
+                      char name[20];<br />
+                      int id;<br />
+                      int salary;<br />
+                      };<br /><br />
+
+                      void main()<br />
+                      {<br />
+                      &nbsp struct employee e[5],temp;<br />
+                      &nbsp int i,j;<br />
+                      &nbsp FILE *fp;<br />
+                      &nbsp fp = fopen("employee.txt", "r+b");<br /><br />
+
+                      &nbsp fread(&e, sizeof(e), 5, fp);<br /><br />
+
+                      &nbsp for(i=0;i
+                      <5;i++)<br />
+                      &nbsp {<br />
+                      &nbsp &nbsp for(j=0;j
+                      <5;j++)<br />
+                      &nbsp &nbsp {<br />
+                      &nbsp &nbsp if(e[i].salary
+                      < e[j].salary)<br />
+                      &nbsp &nbsp &nbsp &nbsp {<br />
+                      &nbsp &nbsp &nbsp &nbsp temp = e[i];<br />
+                      &nbsp &nbsp &nbsp &nbsp e[i] = e[j];<br />
+                      &nbsp &nbsp &nbsp &nbsp e[j] = temp;<br />
+                      &nbsp &nbsp &nbsp &nbsp }<br />
+                      &nbsp &nbsp }<br />
+                      &nbsp }<br />
+
+                      &nbsp printf("Required record of employee in order of their salary are \n");<br /><br />
+                      &nbsp for (i = 0; i
+                      <5; i++)<br />
+                      &nbsp {<br />
+                      &nbsp printf("%s %d %d\n", e[i].name, e[i].id, e[i].salary);<br />
+                      &nbsp }<br />
+                      <br />
+                      &nbsp fclose(fp);<br />
+                      } <br /><br />
+
+
+                      <u><b>Output: </b></u>
+                      <br />
+                      Required record of employee in order of their salary are <br />
+                      Satis 1 20000 <br />
+                      Utshab 2 30000 <br />
+                      Nimesh 3 40000 <br />
+                      Safal 4 50000 <br />
+                      Biraj 5 60000 <br />
+
+                      <hr class="line" />
+                      <hr class="line" />
+
+                      <br />
+
+                      Question From: 2075 Ashwin
+
+                      <br />
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <script src="Bootstrap/jquery-3.5.1.slim.min.js"></script>
+  <script src="Bootstrap/bootstrap.min.js"></script>
+  <script src="Bootstrap/popper.min.js"></script>
+
+</body>
+
+</html>

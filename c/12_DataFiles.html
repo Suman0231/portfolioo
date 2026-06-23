@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+
+  <link href="Bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="Bootstrap/MyStyle.css" rel="stylesheet" />
+  <title>cwithjen</title>
+
+
+
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">C</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="0_Syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="1_Overview.html">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="2_Problem.html">Problem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="3_Introduction.html">Introduction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="4_Fundamentals.html">Fundamentals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="5_InputOutput.html">Input/Output</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="6_Operators.html">Operators</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="7_ControlStatement.html">C_Statement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="8_Function.html">Function</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="9_Array.html">Array</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="10_Pointer.html">Pointer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="11_Structure.html">Structure</a>
+        </li>
+        <li class="nav-item active btn-outline-dark rounded font-weight-bold">
+          <a class="nav-link active text-white" href="12_DataFiles.html">Files</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="14_FORTRAN.html">FORTRAN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="15_EXAM.html">Question</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="16_Sample.html">Sample</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+  <div class="p-3">
+
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="Outlines-tab" data-toggle="tab" href="#Outlines" role="tab" aria-controls="Outlines"
+          aria-selected="true">Outlines</a>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="Notes-tab" data-toggle="tab" href="#Notes" role="tab" aria-controls="Notes"
+          aria-selected="false">Notes</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="Questions-tab" data-toggle="tab" href="#Questions" role="tab"
+          aria-controls="Questions" aria-selected="false">Questions</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="Programs-tab" data-toggle="tab" href="#Programs" role="tab" aria-controls="Programs"
+          aria-selected="false">Programs</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade" id="Outlines" role="tabpanel" aria-labelledby="Outlines-tab">
+
+        <div class="row">
+          <div class="p-3 col-lg-4 col-md-12">
+            <h6>Data Files</h6>
+            <ul>
+              <li>Using Files in C</li>
+              <li>File Types</li>
+              <li>Text Files</li>
+              <li>Binary Files</li>
+              <li>Working with text files and Binary Files</li>
+              <li class="list-unstyled">
+                <ul>
+                  <li>Opening and Closing Files</li>
+                  <li>Writing and Reading Data to or from data files</li>
+                  <li>File opening modes</li>
+                </ul>
+              </li>
+              <li>File operations using std. library and system calls</li>
+              <li>File management I/O functions</li>
+              <li>Random Access Files</li>
+              <li>Error Handling</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade  show active" id="Questions" role="tabpanel" aria-labelledby="Questions-tab">
+
+        <div class="p-3">
+
+          <h6>Board Exam Theory Questions</h6>
+
+          <ol>
+            <li>
+              <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+
+                What are different input/output functions used with data files in C? Explain with syntax and examples.
+                [5] [074] [068] [067] <span class="text-danger font-weight-bold"> (Updated)</span>
+              </a>
+
+              <div class="collapse" id="collapseOne">
+                <div class="card card-body">
+
+
+
+                  There are many I/O functions in the C library which are given below. <br /><br />
+
+                  <table border="1">
+
+                    <tr>
+                      <th></th>
+                      <th>Function</th>
+                      <th>Description</th>
+                      <th>Example</th>
+                    </tr>
+
+
+                    <tr class="text-danger">
+                      <th rowspan="2">Character I/O function</th>
+                      <th>fputc </th>
+                      <th>Used to write a character to a file.</th>
+                      <th>fputc(ch,fp)</th>
+
+                    </tr>
+
+                    <tr class="text-danger">
+
+                      <th>fgetc</th>
+                      <th>Used to read a character from a file. </th>
+                      <th>ch = fgetc(fp)</th>
+                    </tr>
+
+
+                    <tr class=" text-info">
+                      <th rowspan="2">String Input/Output function</th>
+                      <th>fputs</th>
+                      <th>Used to write a string to a file.</th>
+                      <th>fputs(ch,fp)</th>
+                    </tr>
+
+                    <tr class=" text-info">
+
+                      <th>fgets</th>
+                      <th>Used to read a string from file.</th>
+                      <th>fgets(ch,50,fp)</th>
+                    </tr>
+
+
+                    <tr class="text-success">
+                      <th rowspan="2">Formatted Input/Output function</th>
+                      <th>fprintf()</th>
+                      <th>Used to write integer, float, char or string data to a file.</th>
+                      <th>fprintf(fp, "%s%d%f", s.name, s.rollno, s.marks)</th>
+                    </tr>
+
+                    <tr class="text-success">
+                      <th> fscanf() </th>
+                      <th>Used to read integer, float, char or string value from a file.</th>
+                      <th> fscanf(fp, "%s%d%d", &s.name, &s.age, &s.marks) </th>
+                    </tr>
+
+                    <tr class="text-warning">
+                      <th rowspan="2"> Record Input/Output function </th>
+                      <th> fwrite() </th>
+                      <th>Used for record output</th>
+                      <th> fwrite(&s, sizeof(s) ,1 ,fp) </th>
+                    </tr>
+
+                    <tr class="text-warning">
+
+                      <th> fread() </th>
+                      <th>Used for record input. </th>
+                      <th> fread(&s, sizeof(s) ,1 ,fp) </th>
+                    </tr>
+
+                  </table>
+
+                  <br /><br />
+
+                  <div class="row">
+
+                    <img src="img/12%20Data%20Files/Input%20Output%20Function/fputs.png"
+                      class="col-lg-4 col-md-6 col-sm-12 img-thumbnail" width="100" />
+
+                  </div>
+
+                </div>
+              </div>
+
+            </li>
+
+            <li>
+              <a data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+
+                Explain, error-handling process during reading and writing in a data files. State the typical error
+                situation during I/O operation in file. [3 + 3] [068] [067] <span class="text-danger font-weight-bold">
+                  (Updated)</span>
+              </a>
+
+              <div class="collapse" id="collapseTwo">
+                <div class="card card-body">
+
+
+                  File handling operations may fail due to anyone of the following reasons:
+
+                  <ol>
+                    <li>A file for reading may not be present on the disk.</li>
+                    <li>Insufficient disk space for opening a file for writing.</li>
+                    <li>Write protected disk does not allow storage of data on it. </li>
+                    <li>Dealing with corrupt file.</li>
+                  </ol> <br />
+
+                  To handle these error we need to check whether the intended data files has opened successfully or not
+                  by comparing the result of fopen() function with NULL character.
+                  fopen() function points to the beginning of the file if file is opened successfully otherwise it
+                  returns NULL.
+                  <br /> <br />
+                  <i>Code for handling error during file opening.</i>
+
+                  <img src="img/12%20Data%20Files/null.png" class="img-thumbnail" width="400" /><br />
+
+                  <i>Other useful functions for hanlding error during read/write operations are:</i>
+
+                  <table border="1" class="table table-dark">
+                    <tr>
+                      <td>ferror()</td>
+                      <td>This function reports any error during a read/write operation on a file. </td>
+                      <td>Its prototype is: int ferror(file_pointer_variable);</td>
+                    </tr>
+
+                    <tr>
+                      <td>perror()</td>
+                      <td>This function writes the error message specified by the compiler.</td>
+                      <td>Its prototype is: void perror(error_message);</td>
+                    </tr>
+
+                  </table>
+                </div>
+              </div>
+
+            </li>
+
+            <li>
+
+
+              <a data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+
+                How the contents in the file can be randomly accessed? [4] [067] <span
+                  class="text-danger font-weight-bold"> (Updated)</span>
+              </a>
+
+              <div class="collapse" id="collapseThree">
+                <div class="card card-body">
+
+
+                  There is no need to read each record sequentially, if we want to access a particular record. C
+                  supports these functions for random access file processing. <br /><br />
+
+                  <h5 class="text-danger">1. fseek()</h5>
+                  This function is used for seeking the pointer position in the file at the specified byte.<br /><br />
+
+                  <b> Syntax: fseek( File pointer, Displacement, pointer position);</b>
+                  <b>Example: fseek(fp, 10L, 0)</b> where <br />
+
+                  File pointer: It is the pointer which points to the file.<br />
+                  Displacement: It is positive or negative, attached with L because this is a long integer.<br />
+                  Pointer position: This sets the pointer position in the file whose value can be 0 (Beginning), 1
+                  (Current) or 2 (End of file). <br /><br />
+
+                  <h5 class="text-danger">2. ftell()</h5>
+                  This function returns the value of the current pointer position in the file.The value is count from
+                  the beginning of the file.<br /><br />
+
+                  <b> Syntax: ftell(fp); </b><br />
+
+
+                  <h5 class="text-danger">3. rewind()</h5>
+                  This function is used to move the file pointer to the beginning of the given file.<br /><br />
+
+                  <b>Syntax: rewind( fp);</b>
+
+
+                </div>
+              </div>
+
+            </li>
+
+            <li>Define opening and closing a file along with suitable examples. [4] [070] </li>
+            <li>What is a data file in C? What are the modes in file handling? Explain briefly. [1+3] [072] </li>
+            <li>List different types of standard I/O used in C. [2] [072] </li>
+            <li>Differentiate between text file and binary file. [2] [069]</li>
+            <li>What do you mean by opening a data file? How is this accomplished? Explain fscanf, fprintf, fread,
+              fwrite functions. [1+3+4] [068]</li>
+
+          </ol>
+
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade" id="Notes" role="tabpanel" aria-labelledby="Notes-tab">
+
+        <div class="p-3 text-justify">
+
+          <h4 class="text-primary">Background</h4>
+          The program that we have executed so far accepts data from the keyboard and gives output to visual display
+          unit. This type of I/O is called console I/O. The console input/output work fine as long as the data is small.
+          It becomes very inconvenient and time consuming to handle the large volume of data through console I/O. And
+          the data get lost or destroy when the program is terminated or the computer system is turn off. <br /><br />
+          To overcome these problems, here comes the need of file handling in C. <br /><br />
+          File handling in C enables us to create, write, read and update the files stored on the local file system
+          through our C program. The basic steps for using a File in C are always the same. <br /><br />
+
+          <ol class="list-group font-weight-bold">
+            <li class="list-group-item list-group-item-action list-group-item-primary">1. Create a variable of type
+              "FILE*"</li>
+            <li class="list-group-item list-group-item-action list-group-item-success">2. Open the file using the
+              "fopen()" function ans assign the "file" to the variable.</li>
+            <li class="list-group-item list-group-item-action list-group-item-secondary">3. Check to make sure the file
+              was successfully opened by checking to see if the variable == NULL. If it does, an error has occured.</li>
+            <li class="list-group-item list-group-item-action list-group-item-danger">4. Use the Input/Output file
+              handeling function to write/read from the file. Usually these function calls are placed in a loop.</li>
+            <li class="list-group-item list-group-item-action list-group-item-warning">5. Closing the file.</li>
+          </ol><br /><br />
+
+          <h4 class="list-group-item list-group-item-action list-group-item-primary">1. Creating a variable of type
+            "FILE*"</h4>
+          While working with data file, we need buffer area (i.e, temporary memory) where information is stored for
+          short period of time in the course of transferring data between computer memory and data file. The buffer area
+          is established by creating a variable of type "FILE*"
+
+          <br /><br />
+          <img src="img/12%20Data%20Files/file.png" class="img-thumbnail" width="200" />
+          <br /><br />
+
+          Here, FILE is a special structure (keyword), declared in header file stdio.h and *fp is file pointer variable
+          that stores the beginning address of the buffer area allocated after a file has been opened.
+          Also file pointer contains other information about the file including file_name, new position of the file,
+          whether the file is being read or written, and whether errors or end-of-file have occured. Basically file
+          pointer acts as a communication link between the program and the file. <br /><br />
+
+          <h4 class="list-group-item list-group-item-action list-group-item-success">2. Opening the file using fopen()
+          </h4>
+          Before performing an input/output function in file, a file must be opened. The fopen() function is used to
+          open a file defined in the stdio.h header file. The syntax of the fopen() is given below: <br /><br />
+          <img src="img/12%20Data%20Files/fopen.png" class="img-thumbnail" width="600" /> <br /><br />
+
+          The function fopen() returns a pointer to the beginning of the buffer area associated with the file (i.e. the
+          first address of the allocated buffer area is stored in pointer variable *pt).
+          The fopen() function accepts two arguments. <br />
+          <ol>
+            <li>The first is the name of the file. If the file is stored at some specific location, then we must mention
+              the path at which the file is stored. For example, a file can be like “D:\\Student.txt”.</li>
+            <li>And second is the mode in which file is to be opened. It is also string. </li>
+          </ol>
+
+          We can use one of the following modes in the fopen() function. <br />
+
+          <table border="1" class="table table-dark">
+            <tr>
+              <th>Mode</th>
+              <th>Binary Mode</th>
+              <th>Meaning of Mode</th>
+              <th>During Existence of file</th>
+              <th>Pointer Position</th>
+              <th>During Inexistence of file</th>
+            </tr>
+
+            <tr class="text-success">
+              <th>w</th>
+              <th>wb</th>
+              <td>Opens new file for writing mode. </td>
+              <td class="text-danger">If the file exists, its contents are destroyed. </td>
+              <td>At the beginning of the file</td>
+              <td>If the file does not exit, it will be created. </td>
+            </tr>
+
+            <tr class="text-success">
+              <th>r</th>
+              <th>rb</th>
+              <td>Opens file for reading mode. </td>
+              <td>If the file exists, its contents are not destroyed. </td>
+              <td>At the beginning of the file</td>
+              <td class="text-primary">If the file does not exist, fopen() returns NULL.</td>
+            </tr>
+
+            <tr class="text-success">
+              <th>a</th>
+              <th>ab</th>
+              <td>Opens file for appending mode. </td>
+              <td>If the file exists, its contents are not destroyed.</td>
+              <td class="text-warning">At the end of the file.</td>
+              <td>If the file does not exist, it will be created. </td>
+            </tr>
+
+            <tr class="text-success">
+              <th>w+</th>
+              <th>w+b or wb+</th>
+              <td>Opens file for both writing and reading.</td>
+              <td class="text-danger">If the file exists, its contents are destroyed. </td>
+              <td>At the beginning of the file</td>
+              <td>If the file does not exist, it will be created. </td>
+            </tr>
+
+            <tr class="text-success">
+              <th>r+</th>
+              <th>r+b or rb+</th>
+              <td>Opens file for both writing and reading purpose. </td>
+              <td>If the file exists, its contents are not destroyed.</td>
+              <td>At the beginning of the file.</td>
+              <td class="text-primary">If the file does not exist, fopen() returns NULL.</td>
+            </tr>
+
+            <tr class="text-success">
+              <th>a+</th>
+              <th>a+b or ab+</th>
+              <td>Opens file for both reading and appending purpose. </td>
+              <td>If the file exists, its contents are not destroyed.</td>
+              <td class="text-warning">The initial file position for reading is at the beginning of the file, <br /> but
+                output is always appended to the end of the file. </td>
+              <td>If the file does not exist, new file will be created. </td>
+            </tr>
+          </table> <br />
+
+          <i> Note:
+            The distinguishing feature of a file is its end-of-file mark.
+            We refer to this mark as EOF. EOF typically has the value -1.
+          </i>
+
+          <br /><br />
+
+          <div class="row">
+            <img src="img/12%20Data%20Files/Mode%20Example/w.png" class="col-lg-2 col-md-4 col-sm-6 img-thumbnail" />
+            <img src="img/12%20Data%20Files/Mode%20Example/r.png" class="col-lg-2 col-md-4 col-sm-6 img-thumbnail" />
+            <img src="img/12%20Data%20Files/Mode%20Example/a.png" class="col-lg-2 col-md-4 col-sm-6 img-thumbnail" />
+
+            <img src="img/12%20Data%20Files/Mode%20Example/ww.png" class="col-lg-2 col-md-4 col-sm-6 img-thumbnail" />
+            <img src="img/12%20Data%20Files/Mode%20Example/rr.png" class="col-lg-2 col-md-4 col-sm-6 img-thumbnail" />
+            <img src="img/12%20Data%20Files/Mode%20Example/aa.png" class="col-lg-2 col-md-4 col-sm-6 img-thumbnail" />
+          </div>
+
+          <br /><br /><br />
+
+
+          <h4 class="list-group-item list-group-item-action list-group-item-secondary">3. Error Handling in File
+            Operations <span class="text-danger font-weight-bold"> (Updated)</span> </h4>
+          File handling operations may fail due to anyone of the following reasons:
+
+          <ol>
+            <li>A file for reading may not be present on the disk.</li>
+            <li>Insufficient disk space for opening a file for writing.</li>
+            <li>Write protected disk does not allow storage of data on it. </li>
+            <li>Dealing with corrupt file.</li>
+          </ol>
+
+          To handle these error we need to check whether the intended data files has opened successfully or not by
+          comparing the result of fopen() function with NULL character.
+          Since fopen() function points to the beginning of the file if file is opened successfully otherwise it returns
+          NULL.
+          <br /> <br />
+          <i><b>Code for handling error during file opening.</b></i>
+          <br /> <br />
+          <img src="img/12%20Data%20Files/null.png" class="img-thumbnail" width="600" /> <br /><br />
+
+          Other useful functions for hanlding error during read/write operations are:
+
+          <table border="1" class="table table-dark">
+            <tr>
+              <td>ferror()</td>
+              <td>This function reports any error during a read/write operation on a file. </td>
+              <td>Its prototype is: int ferror(file_pointer_variable);</td>
+            </tr>
+
+            <tr>
+              <td>perror()</td>
+              <td>This function writes the error message specified by the compiler.</td>
+              <td>Its prototype is: void perror(error_message);</td>
+            </tr>
+
+          </table> <br />
+
+          <i>Note: Exit is a jump statement in C which takes an integer (zero or non-zero) to represent different exit
+            status.
+            Exit Success is indicated by exit(0) statement which means successful termination of the program.
+            Exit Failure is indicated by exit(1) which means the abnormal termination of the program.
+            We can use different integer other than 1 to indicate different types of errors.
+          </i>
+
+          <br /><br /><br />
+
+
+
+          <h4 class="list-group-item list-group-item-action list-group-item-danger">4. File Handling Input/Output
+            function</h4><br />
+          There are many I/O functions in the C library which are given below. <br /><br />
+
+          <table border="1" class="table table-dark">
+
+            <tr>
+              <th></th>
+              <th>Function</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+
+
+            <tr class="text-danger">
+              <th rowspan="2">Character I/O function</th>
+              <th>fputc </th>
+              <th>Used to write a character to a file.</th>
+              <th>fputc(ch,fp)</th>
+
+            </tr>
+
+            <tr class="text-danger">
+
+              <th>fgetc</th>
+              <th>Used to read a character from a file. </th>
+              <th>ch = fgetc(fp)</th>
+            </tr>
+
+
+            <tr class=" text-info">
+              <th rowspan="2">String Input/Output function</th>
+              <th>fputs</th>
+              <th>Used to write a string to a file.</th>
+              <th>fputs(ch,fp)</th>
+            </tr>
+
+            <tr class=" text-info">
+
+              <th>fgets</th>
+              <th>Used to read a string from file.</th>
+              <th>fgets(ch,50,fp)</th>
+            </tr>
+
+
+            <tr class="text-success">
+              <th rowspan="2">Formatted Input/Output function</th>
+              <th>fprintf()</th>
+              <th>Used to write integer, float, char or string data to a file.</th>
+              <th>fprintf(fp, "%s%d%f", s.name, s.rollno, s.marks)</th>
+            </tr>
+
+            <tr class="text-success">
+              <th> fscanf() </th>
+              <th>Used to read integer, float, char or string value from a file.</th>
+              <th> fscanf(fp, "%s%d%d", &s.name, &s.age, &s.marks) </th>
+            </tr>
+
+            <tr class="text-warning">
+              <th rowspan="2"> Record Input/Output function </th>
+              <th> fwrite() </th>
+              <th>Used for record output</th>
+              <th> fwrite(&s, sizeof(s) ,1 ,fp) </th>
+            </tr>
+
+            <tr class="text-warning">
+
+              <th> fread() </th>
+              <th>Used for record input. </th>
+              <th> fread(&s, sizeof(s) ,1 ,fp) </th>
+            </tr>
+
+          </table>
+
+          <br /><br />
+
+          <div class="row">
+
+            <img src="img/12%20Data%20Files/Input%20Output%20Function/fputs.png"
+              class="col-lg-4 col-md-6 col-sm-12 img-thumbnail" />
+            <img src="img/12%20Data%20Files/Input%20Output%20Function/fprintf.png"
+              class="col-lg-4 col-md-6 col-sm-12 img-thumbnail" />
+            <img src="img/12%20Data%20Files/Input%20Output%20Function/fwrite.png"
+              class="col-lg-4 col-md-6 col-sm-12 img-thumbnail" />
+
+          </div>
+
+          <br /><br />
+          <h4 class="list-group-item list-group-item-action list-group-item-warning">5. fclose() function</h4>
+          The fclose() function is used to close a file. The file must be closed after performing all the operations on
+          it.
+          Closing a file ensures that all outstanding information associated with the file is flushed out from the
+          buffers and all links to the file are broken. It also prevents any accidental misuse of the file.
+
+          The syntax of fclose() function is given below.
+
+          <br /><br />
+
+          <img src="img/12%20Data%20Files/fclose.png" class="img-thumbnail" width="200" /><br /><br />
+
+          <i>Note: If the file is open for writing or appending, fclose() writes any data remaining in the file's buffer
+            to the file and appends the end of file (EOF) mark after the last character written.
+            If the file is open for reading, fclose() ignores any data left in the file's buffer and closes the
+            connection.
+            fclose() returns 0 if successful, EOF if unsuccessful. fclose() fails if the storage device is full, an I/O
+            error occurs or the storage medium is prematurely removed.
+          </i>
+
+
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade" id="Programs" role="tabpanel" aria-labelledby="Programs-tab">
+
+        <div class="row">
+
+          <div class="p-3 col-lg-12 col-md-12">
+
+            <h4 class="text-danger">fputc() and fgetc() function</h4>
+            <ol>
+              <li><a href="img/12%20Data%20Files/Mode%20Example/w.png" target="_blank">WAP to create a file in "w" mode.
+                  Perform writing operation using fputc() function. </a></li>
+
+              <li><a href="img/12%20Data%20Files/Mode%20Example/r.png" target="_blank">WAP to open a file in "r" mode.
+                  Perform reading operation using fgetc() function. </a></li>
+
+              <li class="pb-3"><a href="img/12%20Data%20Files/Mode%20Example/a.png" target="_blank">WAP to open a file
+                  in "a" mode. Perform appending operation using fputc() function.</a></li>
+
+              <li><a href="img/12%20Data%20Files/Mode%20Example/ww.png" target="_blank">WAP to create a file in "w+"
+                  mode. Perform writing and reading operation using fputc() and fgetc() function respectively. </a></li>
+
+              <li><a href="img/12%20Data%20Files/Mode%20Example/rr.png" target="_blank">WAP to open a file in "r+" mode.
+                  Perform writing and reading operation using fputc() and fgetc() function respectively.</a> </li>
+
+              <li class="pb-3"><a href="img/12%20Data%20Files/Mode%20Example/aa.png" target="_blank">WAP to open a file
+                  in "a+" mode. Perform appending and reading operation using fputc() and fgetc() function
+                  respectively</a></li>
+
+              <li><a href="img/12%20Data%20Files/Mode%20Example/copy.png" target="_blank">Write a program to read the
+                  information of a file named “data.txt” and write its contents to another file”record.txt”. [6] [2072]
+                </a> </li>
+
+
+            </ol>
+
+            <h4 class="text-danger"> fputs() and fgets() function</h4>
+            <ol>
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/fputs.png" target="_blank">WAP to create a
+                  file in "w+" mode. Perform writing and reading operation using fputs() and fgets() function
+                  respectively. </a></li>
+
+            </ol>
+
+            <h4 class="text-danger"> fprintf() and fscanf() function </h4>
+            <ol>
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/fprintf.png" target="_blank">WAP to enter
+                  name, rollno and marks of 5 students and store them in file. Read and display the same file.</a></li>
+
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/until%20no.png" target="_blank">Write a
+                  program in C to read integers from user until user says “no”. After reading the data write all the odd
+                  numbers to a file name odd.txt and all the even number to file name even.txt. [6] [069] [074]</a>
+              </li>
+
+            </ol>
+
+            <h4 class="text-danger"> fwrite() and fread() function </h4>
+            <ol>
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/fwrite.png" target="_blank">WAP to enter
+                  name, rollno and marks of 5 students and store them in file. Read and display the same file.</a></li>
+
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/Write%20students.png" target="_blank">Write a
+                  program to write name, roll no and age of five students into a disk file name “STUDENT.DAT”. [6]
+                  [2072]</a> </li>
+
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/Write%20Read%20students.png"
+                  target="_blank">WAP to enter name, roll no & age of 5 students and store them in file name
+                  “STUDENT.DAT”. Read & display the content of the file.</a> </li>
+
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/Append%20students.png" target="_blank">Write
+                  a program to read name and roll number of 5 students from user and store them in file. If the file
+                  already contains data, your program should add new data at the end of the file. [6] [073]</a> </li>
+
+              <li><a href="img/12%20Data%20Files/Input%20Output%20Function/FileName%20Unknown%20content.png"
+                  target="_blank">WAP that first appends records of five employees in a binary file and display the
+                  contents from file. The file name should be given by user and display message if it does not exist.
+                  [6]</a> </li>
+
+            </ol>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <script src="Bootstrap/jquery-3.5.1.slim.min.js"></script>
+  <script src="Bootstrap/bootstrap.min.js"></script>
+  <script src="Bootstrap/popper.min.js"></script>
+
+</body>
+
+</html>
