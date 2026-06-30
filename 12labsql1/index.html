@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Learn SQL – Basic Commands</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    margin:0;
+    padding:0;
+    line-height:1.6;
+}
+header{
+    background:#003366;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+}
+.container{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+h2{
+    color:#003366;
+    border-left:4px solid #003366;
+    padding-left:10px;
+    margin-top:40px;
+}
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:5px;
+    overflow-x:auto;
+}
+.output-box{
+    background:#e8f0fe;
+    border-left:5px solid #003366;
+    padding:15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+table{
+    border-collapse:collapse;
+    width:100%;
+    margin-top:10px;
+}
+table,th,td{
+    border:1px solid #333;
+}
+th,td{
+    padding:10px;
+    text-align:left;
+}
+th{
+    background:#003366;
+    color:white;
+}
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>SQL Tutorial – Basic Commands</header>
+
+<div class="container">
+
+<!-- INTRO -->
+<h2>1. What is SQL?</h2>
+
+<ul>
+<li>SQL stands for <b>Structured Query Language</b>.</li>
+<li>SQL is used to store, retrieve, update and delete data in databases.</li>
+<li>It works with database tables.</li>
+<li>Common SQL commands include CREATE, INSERT, SELECT, UPDATE, ALTER and DELETE.</li>
+</ul>
+<hr>
+<h2>Question No. 1</h2>
+
+    <p><strong>To create a table named <code>students</code> with the following fields and insert the following records.</strong></p>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Dinesh</td>
+            <td>Kathmandu</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Suresh</td>
+            <td>Pokhara</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Sumina</td>
+            <td>Kathmandu</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Himal</td>
+            <td>Dharan</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Sangita</td>
+            <td>Palpa</td>
+            <td>11</td>
+        </tr>
+    </table>
+
+    <h3>Tasks</h3>
+    <ol type="a">
+        <li>Add the field named <strong>DOB</strong> in the above table.</li>
+        <li>Insert five records in the <strong>students</strong> table.</li>
+        <li>Display <strong>Name</strong> and <strong>Address</strong> of the students from the <strong>students</strong> table.</li>
+        <li>Display all the records of students whose <strong>Address = "Kathmandu"</strong>.</li>
+        <li>Update any one record of the <strong>students</strong> table.</li>
+        <li>Delete the record of the student named <strong>"Suresh"</strong>.</li>
+    </ol>
+<hr>
+
+<!-- CREATE TABLE -->
+<h2>2. Create the Students Table</h2>
+
+<p>The following SQL statement creates a table named <b>students</b>.</p>
+
+<pre>
+CREATE TABLE students (
+    Roll_Number INT PRIMARY KEY,
+    Name VARCHAR(30),
+    Address VARCHAR(30),
+    Grade INT
+);
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+<p>Table <b>students</b> created successfully.</p>
+</div>
+
+<hr>
+
+<!-- INSERT -->
+<h2>3. Insert Records</h2>
+
+<p>Insert the given student records into the table.</p>
+
+<pre>
+INSERT INTO students
+VALUES
+(1, 'Dinesh', 'Kathmandu', 11),
+(2, 'Suresh', 'Pokhara', 12),
+(3, 'Sumina', 'Kathmandu', 12),
+(4, 'Himal', 'Dharan', 11),
+(5, 'Sangita', 'Palpa', 11);
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table>
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Suresh</td>
+<td>Pokhara</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<!-- ALTER -->
+<h2>4. Add a New Field (DOB)</h2>
+
+<p>Add a new column named <b>DOB</b> to the students table.</p>
+
+<pre>
+ALTER TABLE students
+ADD DOB DATE;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table>
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+<th>DOB</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+<td>NULL</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<!-- SELECT -->
+<h2>5. Display Name and Address</h2>
+
+<pre>
+SELECT Name, Address
+FROM students;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Address</th>
+</tr>
+
+<tr>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+</tr>
+
+<tr>
+<td>Suresh</td>
+<td>Pokhara</td>
+</tr>
+
+<tr>
+<td>Sumina</td>
+<td>Kathmandu</td>
+</tr>
+
+<tr>
+<td>Himal</td>
+<td>Dharan</td>
+</tr>
+
+<tr>
+<td>Sangita</td>
+<td>Palpa</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<!-- WHERE -->
+<h2>6. Display Students from Kathmandu</h2>
+
+<pre>
+SELECT *
+FROM students
+WHERE Address = 'Kathmandu';
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<!-- UPDATE -->
+<h2>7. Update a Record</h2>
+
+<p>Change Dinesh's address from Kathmandu to Lalitpur.</p>
+
+<pre>
+UPDATE students
+SET Address = 'Lalitpur'
+WHERE Roll_Number = 1;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Lalitpur</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<!-- DELETE -->
+<h2>8. Delete a Record</h2>
+
+<p>Delete the student whose name is <b>Suresh</b>.</p>
+
+<pre>
+DELETE FROM students
+WHERE Name = 'Suresh';
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Lalitpur</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+<hr>
+
+<!-- UPDATE DOB -->
+<h2>9. Insert DOB Values</h2>
+
+<p>Update the DOB column for all students.</p>
+
+<pre>
+UPDATE students
+SET DOB = '2008-01-15'
+WHERE Roll_Number = 1;
+
+UPDATE students
+SET DOB = '2007-05-20'
+WHERE Roll_Number = 2;
+
+UPDATE students
+SET DOB = '2007-09-10'
+WHERE Roll_Number = 3;
+
+UPDATE students
+SET DOB = '2008-03-25'
+WHERE Roll_Number = 4;
+
+UPDATE students
+SET DOB = '2008-11-18'
+WHERE Roll_Number = 5;
+</pre>
+
+<div class="output-box">
+<b>Output:</b>
+
+<table>
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+<th>DOB</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+<td>2008-01-15</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Suresh</td>
+<td>Pokhara</td>
+<td>12</td>
+<td>2007-05-20</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+<td>2007-09-10</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+<td>2008-03-25</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+<td>2008-11-18</td>
+</tr>
+
+</table>
+
+</div>
+<hr>
+
+<!-- TASK -->
+<h2>YOUR TASK</h2>
+
+<p><strong>Create a table named <em>employees</em> with the following fields and insert the following records.</strong></p>
+
+<table>
+    <tr>
+        <th>Emp_ID</th>
+        <th>Emp_Name</th>
+        <th>Emp_Address</th>
+        <th>Emp_Post</th>
+        <th>Emp_Salary</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Nagendra</td>
+        <td>Kathmandu</td>
+        <td>Manager</td>
+        <td>50000</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>Darshan</td>
+        <td>Dharan</td>
+        <td>System Admin</td>
+        <td>40000</td>
+    </tr>
+    <tr>
+        <td>103</td>
+        <td>Sunita</td>
+        <td>Pokhara</td>
+        <td>System Admin</td>
+        <td>40000</td>
+    </tr>
+    <tr>
+        <td>104</td>
+        <td>Deepak</td>
+        <td>Kathmandu</td>
+        <td>Officer</td>
+        <td>35000</td>
+    </tr>
+    <tr>
+        <td>105</td>
+        <td>Kamal</td>
+        <td>Butwal</td>
+        <td>Accountant</td>
+        <td>30000</td>
+    </tr>
+</table>
+
+<h3>Tasks</h3>
+
+<ol type="a">
+    <li>Display all the records on the screen.</li>
+    <li>Display Emp_Name and Emp_Post of employees whose salary is greater than 35000.</li>
+    <li>Display all the records of employees whose Emp_Post is System Admin.</li>
+    <li>Display all the records of the employee whose Emp_ID is 3.</li>
+    <li>Display Emp_Name and Emp_Salary of employees.</li>
+    <li>Display all the records of employees whose Emp_Address is Kathmandu.</li>
+    <li>Delete the record of the employee whose Emp_Address is Butwal.</li>
+</ol>
+</div>
+
+<footer>© 2025 Learn SQL – Basic Commands</footer>
+
+</body>
+</html>
