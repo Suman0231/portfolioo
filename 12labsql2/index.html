@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn SQL – Wildcards</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    margin:0;
+    padding:0;
+    line-height:1.6;
+}
+header{
+    background:#003366;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+}
+.container{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+h2{
+    color:#003366;
+    border-left:4px solid #003366;
+    padding-left:10px;
+    margin-top:40px;
+}
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:5px;
+    overflow-x:auto;
+}
+.output-box{
+    background:#e8f0fe;
+    border-left:5px solid #003366;
+    padding:15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+table{
+    border-collapse:collapse;
+    width:100%;
+    margin-top:10px;
+}
+table,th,td{
+    border:1px solid #333;
+}
+th,td{
+    padding:10px;
+    text-align:left;
+}
+th{
+    background:#003366;
+    color:white;
+}
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>SQL Tutorial – Wildcards</header>
+
+<div class="container">
+
+<h2>1. What are SQL Wildcards?</h2>
+
+<ul>
+<li>SQL Wildcards are special characters used with the <b>LIKE</b> operator.</li>
+<li>They help search for data using patterns.</li>
+<li><b>%</b> represents zero or more characters.</li>
+<li><b>_</b> represents exactly one character.</li>
+<li>Wildcards are commonly used in the <b>WHERE</b> clause.</li>
+</ul>
+
+<hr>
+
+<h2>2. Students Table</h2>
+
+<table>
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Suresh</td>
+<td>Pokhara</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>3. Using % Wildcard</h2>
+
+<p><b>%</b> matches zero or more characters.</p>
+
+<h3>Example 1: Names starting with S</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE 'S%';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Suresh</td>
+<td>Pokhara</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h3>Example 2: Names ending with "a"</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE '%a';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h3>Example 3: Names containing "in"</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE '%in%';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h3>Example 4: Address starting with K</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Address LIKE 'K%';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>4. Using _ Wildcard</h2>
+
+<p><b>_</b> matches exactly one character.</p>
+
+<h3>Example 1: Names having exactly five letters</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE '_____';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h3>Example 2: Names where second letter is 'u'</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE '_u%';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Suresh</td>
+<td>Pokhara</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>5. Common Wildcard Patterns</h2>
+
+<table>
+
+<tr>
+<th>Pattern</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>'S%'</td>
+<td>Starts with S</td>
+</tr>
+
+<tr>
+<td>'%a'</td>
+<td>Ends with a</td>
+</tr>
+
+<tr>
+<td>'%in%'</td>
+<td>Contains "in"</td>
+</tr>
+
+<tr>
+<td>'_____'</td>
+<td>Exactly five characters</td>
+</tr>
+
+<tr>
+<td>'_u%'</td>
+<td>Second letter is u</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>YOUR TASK</h2>
+
+<p><strong>Write SQL queries for the following:</strong></p>
+
+<ol type="a">
+
+<li>Display students whose names start with <b>S</b>.</li>
+
+<li>Display students whose names end with <b>a</b>.</li>
+
+<li>Display students whose names contain <b>in</b>.</li>
+
+<li>Display students whose address starts with <b>K</b>.</li>
+
+<li>Display students whose names have exactly five letters.</li>
+
+<li>Display students whose second letter is <b>u</b>.</li>
+
+<li>Display students whose address ends with <b>ra</b>.</li>
+
+<li>Display students whose names start with <b>D</b>.</li>
+
+<li>Display students whose names contain the letter <b>m</b>.</li>
+
+<li>Display students whose names end with <b>sh</b>.</li>
+
+</ol>
+
+</div>
+
+<footer>© 2025 Learn SQL – Wildcards Tutorial</footer>
+
+</body>
+</html>
+
