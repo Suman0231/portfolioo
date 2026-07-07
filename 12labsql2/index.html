@@ -388,8 +388,169 @@ WHERE Name LIKE '_u%';
 </div>
 
 <hr>
+    <hr>
 
-<h2>5. Common Wildcard Patterns</h2>
+<h2>5. Using [ ] Wildcard</h2>
+
+<p><b>[ ]</b> matches any single character inside the brackets.</p>
+
+<h3>Example: Names starting with S or D</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE '[SD]%';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Suresh</td>
+<td>Pokhara</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>6. Using [^ ] Wildcard</h2>
+
+<p><b>[^ ]</b> matches any single character that is NOT inside the brackets.</p>
+
+<h3>Example: Names not starting with S</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE '[^S]%';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+<hr>
+
+<h2>7. Using - (Range) Wildcard</h2>
+
+<p><b>-</b> specifies a range of characters inside square brackets.</p>
+
+<h3>Example: Names starting with letters A to H</h3>
+
+<pre>
+SELECT *
+FROM students
+WHERE Name LIKE '[A-H]%';
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+</tr>
+
+</table>
+
+</div>
+<hr>
+
+<h2>8. Escaping Wildcards</h2>
+
+<p>Sometimes you need to search for the actual wildcard characters such as <b>%</b> or <b>_</b>. In SQL Server, this can be done using an escape character.</p>
+
+<h3>Example: Search for values containing %</h3>
+
+<pre>
+SELECT *
+FROM Products
+WHERE ProductName LIKE '%\%%' ESCAPE '\';
+</pre>
+
+<p><b>Explanation:</b> The backslash (<code>\</code>) tells SQL that the next character (<code>%</code>) should be treated as a normal character instead of a wildcard.</p>
+<h2>9. Common Wildcard Patterns</h2>
 
 <table>
 
@@ -423,7 +584,29 @@ WHERE Name LIKE '_u%';
 <td>Second letter is u</td>
 </tr>
 
+<tr>
+<td>'[SD]%'</td>
+<td>Starts with S or D</td>
+</tr>
+
+<tr>
+<td>'[^S]%'</td>
+<td>Does not start with S</td>
+</tr>
+
+<tr>
+<td>'[A-H]%'</td>
+<td>Starts with letters A to H</td>
+</tr>
+
+<tr>
+<td>'%\%%' ESCAPE '\'</td>
+<td>Contains the % character</td>
+</tr>
+
 </table>
+
+
 
 <hr>
 
@@ -452,6 +635,13 @@ WHERE Name LIKE '_u%';
 <li>Display students whose names contain the letter <b>m</b>.</li>
 
 <li>Display students whose names end with <b>sh</b>.</li>
+<li>Display students whose names start with S or D.</li>
+
+<li>Display students whose names do not start with S.</li>
+
+<li>Display students whose names start with letters A to H.</li>
+
+<li>Write a query to search for the % character using ESCAPE.</li>
 
 </ol>
 
