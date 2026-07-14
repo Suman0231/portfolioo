@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn MySQL – Aggregate Functions</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    margin:0;
+    padding:0;
+    line-height:1.6;
+}
+header{
+    background:#003366;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+}
+.container{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+h2{
+    color:#003366;
+    border-left:4px solid #003366;
+    padding-left:10px;
+    margin-top:40px;
+}
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:5px;
+    overflow-x:auto;
+}
+.output-box{
+    background:#e8f0fe;
+    border-left:5px solid #003366;
+    padding:15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+table{
+    border-collapse:collapse;
+    width:100%;
+    margin-top:10px;
+}
+table,th,td{
+    border:1px solid #333;
+}
+th,td{
+    padding:10px;
+    text-align:left;
+}
+th{
+    background:#003366;
+    color:white;
+}
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>MySQL Tutorial – Aggregate Functions</header>
+
+<div class="container">
+
+<h2>1. What are Aggregate Functions?</h2>
+
+<ul>
+<li>Aggregate functions perform calculations on multiple rows.</li>
+<li>They return a single value as the result.</li>
+<li>Aggregate functions are commonly used with the <b>SELECT</b> statement.</li>
+<li>They are often combined with the <b>GROUP BY</b> clause.</li>
+<li>Common aggregate functions are:
+<ul>
+<li><b>COUNT()</b></li>
+<li><b>SUM()</b></li>
+<li><b>AVG()</b></li>
+<li><b>MAX()</b></li>
+<li><b>MIN()</b></li>
+</ul>
+</li>
+</ul>
+
+<hr>
+
+<h2>2. Students Table</h2>
+
+<table>
+
+<tr>
+<th>Roll_Number</th>
+<th>Name</th>
+<th>Address</th>
+<th>Grade</th>
+<th>Marks</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dinesh</td>
+<td>Kathmandu</td>
+<td>11</td>
+<td>82</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Suresh</td>
+<td>Pokhara</td>
+<td>12</td>
+<td>74</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Sumina</td>
+<td>Kathmandu</td>
+<td>12</td>
+<td>91</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Himal</td>
+<td>Dharan</td>
+<td>11</td>
+<td>68</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Sangita</td>
+<td>Palpa</td>
+<td>11</td>
+<td>87</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>3. COUNT() Function</h2>
+
+<p><b>COUNT()</b> returns the total number of rows.</p>
+
+<pre>
+SELECT COUNT(*) AS Total_Students
+FROM students;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+<tr>
+<th>Total_Students</th>
+</tr>
+<tr>
+<td>5</td>
+</tr>
+</table>
+
+</div>
+
+<hr>
+
+<h2>4. SUM() Function</h2>
+
+<p><b>SUM()</b> returns the total of a numeric column.</p>
+
+<pre>
+SELECT SUM(Marks) AS Total_Marks
+FROM students;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Total_Marks</th>
+</tr>
+
+<tr>
+<td>402</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>5. AVG() Function</h2>
+
+<p><b>AVG()</b> returns the average value.</p>
+
+<pre>
+SELECT AVG(Marks) AS Average_Marks
+FROM students;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Average_Marks</th>
+</tr>
+
+<tr>
+<td>80.4</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>6. MAX() Function</h2>
+
+<p><b>MAX()</b> returns the highest value.</p>
+
+<pre>
+SELECT MAX(Marks) AS Highest_Marks
+FROM students;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Highest_Marks</th>
+</tr>
+
+<tr>
+<td>91</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>7. MIN() Function</h2>
+
+<p><b>MIN()</b> returns the smallest value.</p>
+
+<pre>
+SELECT MIN(Marks) AS Lowest_Marks
+FROM students;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Lowest_Marks</th>
+</tr>
+
+<tr>
+<td>68</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>8. GROUP BY Clause</h2>
+
+<p>The <b>GROUP BY</b> clause groups rows having the same value.</p>
+
+<pre>
+SELECT Grade,
+COUNT(*) AS Total_Students
+FROM students
+GROUP BY Grade;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Grade</th>
+<th>Total_Students</th>
+</tr>
+
+<tr>
+<td>11</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>2</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>9. SUM() with GROUP BY</h2>
+
+<pre>
+SELECT Grade,
+SUM(Marks) AS Total_Marks
+FROM students
+GROUP BY Grade;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Grade</th>
+<th>Total_Marks</th>
+</tr>
+
+<tr>
+<td>11</td>
+<td>237</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>165</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>10. AVG() with GROUP BY</h2>
+
+<pre>
+SELECT Grade,
+AVG(Marks) AS Average_Marks
+FROM students
+GROUP BY Grade;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Grade</th>
+<th>Average_Marks</th>
+</tr>
+
+<tr>
+<td>11</td>
+<td>79.0</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>82.5</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>11. HAVING Clause</h2>
+
+<p><b>HAVING</b> filters grouped records.</p>
+
+<pre>
+SELECT Grade,
+COUNT(*) AS Total_Students
+FROM students
+GROUP BY Grade
+HAVING COUNT(*) > 2;
+</pre>
+
+<div class="output-box">
+
+<b>Output</b>
+
+<table>
+
+<tr>
+<th>Grade</th>
+<th>Total_Students</th>
+</tr>
+
+<tr>
+<td>11</td>
+<td>3</td>
+</tr>
+
+</table>
+
+</div>
+
+<hr>
+
+<h2>12. Common Aggregate Functions</h2>
+
+<table>
+
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>COUNT()</td>
+<td>Counts the number of rows</td>
+</tr>
+
+<tr>
+<td>SUM()</td>
+<td>Returns the total value</td>
+</tr>
+
+<tr>
+<td>AVG()</td>
+<td>Returns the average value</td>
+</tr>
+
+<tr>
+<td>MAX()</td>
+<td>Returns the highest value</td>
+</tr>
+
+<tr>
+<td>MIN()</td>
+<td>Returns the lowest value</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>YOUR TASK</h2>
+
+<p><strong>Write SQL queries for the following:</strong></p>
+
+<ol type="a">
+
+<li>Count the total number of students.</li>
+
+<li>Find the total marks of all students.</li>
+
+<li>Find the average marks of all students.</li>
+
+<li>Find the highest marks.</li>
+
+<li>Find the lowest marks.</li>
+
+<li>Count the number of students in each grade.</li>
+
+<li>Find the total marks of each grade.</li>
+
+<li>Find the average marks of each grade.</li>
+
+<li>Display the highest marks in Grade 11.</li>
+
+<li>Display the lowest marks in Grade 12.</li>
+
+<li>Count the number of students from Kathmandu.</li>
+
+<li>Display grades having more than 2 students.</li>
+
+<li>Display grades whose average marks are greater than 80.</li>
+
+<li>Find the total marks scored by Grade 11 students.</li>
+
+</ol>
+
+</div>
+
+<footer>© 2025 Learn MySQL – Aggregate Functions Tutorial</footer>
+
+</body>
+</html>
+
