@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MS-DOS Tutorial</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Courier New", monospace;
+      background: #050505;
+      color: #00ff66;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: #001a0a;
+      border-bottom: 2px solid #00ff66;
+      padding: 25px 10%;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      text-shadow: 0 0 10px #00ff66;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      color: #8affb2;
+    }
+
+    /* Navigation */
+    nav {
+      background: #000;
+      border-bottom: 1px solid #00aa44;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #00ff66;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: white;
+      text-shadow: 0 0 8px #00ff66;
+    }
+
+    /* Main container */
+    main {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    /* Intro */
+    .hero {
+      border: 1px solid #00ff66;
+      padding: 30px;
+      background: #001108;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.1);
+      margin-bottom: 35px;
+    }
+
+    .hero h2 {
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #b4ffc9;
+    }
+
+    /* Command cards */
+    .command {
+      background: #001108;
+      border: 1px solid #006622;
+      margin: 25px 0;
+      padding: 25px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .command:hover {
+      border-color: #00ff66;
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .command h3 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .command h3 span {
+      color: #00ff66;
+    }
+
+    .command p {
+      color: #b4ffc9;
+      margin: 8px 0;
+    }
+
+    /* Code blocks */
+    pre {
+      background: #000;
+      border-left: 4px solid #00ff66;
+      padding: 15px;
+      margin: 15px 0;
+      overflow-x: auto;
+      color: #00ff66;
+    }
+
+    .output {
+      color: #aaa;
+    }
+
+    /* Syntax */
+    .syntax {
+      color: #ffff66;
+    }
+
+    /* Task section */
+    .task {
+      margin-top: 50px;
+      background: #101000;
+      border: 2px solid #ffff00;
+      padding: 30px;
+      color: #ffff66;
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.08);
+    }
+
+    .task h2 {
+      color: #ffff00;
+      margin-bottom: 15px;
+    }
+
+    .task ol {
+      padding-left: 25px;
+    }
+
+    .task li {
+      margin: 10px 0;
+    }
+
+    .warning {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ff9900;
+      color: #ffbb55;
+      background: #1a0d00;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      border-top: 1px solid #006622;
+      color: #5cff91;
+    }
+
+    /* Cursor effect */
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 18px;
+      background: #00ff66;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 1.7rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px;
+      }
+
+      main {
+        width: 94%;
+      }
+
+      .command {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>MS-DOS COMMAND LINE</h1>
+    <p>Complete Beginner's Tutorial <span class="cursor"></span></p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#intro">Introduction</a>
+    <a href="#commands">Commands</a>
+    <a href="#task">Final Task</a>
+  </nav>
+
+  <main>
+
+    <!-- Introduction -->
+    <section id="intro" class="hero">
+      <h2>Welcome to MS-DOS</h2>
+
+      <p>
+        MS-DOS stands for <strong>Microsoft Disk Operating System</strong>.
+        It is a command-line operating system where users interact with
+        the computer by typing commands instead of clicking graphical menus.
+      </p>
+
+      <p>
+        In this tutorial, you will learn the most important DOS commands,
+        what they do, their syntax, and practical examples.
+      </p>
+
+      <br>
+
+      <p>
+        Example DOS prompt:
+      </p>
+
+      <pre>C:\&gt;_</pre>
+    </section>
+
+
+    <!-- Commands -->
+    <section id="commands">
+
+      <h2>MS-DOS Commands</h2>
+
+
+      <!-- DIR -->
+      <article class="command">
+        <h3><span>01.</span> DIR</h3>
+
+        <p>
+          <strong>DIR</strong> is used to display files and folders
+          inside the current directory.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; DIR</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; DIR
+
+Volume in drive C is DOS
+Directory of C:\
+
+MYFILES
+NOTES.TXT
+PHOTO.JPG
+PROGRAMS
+
+4 File(s)</pre>
+
+        <p>
+          You can also use options such as <strong>/P</strong> to display
+          results page by page.
+        </p>
+
+        <pre>C:\&gt; DIR /P</pre>
+      </article>
+
+
+      <!-- CD -->
+      <article class="command">
+        <h3><span>02.</span> CD</h3>
+
+        <p>
+          <strong>CD</strong> means Change Directory. It is used to
+          move from one folder to another.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; CD foldername</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; CD DOCUMENTS
+
+C:\DOCUMENTS&gt;</pre>
+
+        <p>
+          To move one level back:
+        </p>
+
+        <pre>C:\DOCUMENTS&gt; CD ..
+
+C:\&gt;</pre>
+      </article>
+
+
+      <!-- MD -->
+      <article class="command">
+        <h3><span>03.</span> MD / MKDIR</h3>
+
+        <p>
+          <strong>MD</strong> means Make Directory. It creates a new folder.
+          <strong>MKDIR</strong> can also be used.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; MD foldername</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; MD PROJECT
+
+C:\&gt; DIR
+
+PROJECT</pre>
+
+        <p>
+          A folder named <strong>PROJECT</strong> has now been created.
+        </p>
+      </article>
+
+
+      <!-- RD -->
+      <article class="command">
+        <h3><span>04.</span> RD / RMDIR</h3>
+
+        <p>
+          <strong>RD</strong> means Remove Directory. It deletes an empty
+          directory.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; RD foldername</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; RD PROJECT</pre>
+
+        <p>
+          The PROJECT directory will be removed if it is empty.
+        </p>
+      </article>
+
+
+      <!-- COPY -->
+      <article class="command">
+        <h3><span>05.</span> COPY</h3>
+
+        <p>
+          The <strong>COPY</strong> command copies one or more files
+          to another location.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; COPY source destination</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; COPY NOTES.TXT BACKUP.TXT
+
+        1 file(s) copied.</pre>
+
+        <p>
+          This creates a copy of NOTES.TXT called BACKUP.TXT.
+        </p>
+      </article>
+
+
+      <!-- DEL -->
+      <article class="command">
+        <h3><span>06.</span> DEL</h3>
+
+        <p>
+          <strong>DEL</strong> deletes a file from the current directory.
+          <strong>ERASE</strong> is another name for this command.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; DEL filename</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; DEL OLD.TXT</pre>
+
+        <p>
+          The OLD.TXT file will be deleted.
+        </p>
+      </article>
+
+
+      <!-- REN -->
+      <article class="command">
+        <h3><span>07.</span> REN</h3>
+
+        <p>
+          <strong>REN</strong> means Rename. It changes the name of a file.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; REN oldname newname</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; REN NOTES.TXT CLASS.TXT</pre>
+
+        <p>
+          NOTES.TXT will now be named CLASS.TXT.
+        </p>
+      </article>
+
+
+      <!-- TYPE -->
+      <article class="command">
+        <h3><span>08.</span> TYPE</h3>
+
+        <p>
+          The <strong>TYPE</strong> command displays the contents of a
+          text file directly in the command prompt.
+        </p>
+
+        <p class="syntax">Syntax:</p>
+
+        <pre>C:\&gt; TYPE filename.txt</pre>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; TYPE NOTES.TXT
+
+Welcome to my DOS tutorial.
+This is my first text file.</pre>
+      </article>
+
+
+      <!-- CLS -->
+      <article class="command">
+        <h3><span>09.</span> CLS</h3>
+
+        <p>
+          <strong>CLS</strong> means Clear Screen. It removes the previous
+          commands and output from the screen.
+        </p>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; CLS</pre>
+
+        <p>
+          The command prompt will be cleared.
+        </p>
+      </article>
+
+
+      <!-- DATE -->
+      <article class="command">
+        <h3><span>10.</span> DATE</h3>
+
+        <p>
+          The <strong>DATE</strong> command displays or changes the
+          system date.
+        </p>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; DATE
+
+Current date is Tue 09-01-2026
+Enter new date:</pre>
+
+        <p>
+          Press Enter to keep the current date.
+        </p>
+      </article>
+
+
+      <!-- TIME -->
+      <article class="command">
+        <h3><span>11.</span> TIME</h3>
+
+        <p>
+          The <strong>TIME</strong> command displays or changes the
+          system time.
+        </p>
+
+        <pre>C:\&gt; TIME
+
+Current time is 07:30:00
+Enter new time:</pre>
+      </article>
+
+
+      <!-- VER -->
+      <article class="command">
+        <h3><span>12.</span> VER</h3>
+
+        <p>
+          <strong>VER</strong> displays the DOS version.
+        </p>
+
+        <pre>C:\&gt; VER
+
+MS-DOS Version 6.22</pre>
+      </article>
+
+
+      <!-- VOL -->
+      <article class="command">
+        <h3><span>13.</span> VOL</h3>
+
+        <p>
+          <strong>VOL</strong> displays the volume label and serial number
+          of a disk.
+        </p>
+
+        <pre>C:\&gt; VOL
+
+Volume in drive C is DOS
+Volume Serial Number is 1234-ABCD</pre>
+      </article>
+
+
+      <!-- HELP -->
+      <article class="command">
+        <h3><span>14.</span> HELP</h3>
+
+        <p>
+          <strong>HELP</strong> provides information about DOS commands.
+        </p>
+
+        <p>Example:</p>
+
+        <pre>C:\&gt; HELP</pre>
+
+        <p>
+          You can also ask for help about a specific command.
+        </p>
+
+        <pre>C:\&gt; HELP DIR</pre>
+      </article>
+
+
+      <!-- EXIT -->
+      <article class="command">
+        <h3><span>15.</span> EXIT</h3>
+
+        <p>
+          <strong>EXIT</strong> closes the DOS command interpreter or
+          command prompt session.
+        </p>
+
+        <pre>C:\&gt; EXIT</pre>
+      </article>
+
+    </section>
+
+
+    <!-- Final Task -->
+    <section id="task" class="task">
+
+      <h2>📝 Final Practical Task</h2>
+
+      <p>
+        Now it is your turn. Complete the following exercise using
+        a DOS command prompt.
+      </p>
+
+      <br>
+
+      <ol>
+        <li>Open a DOS/command prompt.</li>
+
+        <li>Display the current directory using <strong>DIR</strong>.</li>
+
+        <li>Create a folder called <strong>DOSLAB</strong> using <strong>MD</strong>.</li>
+
+        <li>Enter the DOSLAB folder using <strong>CD</strong>.</li>
+
+        <li>Create another folder called <strong>BACKUP</strong>.</li>
+
+        <li>Create a text file named <strong>NOTES.TXT</strong>.</li>
+
+        <li>Display the contents of NOTES.TXT using <strong>TYPE</strong>.</li>
+
+        <li>Make a copy of NOTES.TXT called <strong>MYNOTES.TXT</strong>.</li>
+
+        <li>Rename MYNOTES.TXT to <strong>FINAL.TXT</strong>.</li>
+
+        <li>Use <strong>DIR</strong> to verify your files.</li>
+
+        <li>Delete FINAL.TXT using <strong>DEL</strong>.</li>
+
+        <li>Go back to the parent directory using <strong>CD ..</strong>.</li>
+      </ol>
+
+      <div class="warning">
+        ⚠️ <strong>Safety Tip:</strong>
+        Be careful when practicing commands such as DEL and RD.
+        They can remove files or directories. For learning, use a
+        dedicated practice folder rather than important personal files.
+      </div>
+
+      <br>
+
+      <p>
+        <strong>Challenge:</strong>
+        Can you complete the entire task without looking back at
+        the command explanations?
+      </p>
+
+    </section>
+
+  </main>
+
+
+  
+
+
+  <!-- Footer -->
+  <footer>
+    <p>MS-DOS Tutorial © 2026</p>
+    <p>Learn • Practice • Master the Command Line</p>
+  </footer>
+
+</body>
+</html>
+
+
+
+
