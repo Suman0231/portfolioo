@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Union in C</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      margin-bottom: 25px;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h2 {
+      color: #6d28d9;
+      margin-bottom: 12px;
+      font-size: 25px;
+    }
+
+    .card h3 {
+      color: #4f46e5;
+      margin: 18px 0 8px;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      margin: 10px 0 15px 22px;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    code {
+      background: #f1eefe;
+      color: #be123c;
+      padding: 3px 7px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+	.code-container {
+  position: relative;
+  margin-top: 15px;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.copy-btn:hover {
+  background: #6d28d9;
+}
+
+.code-container pre {
+  margin-top: 0;
+  padding-top: 45px;
+}
+
+
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-top: 15px;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .example-title {
+      margin-top: 18px;
+      color: #475569;
+      font-weight: bold;
+    }
+
+    .note {
+      background: #f5f3ff;
+      border-left: 4px solid #7c3aed;
+      padding: 12px 15px;
+      margin-top: 15px;
+      border-radius: 4px;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 12px 15px;
+      margin-top: 15px;
+      border-radius: 4px;
+    }
+
+    .memory-box {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .memory-item {
+      flex: 1;
+      min-width: 120px;
+      padding: 15px;
+      text-align: center;
+      border: 2px solid #8b5cf6;
+      border-radius: 8px;
+      background: #faf5ff;
+    }
+
+    .memory-item strong {
+      display: block;
+      color: #6d28d9;
+      margin-bottom: 5px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 750px;
+    }
+
+    th,
+    td {
+      padding: 13px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #6d28d9;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Union in C</h1>
+    <p>Understanding Union, Memory Sharing and Its Difference from Structure</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Introduction -->
+    <section class="card">
+      <h2>1. What is a Union in C?</h2>
+
+      <p>
+        A <strong>union</strong> is a user-defined data type in C that allows
+        different members to share the <strong>same memory location</strong>.
+      </p>
+
+      <p>
+        Unlike a structure, where every member gets its own memory,
+        all members of a union use the same memory area.
+      </p>
+
+      <div class="note">
+        <strong>Key idea:</strong>
+        A union can store a value for only one member at a time.
+        When a new member is assigned a value, the previously stored
+        value may be overwritten.
+      </div>
+    </section>
+
+
+    <!-- Syntax -->
+    <section class="card">
+      <h2>2. Union Syntax</h2>
+
+      <p>
+        The general syntax for declaring a union is:
+      </p>
+
+      <pre>
+union union_name {
+    data_type member1;
+    data_type member2;
+    data_type member3;
+};</pre>
+
+      <p class="example-title">Example:</p>
+
+      <pre>
+union Data {
+    int number;
+    float decimal;
+    char character;
+};</pre>
+
+      <p>
+        A variable of this union type can then be declared as:
+      </p>
+
+      <pre>
+union Data d;</pre>
+    </section>
+
+
+    <!-- Need of Union -->
+    <section class="card">
+      <h2>3. Why Do We Need Union Despite Having Structure?</h2>
+
+      <p>
+        Structures and unions both allow us to group different data types
+        under one name. However, they have different memory behavior.
+      </p>
+
+      <p>
+        A structure allocates separate memory for every member. A union
+        shares one memory location among all members.
+      </p>
+
+      <h3>Example Situation</h3>
+
+      <p>
+        Suppose a program needs to store a value that can be an
+        <strong>integer, floating-point number, or character</strong>,
+        but only one type is needed at a particular time.
+      </p>
+
+      <p>
+        Using a structure would allocate memory for all three values.
+        A union can use the same memory for all three.
+      </p>
+
+      <pre>
+struct Data {
+    int number;
+    float decimal;
+    char character;
+};
+
+union DataUnion {
+    int number;
+    float decimal;
+    char character;
+};</pre>
+
+      <div class="note">
+        <strong>Union is useful when:</strong>
+        different types of data are needed at different times and
+        saving memory is important.
+      </div>
+    </section>
+
+
+    <!-- Basic Union Example -->
+    <section class="card">
+      <h2>4. Simple Union Example</h2>
+
+      <p>
+        The following program demonstrates how a union is declared,
+        initialized and accessed.
+      </p>
+<div class="code-container">
+
+  <button class="copy-btn" onclick="copyCode(this)">
+    Copy
+  </button>
+
+  
+      <pre>
+#include &lt;stdio.h&gt;
+
+union Data {
+    int number;
+    float decimal;
+    char character;
+};
+
+int main() {
+
+    union Data data;
+
+    data.number = 100;
+
+    printf("Number = %d\n", data.number);
+
+    return 0;
+}</pre>
+</div>
+      <p class="example-title">Output:</p>
+
+      <pre>
+Number = 100</pre>
+    </section>
+
+
+    <!-- Overwriting -->
+    <section class="card">
+      <h2>5. Union Member Data Can Be Overwritten</h2>
+
+      <p>
+        All members of a union share the same memory. Therefore, assigning
+        a value to one member changes the contents of that shared memory.
+      </p>
+<div class="code-container">
+
+  <button class="copy-btn" onclick="copyCode(this)">
+    Copy
+  </button>
+
+  
+      <pre>
+#include &lt;stdio.h&gt;
+
+union Data {
+    int number;
+    float decimal;
+    char character;
+};
+
+int main() {
+
+    union Data data;
+
+    data.number = 100;
+
+    printf("Number = %d\n", data.number);
+
+    data.decimal = 25.5;
+
+    printf("Decimal = %.2f\n", data.decimal);
+
+    return 0;
+}</pre>
+</div>
+      <p class="example-title">Output:</p>
+
+      <pre>
+Number = 100
+Decimal = 25.50</pre>
+
+      <div class="warning">
+        <strong>Important:</strong>
+        After assigning <code>data.decimal</code>, the union's shared
+        storage now contains the representation of the floating-point
+        value. The previously stored <code>data.number</code> value should
+        no longer be treated as the active member.
+      </div>
+
+      <h3>Another Example</h3>
+<div class="code-container">
+
+  <button class="copy-btn" onclick="copyCode(this)">
+    Copy
+  </button>
+
+  
+      <pre>
+#include &lt;stdio.h&gt;
+
+union Test {
+    int x;
+    char c;
+};
+
+int main() {
+
+    union Test t;
+
+    t.x = 65;
+    printf("x = %d\n", t.x);
+
+    t.c = 'A';
+    printf("c = %c\n", t.c);
+
+    return 0;
+}</pre>
+</div>
+      <div class="note">
+        <strong>Remember:</strong>
+        A union does not keep independent values for all its members.
+        It provides one shared storage area.
+      </div>
+    </section>
+
+
+    <!-- Memory Allocation -->
+    <section class="card">
+      <h2>6. Memory Allocation in Structure and Union</h2>
+
+      <p>
+        The most important difference between a structure and a union
+        is how memory is allocated.
+      </p>
+
+      <h3>Structure Memory</h3>
+
+      <p>
+        In a structure, every member generally requires its own storage.
+        Padding and alignment can also affect the final size.
+      </p>
+
+      <pre>
+struct Example {
+    int a;
+    float b;
+    char c;
+};</pre>
+
+      <p>
+        Conceptually, the memory looks like:
+      </p>
+
+      <div class="memory-box">
+        <div class="memory-item">
+          <strong>int a</strong>
+          Separate storage
+        </div>
+
+        <div class="memory-item">
+          <strong>float b</strong>
+          Separate storage
+        </div>
+
+        <div class="memory-item">
+          <strong>char c</strong>
+          Separate storage
+        </div>
+      </div>
+
+      <h3>Union Memory</h3>
+
+      <p>
+        In a union, all members start at the same memory address.
+        The union must be large enough to hold its largest member,
+        with alignment potentially affecting its size.
+      </p>
+
+      <pre>
+union Example {
+    int a;
+    float b;
+    char c;
+};</pre>
+
+      <p>
+        Conceptually, the memory looks like:
+      </p>
+
+      <div class="memory-box">
+        <div class="memory-item">
+          <strong>Shared Memory</strong>
+          int a
+          <br>
+          float b
+          <br>
+          char c
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Key point:</strong>
+        The size of a union is based on its largest member, subject to
+        alignment requirements. The size of a structure is generally
+        enough for all of its members plus any required padding.
+      </div>
+    </section>
+
+
+    <!-- Sizeof -->
+    <section class="card">
+      <h2>7. sizeof Structure and Union</h2>
+
+      <p>
+        We can use the <code>sizeof</code> operator to find the amount of
+        storage occupied by a structure or union.
+      </p>
+
+     <div class="code-container">
+
+  <button class="copy-btn" onclick="copyCode(this)">
+    Copy
+  </button>
+
+  <pre>
+#include &lt;stdio.h&gt;
+
+struct Example {
+    int a;
+    float b;
+    char c;
+};
+
+union ExampleUnion {
+    int a;
+    float b;
+    char c;
+};
+
+int main() {
+
+    printf("Size of structure = %lu bytes\n",
+           sizeof(struct Example));
+
+    printf("Size of union = %lu bytes\n",
+           sizeof(union ExampleUnion));
+
+    return 0;
+}</pre>
+</div>
+      <p class="example-title">Typical result on many systems:</p>
+
+      <pre>
+Size of structure = 12 bytes
+Size of union = 4 bytes</pre>
+
+      <div class="warning">
+        <strong>Note:</strong>
+        The exact size is implementation-dependent. Padding, alignment,
+        and the sizes of C data types can cause different results on
+        different systems and compilers.
+      </div>
+    </section>
+
+
+    <!-- Structure vs Union -->
+    <section class="card">
+      <h2>8. Structure vs Union</h2>
+
+      <p>
+        The syntax of a structure and union is very similar, but their
+        memory behavior is different.
+      </p>
+
+      <h3>Structure Syntax</h3>
+
+      <pre>
+struct Student {
+    int roll;
+    float marks;
+    char grade;
+};</pre>
+
+      <h3>Union Syntax</h3>
+
+      <pre>
+union Student {
+    int roll;
+    float marks;
+    char grade;
+};</pre>
+
+      <p>
+        In the structure, all three members can contain meaningful values
+        at the same time. In the union, the members share the same storage,
+        so only one member should generally be treated as the currently
+        stored value.
+      </p>
+    </section>
+
+
+    <!-- Comparison Table -->
+    <section class="card">
+      <h2>9. Difference Between Structure and Union</h2>
+
+      <div class="table-container">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Structure</th>
+              <th>Union</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>Keyword</td>
+              <td><code>struct</code></td>
+              <td><code>union</code></td>
+            </tr>
+
+            <tr>
+              <td>Memory allocation</td>
+              <td>Separate storage for members</td>
+              <td>Shared storage for all members</td>
+            </tr>
+
+            <tr>
+              <td>Member addresses</td>
+              <td>Members generally have different addresses</td>
+              <td>Members have the same starting address</td>
+            </tr>
+
+            <tr>
+              <td>Size</td>
+              <td>The total Size of Structure is the sum of the size of all its members <b>plus padding</b></td>
+              <td>The total size of a union is the size of its largest member</td>
+            </tr>
+
+            <tr>
+              <td>Values</td>
+              <td>All members can hold values simultaneously</td>
+              <td>Writing values to a new member overwrites the previous member values.</td>
+            </tr>
+
+            <tr>
+              <td>Memory efficiency</td>
+              <td>Uses more memory </td>
+              <td>Saves memory </td>
+            </tr>
+
+            <tr>
+              <td>Use case</td>
+              <td>When all related data is needed together</td>
+              <td>When only one data is needed at a time</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+
+
+    <!-- Final Summary -->
+    <section class="card">
+      <h2>10. Quick Summary</h2>
+
+      <ul>
+        <li>A union is a user-defined data type in C.</li>
+        <li>All union members share the same memory location.</li>
+        <li>The size of a union is generally based on its largest member.</li>
+        <li>Assigning one member changes the shared storage.</li>
+        <li>A structure gives separate storage to its members.</li>
+        <li>A union can reduce memory usage when only one member is needed at a time.</li>
+        <li>Use a structure when all members need to store values simultaneously.</li>
+        <li>Use a union when different types can share the same storage.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>C Programming — Union and Structure</p>
+  </footer>
+
+</body>
+<script>
+document.querySelectorAll("pre").forEach(function(pre) {
+
+  // Create container
+  const container = document.createElement("div");
+  container.className = "code-container";
+
+  // Create copy button
+  const button = document.createElement("button");
+  button.className = "copy-btn";
+  button.innerText = "Copy";
+
+  // Put pre inside container
+  pre.parentNode.insertBefore(container, pre);
+  container.appendChild(button);
+  container.appendChild(pre);
+
+  // Copy functionality
+  button.addEventListener("click", function() {
+
+    navigator.clipboard.writeText(pre.innerText).then(function() {
+
+      button.innerText = "Copied!";
+
+      setTimeout(function() {
+        button.innerText = "Copy";
+      }, 1500);
+
+    });
+  });
+
+});
+</script>
+
+</html>
