@@ -1,0 +1,2007 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>✨ Happy Dashain & Tihar! ✨</title> <style>
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+background:
+radial-gradient(circle at 20% 20%, #5b006e 0%, transparent 35%),
+radial-gradient(circle at 80% 80%, #8b0000 0%, transparent 40%),
+linear-gradient(135deg, #12001f, #310033, #650000);
+
+color: #fff;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+min-height: 100vh;
+overflow: hidden;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+text-align: center;
+
+}
+
+/* --------------------------------------------------
+BACKGROUND GLOW
+-------------------------------------------------- */
+
+body::before {
+content: "";
+position: fixed;
+inset: -50%;
+
+background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(255, 215, 0, 0.08),
+    transparent,
+    rgba(255, 102, 0, 0.08),
+    transparent
+);
+
+animation: rotateGlow 15s linear infinite;
+pointer-events: none;
+
+}
+
+@keyframes rotateGlow {
+to {
+transform: rotate(360deg);
+}
+}
+
+/* --------------------------------------------------
+CANVAS
+-------------------------------------------------- */
+
+canvas {
+position: absolute;
+inset: 0;
+
+width: 100%;
+height: 100%;
+
+z-index: 1;
+pointer-events: none;
+
+}
+
+/* --------------------------------------------------
+INTRO
+-------------------------------------------------- */
+
+.intro {
+position: fixed;
+inset: 0;
+
+z-index: 10;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+pointer-events: none;
+
+transition: opacity 1s ease;
+
+}
+
+/* Countdown text */
+
+.intro-text {
+position: absolute;
+
+width: 90%;
+
+text-align: center;
+
+color: #ffd700;
+
+font-size: clamp(2.2rem, 8vw, 4.5rem);
+
+font-weight: 800;
+
+text-shadow:
+    0 0 10px #ffd700,
+    0 0 30px rgba(255, 215, 0, .8),
+    0 0 60px rgba(255, 102, 0, .5);
+
+opacity: 0;
+
+transform: scale(.7);
+
+}
+
+/* Countdown entrance */
+
+.intro-text.show {
+animation:
+introIn 1.2s cubic-bezier(.17,.67,.32,1.3)
+forwards;
+}
+
+/* Countdown exit */
+
+.intro-text.hide {
+animation:
+introOut 1s ease forwards;
+}
+
+@keyframes introIn {
+
+0% {
+    opacity: 0;
+    transform: scale(.7);
+}
+
+60% {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+100% {
+    opacity: 1;
+    transform: scale(1);
+}
+
+}
+
+@keyframes introOut {
+
+0% {
+    opacity: 1;
+    transform: scale(1);
+}
+
+100% {
+    opacity: 0;
+    transform: scale(1.25);
+}
+
+}
+
+/* --------------------------------------------------
+SKIP BUTTON
+-------------------------------------------------- */
+
+.skip-button {
+
+position: absolute;
+
+border: none;
+background: transparent;
+
+color: #ffd700;
+
+font-size: clamp(4rem, 15vw, 8rem);
+
+cursor: pointer;
+
+opacity: 0;
+
+transform: scale(.5);
+
+pointer-events: none;
+
+text-shadow:
+    0 0 10px #ffd700,
+    0 0 30px #ffd700,
+    0 0 60px #ff6600;
+
+transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.17,.67,.32,1.3);
+
+animation:
+    skipPulse 1.5s ease-in-out infinite;
+
+}
+
+.skip-button.show {
+
+opacity: 1;
+
+transform: scale(1);
+
+pointer-events: auto;
+
+}
+
+.skip-button:hover {
+
+transform: scale(1.15);
+
+}
+
+.skip-button:active {
+
+transform: scale(.9);
+
+}
+
+@keyframes skipPulse {
+
+0%, 100% {
+    filter: brightness(1);
+}
+
+50% {
+    filter: brightness(1.5);
+}
+
+}
+
+/* --------------------------------------------------
+MAIN CELEBRATION CARD
+-------------------------------------------------- */
+
+.card {
+
+position: relative;
+
+background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.13),
+    rgba(255,255,255,0.04)
+);
+
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+
+border: 2px solid rgba(255, 215, 0, 0.45);
+
+border-radius: 28px;
+
+padding: 45px 40px;
+
+max-width: 650px;
+
+width: 90%;
+
+z-index: 5;
+
+box-shadow:
+    0 0 30px rgba(255, 215, 0, 0.2),
+    0 0 80px rgba(255, 102, 0, 0.12),
+    inset 0 0 30px rgba(255,255,255,0.04);
+
+opacity: 0;
+
+transform:
+    scale(0.7)
+    translateY(50px);
+
+transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(.17,.67,.32,1.3);
+
+pointer-events: none;
+
+}
+
+.card.show {
+
+opacity: 1;
+
+transform:
+    scale(1)
+    translateY(0);
+
+pointer-events: auto;
+
+}
+
+/* --------------------------------------------------
+CARD DECORATIONS
+-------------------------------------------------- */
+
+.card::before,
+.card::after {
+
+content: "✦";
+
+position: absolute;
+
+color: #ffd700;
+
+font-size: 28px;
+
+text-shadow:
+    0 0 15px #ffd700;
+
+animation:
+    sparkle 1.5s ease-in-out infinite alternate;
+
+}
+
+.card::before {
+
+top: 15px;
+left: 20px;
+
+}
+
+.card::after {
+
+bottom: 15px;
+right: 20px;
+
+animation-delay: .7s;
+
+}
+
+@keyframes sparkle {
+
+from {
+    opacity: .35;
+    transform: scale(.8) rotate(0deg);
+}
+
+to {
+    opacity: 1;
+    transform: scale(1.25) rotate(25deg);
+}
+
+}
+
+/* --------------------------------------------------
+EMOJI
+-------------------------------------------------- */
+
+.emoji {
+
+font-size: 3.2rem;
+
+margin-bottom: 10px;
+
+animation:
+    float 2s ease-in-out infinite;
+
+filter:
+    drop-shadow(
+        0 0 12px
+        rgba(255,215,0,.6)
+    );
+
+}
+
+@keyframes float {
+
+0%, 100% {
+    transform: translateY(0);
+}
+
+50% {
+    transform: translateY(-10px);
+}
+
+}
+
+/* --------------------------------------------------
+HEADINGS
+-------------------------------------------------- */
+
+h1 {
+
+color: #ffd700;
+
+font-size:
+    clamp(2rem, 7vw, 3.2rem);
+
+margin-bottom: 5px;
+
+text-shadow:
+    0 0 8px #ffd700,
+    0 0 25px rgba(255,215,0,.6);
+
+animation:
+    titleGlow 2s ease-in-out infinite alternate;
+
+}
+
+@keyframes titleGlow {
+
+from {
+    text-shadow:
+        0 0 8px #ffd700;
+}
+
+to {
+    text-shadow:
+        0 0 12px #ffd700,
+        0 0 35px #ff6600;
+}
+
+}
+
+h2 {
+
+color: #ff8c00;
+
+font-size:
+    clamp(1.6rem, 5vw, 2.3rem);
+
+margin-bottom: 22px;
+
+text-shadow:
+    0 0 15px rgba(255,102,0,.7);
+
+}
+
+/* --------------------------------------------------
+DIVIDER
+-------------------------------------------------- */
+
+.divider {
+
+width: 180px;
+
+height: 2px;
+
+margin:
+    0 auto 22px;
+
+background:
+    linear-gradient(
+        90deg,
+        transparent,
+        #ffd700,
+        #ff6600,
+        #ffd700,
+        transparent
+    );
+
+box-shadow:
+    0 0 10px #ffd700;
+
+}
+
+/* --------------------------------------------------
+TEXT
+-------------------------------------------------- */
+
+p {
+
+font-size: 1.08rem;
+
+line-height: 1.75;
+
+margin-bottom: 28px;
+
+color: #fff8ed;
+
+}
+
+.wishes {
+
+color: #ffd700;
+
+font-weight: bold;
+
+}
+
+/* --------------------------------------------------
+BUTTON
+-------------------------------------------------- */
+
+.controls {
+
+margin-top: 15px;
+
+}
+
+.btn {
+
+background:
+    linear-gradient(
+        45deg,
+        #ff4d00,
+        #ff9900,
+        #ffd700
+    );
+
+background-size: 200% 200%;
+
+border: none;
+
+padding:
+    14px 30px;
+
+color: #25002e;
+
+font-size: 1rem;
+
+font-weight: 800;
+
+border-radius: 30px;
+
+cursor: pointer;
+
+box-shadow:
+    0 5px 20px rgba(255,102,0,.4),
+    0 0 20px rgba(255,215,0,.2);
+
+transition: .3s;
+
+animation:
+    buttonGlow 3s ease infinite;
+
+}
+
+@keyframes buttonGlow {
+
+0%, 100% {
+    background-position: 0% 50%;
+}
+
+50% {
+    background-position: 100% 50%;
+}
+
+}
+
+.btn:hover {
+
+transform:
+    translateY(-3px)
+    scale(1.05);
+
+box-shadow:
+    0 8px 30px rgba(255,102,0,.6),
+    0 0 30px rgba(255,215,0,.5);
+
+}
+
+.btn:active {
+
+transform:
+    scale(.96);
+
+}
+
+/* --------------------------------------------------
+FOOTER
+-------------------------------------------------- */
+
+.footer {
+
+position: fixed;
+
+bottom: 18px;
+
+left: 0;
+
+width: 100%;
+
+z-index: 5;
+
+color:
+    rgba(255,255,255,.65);
+
+font-size: .8rem;
+
+letter-spacing: 2px;
+
+}
+
+/* --------------------------------------------------
+FLOATING DIYAS
+-------------------------------------------------- */
+
+.diya {
+
+position: fixed;
+
+bottom: -20px;
+
+font-size: 25px;
+
+z-index: 3;
+
+animation:
+    rise 8s linear infinite;
+
+opacity: .8;
+
+pointer-events: none;
+
+}
+
+@keyframes rise {
+
+0% {
+
+    transform:
+        translateY(0)
+        rotate(0deg);
+
+    opacity: 0;
+}
+
+10% {
+    opacity: .9;
+}
+
+90% {
+    opacity: .5;
+}
+
+100% {
+
+    transform:
+        translateY(-110vh)
+        rotate(360deg);
+
+    opacity: 0;
+}
+
+}
+
+/* --------------------------------------------------
+MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+.card {
+    padding: 35px 22px;
+}
+
+p {
+    font-size: .98rem;
+}
+
+.emoji {
+    font-size: 2.5rem;
+}
+
+}
+/* --------------------------------------------------
+   FINAL VIDEO TRANSITION
+-------------------------------------------------- */
+
+#videoTransition {
+    position: fixed;
+    z-index: 10000;
+
+    /* Starting position: bottom-right */
+    right: 30px;
+    bottom: 30px;
+
+    width: 320px;
+    height: 180px;
+
+    background: #000;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    opacity: 0;
+
+    /*
+       Scale from bottom-right corner
+    */
+    transform: scale(0);
+
+    transform-origin: bottom right;
+
+    box-shadow:
+        0 0 30px rgba(255, 215, 0, .5),
+        0 0 80px rgba(255, 102, 0, .35);
+
+    pointer-events: none;
+
+    transition:
+        transform 2.5s cubic-bezier(.17,.67,.32,1.15),
+        opacity .8s ease,
+        border-radius 2.5s ease,
+        width 2.5s ease,
+        height 2.5s ease,
+        right 2.5s ease,
+        bottom 2.5s ease;
+}
+
+
+/* Video itself */
+
+#videoTransition video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/*
+   First stage:
+   small video appears in bottom-right
+*/
+#videoTransition.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/*
+   Second stage:
+   expand to entire screen
+*/
+#videoTransition.expand {
+    right: 0;
+    bottom: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    border-radius: 0;
+
+    transform: scale(1);
+
+    box-shadow: none;
+}
+
+
+/*
+   Fade the entire existing page
+*/
+body.video-mode > *:not(#videoTransition) {
+    transition:
+        opacity 1.5s ease;
+
+}
+
+
+/*
+   Everything except the video gradually disappears.
+*/
+body.video-mode #animationCanvas,
+body.video-mode #intro,
+body.video-mode #wishCard,
+body.video-mode .footer,
+body.video-mode .diya {
+    opacity: 0;
+}
+
+
+/*
+   Optional black background during transition
+*/
+body.video-mode {
+    background: #000;
+}
+
+
+</style> </head> <body>
+<canvas id="animationCanvas"></canvas>
+
+<!-- -------------------------------------------------- INTRO --------------------------------------------------- --> <div class="intro" id="intro">
+<div
+    class="intro-text"
+    id="countdownText"
+>
+    🪁 <span id="daysLeft"></span> Days Until Dashain 🪁
+</div>
+
+<button
+    class="skip-button"
+    id="skipButton"
+    aria-label="Skip to the celebration"
+>Can we skip to the good part? 
+    ⏩
+</button>
+
+</div> <!-- -------------------------------------------------- WISH CARD --------------------------------------------------- --> <div class="card" id="wishCard" >
+<div class="emoji">
+    🪔 🪁 🎆
+</div>
+
+<h1>
+    Happy Vijaya Dashami
+</h1>
+
+<h2>
+    & Deepawali!
+</h2>
+
+<div class="divider"></div>
+
+<p>
+
+    May the divine blessings of Goddess Durga
+    and Goddess Laxmi bring
+
+    <span class="wishes">
+        peace, prosperity, happiness
+    </span>,
+
+    and endless joy to your life.
+
+    <br><br>
+
+    Wishing you and your family a
+
+    <span class="wishes">
+        blessed Dashain
+    </span>
+
+    and a
+
+    <span class="wishes">
+        bright, beautiful Tihar!
+    </span>
+
+    🪔✨
+
+</p>
+
+<div class="controls">
+
+    <button
+        class="btn"
+        id="musicBtn"
+    >
+        🎵 Play Festive Music
+    </button>
+
+</div>
+
+</div> <!-- FOOTER --> <div class="footer">
+✨ शुभ विजयादशमी • शुभ दीपावली ✨
+
+</div> <!-- -------------------------------------------------- MUSIC --------------------------------------------------- --> <!-- Put your music file in the same folder as this HTML file and name it:
+music.mp3
+
+-->
+<!-- --------------------------------------------------
+     FINAL VIDEO
+--------------------------------------------------- -->
+
+<div id="videoTransition">
+
+    <video
+        id="finalVideo"
+        playsinline
+        preload="auto"
+    >
+        <source
+            src="a.mp4"
+            type="video/mp4"
+        >
+    </video>
+
+</div>
+
+<audio
+id="bgMusic"
+loop
+preload="auto"
+>
+<source
+    src="music.mp3"
+    type="audio/mpeg"
+>
+
+</audio> <script>
+ const today = new Date();
+    const dashain = new Date("2026-10-11");
+
+    const difference = dashain- today ;
+    const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
+
+    document.getElementById("daysLeft").textContent = daysLeft;
+/* --------------------------------------------------
+CANVAS SETUP
+-------------------------------------------------- */
+
+const canvas =
+document.getElementById(
+"animationCanvas"
+);
+
+const ctx =
+canvas.getContext("2d");
+
+const wishCard =
+document.getElementById(
+"wishCard"
+);
+
+const countdownText =
+document.getElementById(
+"countdownText"
+);
+
+const skipButton =
+document.getElementById(
+"skipButton"
+);
+
+const music =
+document.getElementById(
+"bgMusic"
+);
+
+const musicBtn =
+document.getElementById(
+"musicBtn"
+);
+const videoTransition =
+document.getElementById(
+    "videoTransition"
+);
+
+const finalVideo =
+document.getElementById(
+    "finalVideo"
+);
+
+let width =
+canvas.width =
+window.innerWidth;
+
+let height =
+canvas.height =
+window.innerHeight;
+
+window.addEventListener(
+"resize",
+() => {
+
+    width =
+        canvas.width =
+        window.innerWidth;
+
+    height =
+        canvas.height =
+        window.innerHeight;
+
+}
+
+);
+/* --------------------------------------------------
+   FINAL VIDEO TRANSITION
+-------------------------------------------------- */
+
+function startFinalVideo() {
+
+    /*
+       Tell the page that we are entering
+       the final video sequence.
+    */
+    document.body.classList.add(
+        "video-mode"
+    );
+
+
+    /*
+       Wait for the existing page to fade.
+       The music is NOT touched here.
+    */
+    setTimeout(() => {
+
+        /*
+           Make the small video appear
+           in the bottom-right corner.
+        */
+        videoTransition.classList.add(
+            "show"
+        );
+
+
+        /*
+           Start the video.
+        */
+        finalVideo.play().catch(
+            error => {
+
+                console.log(
+                    "Video could not be played:",
+                    error
+                );
+
+            }
+        );
+
+
+        /*
+           After the small video has appeared,
+           expand it to fullscreen.
+        */
+        setTimeout(() => {
+
+            videoTransition.classList.add(
+                "expand"
+            );
+
+        }, 500);
+
+
+    }, 1000);
+
+}
+
+/* --------------------------------------------------
+STAGE
+-------------------------------------------------- */
+
+let stage = "kites";
+
+/* --------------------------------------------------
+KITES
+-------------------------------------------------- */
+
+class Kite {
+
+constructor(
+    x,
+    y,
+    size,
+    speedX,
+    speedY,
+    color
+) {
+
+    this.x = x;
+
+    this.y = y;
+
+    this.size = size;
+
+    this.speedX = speedX;
+
+    this.speedY = speedY;
+
+    this.color = color;
+
+    this.sway =
+        Math.random() * 100;
+
+}
+
+update() {
+
+    this.x +=
+        this.speedX +
+        Math.sin(this.sway) * .5;
+
+    this.y +=
+        this.speedY;
+
+    this.sway += .05;
+
+    if (
+        this.x >
+        width + 100
+    ) {
+
+        this.x = -100;
+
+        this.y =
+            Math.random() *
+            height;
+
+    }
+
+}
+
+draw() {
+
+    ctx.save();
+
+    ctx.translate(
+        this.x,
+        this.y
+    );
+
+    ctx.rotate(
+        .1 *
+        Math.sin(this.sway)
+    );
+
+    /* Glow */
+
+    ctx.shadowBlur = 20;
+
+    ctx.shadowColor =
+        this.color;
+
+    /* Kite body */
+
+    ctx.fillStyle =
+        this.color;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        -this.size
+    );
+
+    ctx.lineTo(
+        this.size,
+        0
+    );
+
+    ctx.lineTo(
+        0,
+        this.size
+    );
+
+    ctx.lineTo(
+        -this.size,
+        0
+    );
+
+    ctx.closePath();
+
+    ctx.fill();
+
+    /* Cross */
+
+    ctx.shadowBlur = 0;
+
+    ctx.strokeStyle =
+        "rgba(255,255,255,.75)";
+
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        -this.size
+    );
+
+    ctx.lineTo(
+        0,
+        this.size
+    );
+
+    ctx.moveTo(
+        -this.size,
+        0
+    );
+
+    ctx.lineTo(
+        this.size,
+        0
+    );
+
+    ctx.stroke();
+
+    /* Tail */
+
+    ctx.fillStyle =
+        "#ff3300";
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        this.size
+    );
+
+    ctx.lineTo(
+        -this.size / 3,
+        this.size * 1.5
+    );
+
+    ctx.lineTo(
+        this.size / 3,
+        this.size * 1.5
+    );
+
+    ctx.closePath();
+
+    ctx.fill();
+
+    /* String */
+
+    ctx.strokeStyle =
+        "rgba(255,255,255,.35)";
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        0,
+        this.size
+    );
+
+    ctx.bezierCurveTo(
+
+        Math.sin(this.sway) * 10,
+
+        this.size * 2,
+
+        -Math.sin(this.sway) * 10,
+
+        this.size * 3,
+
+        0,
+
+        this.size * 4
+
+    );
+
+    ctx.stroke();
+
+    ctx.restore();
+
+}
+
+}
+
+/* Kites */
+
+const kites = [
+
+new Kite(
+    -100,
+    height * .55,
+    25,
+    2.5,
+    -1.2,
+    "#ff3300"
+),
+
+new Kite(
+    -300,
+    height * .7,
+    32,
+    2.8,
+    -1.5,
+    "#ffd700"
+),
+
+new Kite(
+    -500,
+    height * .45,
+    22,
+    2.2,
+    -1,
+    "#00ccff"
+),
+
+new Kite(
+    -700,
+    height * .8,
+    28,
+    2.6,
+    -1.4,
+    "#ff00aa"
+)
+
+];
+
+/* --------------------------------------------------
+PARTICLES
+-------------------------------------------------- */
+
+class Particle {
+
+constructor(
+    x,
+    y,
+    color,
+    type = "light"
+) {
+
+    this.x = x;
+
+    this.y = y;
+
+    this.color = color;
+
+    this.type = type;
+
+    /* Fireworks */
+
+    if (
+        type === "firework"
+    ) {
+
+        const angle =
+            Math.random() *
+            Math.PI * 2;
+
+        const speed =
+            Math.random() * 6 + 2;
+
+        this.vx =
+            Math.cos(angle) *
+            speed;
+
+        this.vy =
+            Math.sin(angle) *
+            speed;
+
+        this.alpha = 1;
+
+        this.gravity = .07;
+
+        this.radius =
+            Math.random() * 2 + 1;
+
+    }
+
+    /* Falling paper/confetti */
+
+    else if (
+        type === "confetti"
+    ) {
+
+        this.vx =
+            (Math.random() - .5) * 2;
+
+        /*
+            Slower falling speed
+        */
+
+        this.vy =
+            Math.random() * 1 + .2;
+
+        this.alpha = 1;
+
+        this.radius =
+            Math.random() * 5 + 2;
+
+        this.rotation =
+            Math.random() * 6;
+
+    }
+
+    /* Floating lights */
+
+    else {
+
+        this.vx =
+            (Math.random() - .5) * .5;
+
+        this.vy =
+            -Math.random() * 1 - .5;
+
+        this.alpha =
+            Math.random() * .5 + .5;
+
+        this.radius =
+            Math.random() * 3 + 1;
+
+    }
+
+}
+
+update() {
+
+    this.x += this.vx;
+
+    this.y += this.vy;
+
+    /* Firework gravity */
+
+    if (
+        this.type === "firework"
+    ) {
+
+        this.vy += .07;
+
+        this.alpha -= .015;
+
+    }
+
+    /* Slow falling paper */
+
+    if (
+        this.type === "confetti"
+    ) {
+
+        this.vy += .005;
+
+        this.rotation += .05;
+
+        if (
+            this.y >
+            height + 20
+        ) {
+
+            this.y = -20;
+
+            this.x =
+                Math.random() *
+                width;
+
+        }
+
+    }
+
+    /* Floating lights */
+
+    if (
+        this.type === "light"
+    ) {
+
+        if (
+            this.y < 0
+        ) {
+
+            this.y = height;
+
+        }
+
+    }
+
+}
+
+draw() {
+
+    ctx.save();
+
+    ctx.globalAlpha =
+        this.alpha;
+
+    ctx.fillStyle =
+        this.color;
+
+    ctx.shadowBlur = 12;
+
+    ctx.shadowColor =
+        this.color;
+
+    /* Paper/confetti */
+
+    if (
+        this.type === "confetti"
+    ) {
+
+        ctx.translate(
+            this.x,
+            this.y
+        );
+
+        ctx.rotate(
+            this.rotation
+        );
+
+        ctx.fillRect(
+
+            -this.radius,
+
+            -this.radius / 2,
+
+            this.radius * 2,
+
+            this.radius
+
+        );
+
+    }
+
+    /* Firework / light */
+
+    else {
+
+        ctx.beginPath();
+
+        ctx.arc(
+
+            this.x,
+
+            this.y,
+
+            this.radius,
+
+            0,
+
+            Math.PI * 2
+
+        );
+
+        ctx.fill();
+
+    }
+
+    ctx.restore();
+
+}
+
+}
+
+/* --------------------------------------------------
+PARTICLE CREATION
+-------------------------------------------------- */
+
+const particles = [];
+
+const colors = [
+
+"#ffd700",
+"#ff6600",
+"#ff0055",
+"#00ffcc",
+"#9900ff",
+"#ffffff"
+
+];
+
+/* Floating lights */
+
+for (
+let i = 0;
+i < 70;
+i++
+) {
+
+particles.push(
+
+    new Particle(
+
+        Math.random() * width,
+
+        Math.random() * height,
+
+        "#ffd700",
+
+        "light"
+
+    )
+
+);
+
+}
+
+/* Falling paper */
+
+for (
+let i = 0;
+i < 90;
+i++
+) {
+
+particles.push(
+
+    new Particle(
+
+        Math.random() * width,
+
+        Math.random() * height,
+
+        colors[
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
+        ],
+
+        "confetti"
+
+    )
+
+);
+
+}
+
+/* --------------------------------------------------
+FIREWORKS
+-------------------------------------------------- */
+
+function launchFirework() {
+
+if (
+    Math.random() < .035
+) {
+
+    const x =
+        Math.random() *
+        width;
+
+    const y =
+        Math.random() *
+        height *
+        .45;
+
+    const color =
+        colors[
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
+        ];
+
+    for (
+        let i = 0;
+        i < 55;
+        i++
+    ) {
+
+        particles.push(
+
+            new Particle(
+
+                x,
+                y,
+                color,
+                "firework"
+
+            )
+
+        );
+
+    }
+
+}
+
+}
+
+/* --------------------------------------------------
+FLOATING DIYAS
+-------------------------------------------------- */
+
+function createDiya() {
+
+const diya =
+    document.createElement(
+        "div"
+    );
+
+diya.className =
+    "diya";
+
+diya.innerHTML =
+    "🪔";
+
+diya.style.left =
+    Math.random() * 100 + "%";
+
+diya.style.animationDuration =
+    6 +
+    Math.random() * 5 +
+    "s";
+
+diya.style.fontSize =
+    18 +
+    Math.random() * 18 +
+    "px";
+
+document.body.appendChild(
+    diya
+);
+
+setTimeout(
+    () => diya.remove(),
+    12000
+);
+
+}
+
+/* --------------------------------------------------
+START FESTIVAL
+-------------------------------------------------- */
+
+function startFestival() {
+
+stage = "festival";
+
+/* Hide intro */
+
+document
+    .getElementById("intro")
+    .style.opacity = "0";
+
+/* Show wishes */
+
+setTimeout(() => {
+
+    wishCard.classList.add(
+        "show"
+    );
+
+}, 400);
+
+/* Start floating diyas */
+
+setInterval(
+    createDiya,
+    800
+);
+
+/* Firework burst */
+
+for (
+    let burst = 0;
+    burst < 5;
+    burst++
+) {
+
+    setTimeout(() => {
+
+        const x =
+            width *
+            (.15 +
+            Math.random() * .7);
+
+        const y =
+            height *
+            (.15 +
+            Math.random() * .35);
+
+        const color =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+        for (
+            let i = 0;
+            i < 60;
+            i++
+        ) {
+
+            particles.push(
+
+                new Particle(
+
+                    x,
+                    y,
+                    color,
+                    "firework"
+
+                )
+
+            );
+
+        }
+
+    }, burst * 350);
+
+}
+
+}
+
+/* --------------------------------------------------
+INTRO SEQUENCE
+-------------------------------------------------- */
+
+/*
+Timeline:
+
+0s
+Kites begin
+
+1s
+17 Days Until Dashain appears
+
+3.5s
+Countdown disappears
+
+4s
+⏩ appears
+
+CLICK
+Music starts
+Wishes appear
+Fireworks begin
+
+*/
+
+setTimeout(() => {
+
+countdownText.classList.add(
+    "show"
+);
+
+}, 1000);
+
+setTimeout(() => {
+
+countdownText.classList.remove(
+    "show"
+);
+
+countdownText.classList.add(
+    "hide"
+);
+
+}, 3500);
+
+setTimeout(() => {
+
+countdownText.style.display =
+    "none";
+
+skipButton.classList.add(
+    "show"
+);
+
+}, 4000);
+
+/* --------------------------------------------------
+⏩ CLICK
+-------------------------------------------------- */
+
+skipButton.addEventListener(
+"click",
+async () => {
+
+    /* Prevent double clicking */
+
+    skipButton.style.pointerEvents =
+        "none";
+
+    /* Hide ⏩ */
+
+    skipButton.classList.remove(
+        "show"
+    );
+
+    /* Start music */
+
+    try {
+
+        await music.play();
+
+        musicBtn.innerHTML =
+            "⏸️ Pause Festive Music";
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "Music could not be played:",
+            error
+        );
+
+        musicBtn.innerHTML =
+            "⚠️ Add music.mp3";
+
+    }
+
+    /* Start celebration */
+
+    startFestival();
+ setTimeout(() => {
+
+        startFinalVideo();
+
+    }, 16000);
+
+}
+
+);
+
+/* --------------------------------------------------
+ANIMATION LOOP
+-------------------------------------------------- */
+
+function animate() {
+
+ctx.clearRect(
+    0,
+    0,
+    width,
+    height
+);
+
+if (
+    stage === "kites"
+) {
+
+    kites.forEach(
+        kite => {
+
+            kite.update();
+
+            kite.draw();
+
+        }
+    );
+
+}
+
+else {
+
+    launchFirework();
+
+    for (
+        let i =
+            particles.length - 1;
+
+        i >= 0;
+
+        i--
+    ) {
+
+        const p =
+            particles[i];
+
+        p.update();
+
+        p.draw();
+
+        if (
+
+            p.type ===
+            "firework"
+
+            &&
+
+            p.alpha <= 0
+
+        ) {
+
+            particles.splice(
+                i,
+                1
+            );
+
+        }
+
+    }
+
+}
+
+requestAnimationFrame(
+    animate
+);
+
+}
+
+animate();
+
+/* --------------------------------------------------
+MUSIC BUTTON
+-------------------------------------------------- */
+
+musicBtn.addEventListener(
+"click",
+async () => {
+
+    if (
+        music.paused
+    ) {
+
+        try {
+
+            await music.play();
+
+            musicBtn.innerHTML =
+                "⏸️ Pause Festive Music";
+
+        }
+
+        catch (error) {
+
+            musicBtn.innerHTML =
+                "⚠️ Add music.mp3";
+
+            console.log(
+                "Music could not be played:",
+                error
+            );
+
+        }
+
+    }
+
+    else {
+
+        music.pause();
+
+        musicBtn.innerHTML =
+            "🎵 Play Festive Music";
+
+    }
+
+}
+
+);
+
+</script> </body> </html>
